@@ -764,7 +764,7 @@
   },
   {
     "id": 110,
-    "nombre": "DEPILADOR ELECTRICA RECARGABLE 4 EN 1",
+    "nombre": "DEPILADORA  ELECTRICA RECARGABLE 4 EN 1",
     "precio": 21230,
     "foto": "https://i.postimg.cc/jj1h3dYQ/DL-6043.jpg",
     "categoria": "ACCESORIOS FEMENINOS"
@@ -858,7 +858,7 @@
     "nombre": "CORTA PELO RECARGABLE+LINTERNA",
     "precio": 8700,
     "foto": "https://i.postimg.cc/qR00LcQV/CRT-110017.jpg",
-    "categoria": "ACCESORIOS FEMENINOS"
+    "categoria": "ACCESORIOS MASCULINOS"
   },
   {
     "id": 124,
@@ -1265,5 +1265,509 @@
     "precio": 1575,
     "foto": "https://i.postimg.cc/vHhfyXCT/0360.jpg",
     "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 183,
+    "nombre": "CANDADO EN CAJA 50MM GW-50L",
+    "precio": 2190,
+    "foto": "https://i.postimg.cc/tgKVkcnS/C265.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 184,
+    "nombre": "CINTA AISLADORA X 10 UNIDADES",
+    "precio": 3750,
+    "foto": "https://i.postimg.cc/VkTSshgf/1808.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 185,
+    "nombre": "CINTA METRICA 3M 3GTM",
+    "precio": 1710,
+    "foto": "https://i.postimg.cc/8P7Nkz0v/1901.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 186,
+    "nombre": "CINTA METRICA 5M GIANT 36G-50",
+    "precio": 2650,
+    "foto": "https://i.postimg.cc/QMGXyZST/1902.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 187,
+    "nombre": "CINTA METRICA GIANT 7.5 METROS",
+    "precio": 4780,
+    "foto": "https://i.postimg.cc/mDnpmByx/1903.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 188,
+    "nombre": "CUTTER",
+    "precio": 1300,
+    "foto": "https://i.postimg.cc/W3s8js9h/Whats-App-Image-2025-09-10-at-20-57-07.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 189,
+    "nombre": "DESTORNILLADOR SET 32 EN 1",
+    "precio": 2354,
+    "foto": "https://i.postimg.cc/wM6Pt02M/TP-6036B.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 190,
+    "nombre": "ENCHUFE AMERICANOENCHUFE AMERICANO",
+    "precio": 760,
+    "foto": "https://i.postimg.cc/kXW2NWMP/Captura-de-pantalla-2025-09-11-161544.png",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 191,
+    "nombre": "ENCHUFE HEMBRA",
+    "precio": 1245,
+    "foto": "https://i.postimg.cc/rygDfx7B/Captura-de-pantalla-2025-09-11-170802.png",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 192,
+    "nombre": "ENCHUFE MACHO",
+    "precio": 1245,
+    "foto": "https://i.postimg.cc/kMzJpGYM/Whats-App-Image-2025-09-10-at-20-57-08-1.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 193,
+    "nombre": "LAPIZ TESTER",
+    "precio": 3465,
+    "foto": "https://i.postimg.cc/MGDwzb0x/Captura-de-pantalla-2025-09-11-171216.png",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 194,
+    "nombre": "LINGA PARA BICI/MOTO C/SOPORTE 1.2M 120X12",
+    "precio": 4800,
+    "foto": "https://i.postimg.cc/MHPsnxX3/TBL611.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 195,
+    "nombre": "LLAVE T SET 24 PCS",
+    "precio": 3350,
+    "foto": "https://i.postimg.cc/G2BxhfZd/TS-024.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 196,
+    "nombre": "TRIPLE PIRAMIDE",
+    "precio": 1990,
+    "foto": "https://i.postimg.cc/13J5MHL2/Whats-App-Image-2025-09-10-at-20-57-08-3.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 197,
+    "nombre": "TRIPLE X 2 ENTRADAS PLANO REFORZADO",
+    "precio": 1990,
+    "foto": "https://i.postimg.cc/L5pT9Lmk/Whats-App-Image-2025-09-10-at-20-57-08-2.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 198,
+    "nombre": "ZAPATILLA 3M",
+    "precio": 2400,
+    "foto": "https://i.postimg.cc/J4p922zN/Captura-de-pantalla-2025-09-11-161504.png",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 199,
+    "nombre": "ZAPATILLA 5M",
+    "precio": 3850,
+    "foto": "https://i.postimg.cc/J4p922zN/Captura-de-pantalla-2025-09-11-161504.png",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 200,
+    "nombre": "ZAPATILLA REDONDA",
+    "precio": 9150,
+    "foto": "https://i.postimg.cc/SRDWm8nP/Whats-App-Image-2025-09-10-at-20-57-03-2.jpg",
+    "categoria": "HERRAMIENTAS"
+  },
+  {
+    "id": 201,
+    "nombre": "CONSOLA VIDEO JUEGO 64GB RETRO 2.4G",
+    "precio": 45280,
+    "foto": "https://i.postimg.cc/Xvy2HTqt/JOY-61017.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 202,
+    "nombre": "CONSOLA X2 PLUS 64 GB",
+    "precio": 57960,
+    "foto": "https://i.postimg.cc/NjZDHpDD/X2.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 203,
+    "nombre": "JOSTICK PLAY 2",
+    "precio": 8375,
+    "foto": "https://i.postimg.cc/JhNH1JgQ/Whats-App-Image-2025-09-10-at-20-57-10-3.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 204,
+    "nombre": "JOYSTICK PS4 COLORES SIN MARCA",
+    "precio": 22850,
+    "foto": "https://i.postimg.cc/133Wtd9T/12098.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 205,
+    "nombre": "MOUSE INALAMBRICO TRANSPARENTE",
+    "precio": 9055,
+    "foto": "https://i.postimg.cc/Pqtx2kS5/MA200.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 206,
+    "nombre": "TECLADO INALAMBRICO TIME",
+    "precio": 19900,
+    "foto": "https://i.postimg.cc/Dz97RkgG/150T08.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 207,
+    "nombre": "TECLADO MINI KEYBOARD",
+    "precio": 6999,
+    "foto": "https://i.postimg.cc/qvHXBzvD/KY800.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 208,
+    "nombre": "TECLADO USB NOGA",
+    "precio": 7560,
+    "foto": "https://i.postimg.cc/qqyzvf4f/78005USB.jpg",
+    "categoria": "COMPUTACION"
+  },
+  {
+    "id": 209,
+    "nombre": "TIJERA MEDIANA",
+    "precio": 1750,
+    "foto": "https://i.postimg.cc/tC7yrfjw/TIJE.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 210,
+    "nombre": "TIJERA CHICA",
+    "precio": 980,
+    "foto": "https://i.postimg.cc/tC7yrfjw/TIJE.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 211,
+    "nombre": "CALCULADORA KARUIDA",
+    "precio": 3450,
+    "foto": "https://i.postimg.cc/3w1xMh0w/CALCU.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 212,
+    "nombre": "CALCULADORA CHICA BLISTER",
+    "precio": 1850,
+    "foto": "https://i.postimg.cc/3NXtm9tb/Whats-App-Image-2025-09-10-at-23-33-22.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 213,
+    "nombre": "CALCULADORA CIENTIFICA",
+    "precio": 3860,
+    "foto": "https://i.postimg.cc/Y2gZtSqC/KK-88MS.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 214,
+    "nombre": "CALCULADORA CIENTIFICA BLISTER",
+    "precio": 3830,
+    "foto": "https://i.postimg.cc/HkMQKNfy/KK-89MC.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 215,
+    "nombre": "CALCULADORA KARUIDA DOBLE VISOR 12 DIGITOS",
+    "precio": 8225,
+    "foto": "https://i.postimg.cc/gkXRX5cT/CT-8122-120.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 216,
+    "nombre": "CALCULADORA KAWAII 12DIGITOS",
+    "precio": 6100,
+    "foto": "https://i.postimg.cc/pVgThSny/KK-2280.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 217,
+    "nombre": "MEMORIA DE 128GB SAMSUNG 100MB",
+    "precio": 16590,
+    "foto": "https://i.postimg.cc/h4C6PJh0/UHS-I.jpg",
+    "categoria": "LIBRERIA"
+  },
+  {
+    "id": 218,
+    "nombre": "MICROFONO INALAMBRICO (M-32006)",
+    "precio": 18730,
+    "foto": "https://i.postimg.cc/YqdtFwhg/MIC-32001.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 219,
+    "nombre": "TRIPODE 2.1M METAL",
+    "precio": 6600,
+    "foto": "https://i.postimg.cc/858GP755/TRP-72008.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 220,
+    "nombre": "HOLDER ESTABILIZADOR VLOG KIT C/ MICROFONO",
+    "precio": 19200,
+    "foto": "https://i.postimg.cc/xCJxTMBq/HD-71074.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 221,
+    "nombre": "LUZ DE SELFIE",
+    "precio": 5320,
+    "foto": "https://i.postimg.cc/C1FXdwwk/LED-83001.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 222,
+    "nombre": "SOPORTE Y ACCESORIOS PARA MICROFONO",
+    "precio": 22990,
+    "foto": "https://i.postimg.cc/BvpDNbpb/HD-71022.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 223,
+    "nombre": "TRIPODE C/LUZLED Y MICROFON",
+    "precio": 8000,
+    "foto": "https://i.postimg.cc/Kv69Rtbt/AY-49.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 224,
+    "nombre": "REPETIDOR WIFI H300M BN0197",
+    "precio": 11970,
+    "foto": "https://i.postimg.cc/63Mj3S6Q/600M.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 225,
+    "nombre": "TV BOX 2+8G TIME",
+    "precio": 39900,
+    "foto": "https://i.postimg.cc/jSqDfbtY/TVB-48021.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 226,
+    "nombre": "TV BOX 2+8G TIME",
+    "precio": 33460,
+    "foto": "https://i.postimg.cc/XYZtGnty/TVB-48020.jpg",
+    "categoria": "TECNOLOGIA"
+  },
+  {
+    "id": 227,
+    "nombre": "KIT AURICULAR Y RELOJ SMART C/MALLA INTERCAMBIABLE",
+    "precio": 22680,
+    "foto": "https://i.postimg.cc/nzWG0zZv/RELOS-7-MALLAS.jpg",
+    "categoria": "RELOJES"
+  },
+  {
+    "id": 228,
+    "nombre": "RELOJ SET SMARTWATCH Y AURICULAR C/ 2 MALLAS",
+    "precio": 20800,
+    "foto": "https://i.postimg.cc/dVDdSFH6/RELOJ-2-MAYAS.jpg",
+    "categoria": "RELOJES"
+  },
+  {
+    "id": 229,
+    "nombre": "RELOJ SMART/PARLANTE/DOS MICROFONOS",
+    "precio": 27900,
+    "foto": "https://i.postimg.cc/pLzkFjdG/20250912-1105-Vi.png",
+    "categoria": "RELOJES"
+  },
+  {
+    "id": 230,
+    "nombre": "RELOJ SMART/PARLANTE/MOCROFONO BT",
+    "precio": 27900,
+    "foto": "https://i.postimg.cc/rmfPpR63/PARLANTE-MICROFONO-Y-LUCES-1.png",
+    "categoria": "RELOJES"
+  },
+  {
+    "id": 231,
+    "nombre": "RELOJ SMARTWATCH ULTRA 9 BIG C/ 7 MALLAS",
+    "precio": 14980,
+    "foto": "https://i.postimg.cc/QCtxx8Wn/TH7-3.jpg",
+    "categoria": "RELOJES"
+  },
+  {
+    "id": 232,
+    "nombre": "SET DE AURICULAR VINCHA BT P9 SERIE 10 C/RELOJ SMART",
+    "precio": 29200,
+    "foto": "https://i.postimg.cc/VNZB94z5/P9.jpg",
+    "categoria": "RELOJES"
+  },
+  {
+    "id": 233,
+    "nombre": "VASO TERMICO C/BOMBILLA",
+    "precio": 8400,
+    "foto": "https://i.postimg.cc/J4KDXSQQ/vasorosa.png",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 234,
+    "nombre": "BOTELLA DE ALUMINIO DOBLE CAPA",
+    "precio": 6300,
+    "foto": "https://i.postimg.cc/y8yXgJSL/botellaaliminio.png",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 235,
+    "nombre": "TERMO ACERO 1.2L",
+    "precio": 19990,
+    "foto": "https://i.postimg.cc/SK7mtKKw/TERMO1-2.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 236,
+    "nombre": "VASO TERMICO LED BT C/PARLANTE 473ML",
+    "precio": 16900,
+    "foto": "https://i.postimg.cc/15nVSdwg/VASO-U-PARLAMTE.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 237,
+    "nombre": "VASO TERMICO 890ML C/SORBETE",
+    "precio": 13700,
+    "foto": "https://i.postimg.cc/h40pxf55/BOTELLA-TERM-800ML.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 238,
+    "nombre": "VASO TERMICO 400ML",
+    "precio": 10290,
+    "foto": "https://i.postimg.cc/B6Pfb2ps/VASO-TERMICO.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 239,
+    "nombre": "BOTELLA PLEGABLE DEPORTIVA INFANTIL",
+    "precio": 5800,
+    "foto": "https://i.postimg.cc/3JdJpDwT/BOTELLA-PLEGABLE-DEPORTE.jpg",
+    "categoria": "NIÑOS"
+  },
+  {
+    "id": 240,
+    "nombre": "BOTELLA AGUA 500ML",
+    "precio": 13200,
+    "foto": "https://i.postimg.cc/W183nfXL/Whats-App-Image-2025-09-10-at-23-33-21.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 241,
+    "nombre": "BOTELLA DE PLASTICO 700ML",
+    "precio": 7000,
+    "foto": "https://i.postimg.cc/C5Rv5Dtz/BTPDI-01.jpg",
+    "categoria": "NIÑOS"
+  },
+  {
+    "id": 242,
+    "nombre": "BOTELLA DE SILICONA PLEGABLES",
+    "precio": 4950,
+    "foto": "https://i.postimg.cc/50rKq65D/Captura-de-pantalla-2025-09-11-173540.png",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 243,
+    "nombre": "BOTELLA TERMO 500ML C/TERMOMETRO LED",
+    "precio": 7970,
+    "foto": "https://i.postimg.cc/XNTJJWBv/EX00016.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 244,
+    "nombre": "TERMO DE 500ML SPORT",
+    "precio": 14230,
+    "foto": "https://i.postimg.cc/XJyvsMZZ/FLK1543.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 245,
+    "nombre": "TERMOS 500ML",
+    "precio": 14250,
+    "foto": "https://i.postimg.cc/SxX7Fk9f/20250908-1846-Colorful-Thermos-Bottles-remix-01k4nmk01jed4t13qnzxmphkx4.png",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 246,
+    "nombre": "TERMOS 600ML FORRADOS EN GOMA",
+    "precio": 16000,
+    "foto": "https://i.postimg.cc/GmYZzJHr/Whats-App-Image-2025-09-10-at-23-33-24-2.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 247,
+    "nombre": "VASO TERMICO CON SORBETE 1200ML",
+    "precio": 19150,
+    "foto": "https://i.postimg.cc/6qgz7WYp/ISA-811.jpg",
+    "categoria": "TERMOS Y VASOS"
+  },
+  {
+    "id": 248,
+    "nombre": "AURICULAR TIME AU-11010",
+    "precio": 1350,
+    "foto": "https://i.postimg.cc/zBFSBTGb/AURITAKE.jpg",
+    "categoria": "AURICULARES C/CABLE"
+  },
+  {
+    "id": 249,
+    "nombre": "AURICULAR BLANCO BOLSITA",
+    "precio": 1725,
+    "foto": "https://i.postimg.cc/T1P7hxfh/AURI.jpg",
+    "categoria": "AURICULARES C/CABLE"
+  },
+  {
+    "id": 250,
+    "nombre": "AURICULAR BOLSITA NEGRO Y BLANCO",
+    "precio": 1160,
+    "foto": "https://i.postimg.cc/BQVrT5GZ/AU-11006.jpg",
+    "categoria": "AURICULARES C/CABLE"
+  },
+  {
+    "id": 251,
+    "nombre": "AURICULAR AKG M/LIBRES",
+    "precio": 2050,
+    "foto": "https://i.postimg.cc/sxVTFH13/AR-12.jpg",
+    "categoria": "AURICULARES C/CABLE"
+  },
+  {
+    "id": 252,
+    "nombre": "AURICULAR BOLSITA TIME M/L",
+    "precio": 1136,
+    "foto": "https://i.postimg.cc/SKyfj5tn/AU-11007.jpg",
+    "categoria": "AURICULARES C/CABLE"
+  },
+  {
+    "id": 253,
+    "nombre": "AURICULAR S10+ SAMSUNG",
+    "precio": 1900,
+    "foto": "https://i.postimg.cc/02LNbfTq/Whats-App-Image-2025-09-10-at-20-57-09-3.jpg",
+    "categoria": "AURICULARES C/CABLE"
+  },
+  {
+    "id": 254,
+    "nombre": "AURICULAR SAMSUNG MANOS LIBRES",
+    "precio": 1645,
+    "foto": "https://i.postimg.cc/Pr9vkFT9/Whats-App-Image-2025-09-12-at-12-29-10.jpg",
+    "categoria": "AURICULARES C/CABLE"
   }
 ]
