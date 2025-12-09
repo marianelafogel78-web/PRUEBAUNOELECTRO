@@ -217,7 +217,7 @@
                 <div id="resumen-carrito">
                     <p>TOTAL DE LA COMPRA: <span id="carrito-total">$0.00</span></p> 
                     <button id="btn-vaciar-carrito">VACIAR CARRITO</button>
-                    <button id="btn-comprar-whatsapp">COMPRAR Y ENVIAR POR WHATSAPP</button>
+                    <button id="btn-comprar-whatsapp">📞 ENVIAR PEDIDO POR WASAP</button>
                 </div>
             </section>
         </div>
@@ -741,7 +741,7 @@
             document.getElementById('btn-login')?.addEventListener('click', iniciarSesionAdmin);
             document.getElementById('form-producto')?.addEventListener('submit', gestionarFormularioProducto);
             document.getElementById('btn-cancelar-edicion')?.addEventListener('click', limpiarFormulario);
-            document.getElementById('form-categoria')?.addEventListener('submit', gestionarFormularioCategoria);
+            document.getElementById('form-categoria')?.addEventListener('click', gestionarFormularioCategoria);
             document.getElementById('buscador-admin')?.addEventListener('input', filtrarYRenderizarProductos);
         };
     </script>
