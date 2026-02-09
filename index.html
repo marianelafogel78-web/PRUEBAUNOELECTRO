@@ -36,11 +36,10 @@
 
         .producto-card button { background-color: var(--color-acento); color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold; text-transform: uppercase; }
         
-        /* ESTILOS SIN STOCK */
         .producto-suspendido-estilo { opacity: 0.6; }
         .cartel-sin-stock {
             position: absolute; top: 20px; left: 20px; background: rgba(220, 20, 60, 0.9); color: white;
-            padding: 5px 12px; font-weight: bold; border-radius: 4px; z-index: 5; box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            padding: 5px 12px; font-weight: bold; border-radius: 4px; z-index: 5;
         }
         .btn-inactivo { background-color: #808080 !important; cursor: not-allowed !important; }
 
@@ -48,9 +47,8 @@
         .tab-button { padding: 10px 20px; cursor: pointer; border: none; margin: 0 5px; border-radius: 5px; font-weight: bold; background: var(--color-primario); }
         .tab-button.active { background-color: var(--color-acento); color: white; }
 
-        #select-filtros-tienda { width: 80%; max-width: 400px; margin: 10px auto 20px; display: block; padding: 10px; border: 2px solid var(--color-acento); border-radius: 5px; font-weight: bold; }
+        #select-filtros-tienda { width: 80%; max-width: 400px; margin: 10px auto 20px; display: block; padding: 10px; border: 2px solid var(--color-acento); border-radius: 5px; }
         
-        #lista-carrito { margin-bottom: 20px; border: 1px dashed var(--color-borde); padding: 10px; }
         .carrito-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dotted var(--color-borde); }
         
         @media (max-width: 768px) { .producto-card { width: calc(50% - 10px); } }
@@ -70,9 +68,8 @@
 
         <div id="tienda-panel" class="tab-content">
             <section id="productos-seccion">
-                <h2>🛍️ NUESTROS PRODUCTOS</h2>
                 <select id="select-filtros-tienda" onchange="filtrarProductos(this.value)"></select>
-                <div id="loading-message">CARGANDO...</div>
+                <div id="contenedor-tienda-dinamico"></div>
             </section>
         </div>
 
@@ -80,17 +77,17 @@
             <section>
                 <h2>🛒 TU CARRITO</h2>
                 <div id="lista-carrito"></div>
-                <div id="resumen-carrito">
-                    <input type="text" id="nombre-cliente-whatsapp" placeholder="ESCRIBA SU NOMBRE COMPLETO" style="width:100%; padding:10px; margin-bottom:10px;">
+                <div id="resumen-carrito" style="margin-top:20px;">
+                    <input type="text" id="nombre-cliente" placeholder="TU NOMBRE COMPLETO" style="width:100%; padding:10px; margin-bottom:10px;">
                     <p>TOTAL: <span id="carrito-total">$0.00</span></p>
                     <button onclick="vaciarCarrito()" style="background:red; margin-bottom:10px;">VACIAR CARRITO</button>
-                    <button onclick="generarMensajeWhatsApp()" style="background:green;">📲 ENVIAR PEDIDO</button>
+                    <button onclick="enviarPedido()" style="background:green;">📲 ENVIAR POR WHATSAPP</button>
                 </div>
             </section>
         </div>
 
         <div id="admin-panel" class="tab-content" style="display:none;">
-            <p style="text-align:center; padding:20px;">INGRESE DESDE EL PANEL DE CONTROL ORIGINAL</p>
+            <p style="text-align:center;">PANEL DE ADMINISTRACIÓN ACTIVO</p>
         </div>
     </main>
 
@@ -99,21 +96,19 @@
         let categorias = [];
         let carrito = JSON.parse(localStorage.getItem('carritoMM')) || [];
 
-        async function cargarDatosIniciales() {
+        async function cargarDatos() {
             try {
                 const [resP, resC] = await Promise.all([fetch('./productos.json'), fetch('./categorias.json')]);
                 productos = await resP.json();
                 categorias = await resC.json();
                 renderizarFiltros();
                 renderizarProductos();
-            } catch (e) { console.error("Error al cargar"); }
-            document.getElementById('loading-message').style.display = 'none';
+            } catch (e) { console.error("Error al cargar datos"); }
         }
 
         function renderizarProductos(lista = productos) {
-            const seccion = document.getElementById('productos-seccion');
-            const select = document.getElementById('select-filtros-tienda').outerHTML;
-            seccion.innerHTML = '<h2>🛍️ NUESTROS PRODUCTOS</h2>' + select;
+            const contenedor = document.getElementById('contenedor-tienda-dinamico');
+            contenedor.innerHTML = '';
 
             const cats = [...new Set(lista.map(p => p.categoria))].sort();
             cats.forEach(c => {
@@ -126,7 +121,7 @@
                     grid.innerHTML += `
                         <div class="producto-card ${esSinStock ? 'producto-suspendido-estilo' : ''}">
                             ${esSinStock ? '<div class="cartel-sin-stock">SIN STOCK</div>' : ''}
-                            <img src="${p.foto}" onerror="this.src='https://placehold.co/300x300?text=SIN+FOTO'">
+                            <img src="${p.foto}">
                             <h4>${p.nombre}</h4>
                             <p class="precio">$${p.precio.toFixed(2)}</p>
                             ${esSinStock 
@@ -134,7 +129,7 @@
                                 : `<button onclick="agregarAlCarrito(${p.id})">AGREGAR AL CARRITO</button>`}
                         </div>`;
                 });
-                seccion.appendChild(divCat);
+                contenedor.appendChild(divCat);
             });
         }
 
@@ -144,7 +139,55 @@
             const item = carrito.find(x => x.id === id);
             if (item) item.cantidad++; else carrito.push({...p, cantidad: 1});
             localStorage.setItem('carritoMM', JSON.stringify(carrito));
-            // Eliminado el Alert de confirmación
+        }
+
+        function renderizarCarrito() {
+            const lista = document.getElementById('lista-carrito');
+            const totalSpan = document.getElementById('carrito-total');
+            let total = 0;
+            lista.innerHTML = '';
+
+            if (carrito.length === 0) {
+                lista.innerHTML = '<p>CARRITO VACÍO</p>';
+            } else {
+                carrito.forEach(item => {
+                    const sub = item.precio * item.cantidad;
+                    total += sub;
+                    lista.innerHTML += `
+                        <div class="carrito-item">
+                            <span>${item.nombre} (x${item.cantidad})</span>
+                            <span>$${sub.toFixed(2)}</span>
+                            <button onclick="quitarUno(${item.id})" style="width:auto; padding:5px 10px; background:red;">X</button>
+                        </div>`;
+                });
+            }
+            totalSpan.textContent = `$${total.toFixed(2)}`;
+        }
+
+        function quitarUno(id) {
+            carrito = carrito.filter(i => i.id !== id);
+            localStorage.setItem('carritoMM', JSON.stringify(carrito));
+            renderizarCarrito();
+        }
+
+        function vaciarCarrito() {
+            carrito = [];
+            localStorage.setItem('carritoMM', JSON.stringify(carrito));
+            renderizarCarrito();
+        }
+
+        function enviarPedido() {
+            const nombre = document.getElementById('nombre-cliente').value;
+            if(!nombre) { alert("INGRESA TU NOMBRE"); return; }
+            let msj = `*PEDIDO DE ${nombre.toUpperCase()}*\n\n`;
+            let total = 0;
+            carrito.forEach(i => {
+                const sub = i.precio * i.cantidad;
+                total += sub;
+                msj += `- ${i.nombre} (x${i.cantidad}): $${sub.toFixed(2)}\n`;
+            });
+            msj += `\n*TOTAL: $${total.toFixed(2)}*`;
+            window.open(`https://wa.me/543571536378?text=${encodeURIComponent(msj)}`, '_blank');
         }
 
         function filtrarProductos(val) {
@@ -155,9 +198,7 @@
         function renderizarFiltros() {
             const s = document.getElementById('select-filtros-tienda');
             s.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>';
-            [...new Set(productos.map(p => p.categoria))].sort().forEach(c => {
-                s.innerHTML += `<option value="${c}">${c}</option>`;
-            });
+            categorias.forEach(c => s.innerHTML += `<option value="${c}">${c}</option>`);
         }
 
         function mostrarPestana(id, e) {
@@ -169,8 +210,7 @@
             if(id === 'carrito') renderizarCarrito();
         }
 
-        // Resto de tus funciones originales de Carrito (vaciarCarrito, renderizarCarrito, generarMensajeWhatsApp) se mantienen igual.
-        window.onload = cargarDatosIniciales;
+        window.onload = cargarDatos;
     </script>
 </body>
 </html>
