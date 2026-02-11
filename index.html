@@ -195,26 +195,29 @@
             background-color: #fff3cd; color: #856404; padding: 10px;
             border: 1px solid #ffeeba; border-radius: 5px; font-size: 0.9em;
             margin-bottom: 15px; text-transform: none;
-        }
-        /* Estilo para que el cliente vea el producto agotado */
+        /* Estilo sutil para productos agotados */
         .producto-sin-stock {
-            opacity: 0.6;
-            filter: grayscale(90%);
+            opacity: 0.85; /* Se ve casi normal, solo un poco más suave */
             position: relative;
+            /* Quitamos el filtro gris para que se vea el color real */
         }
+        
+        /* Ajuste del cartel para que resalte más sobre la foto colorida */
         .cartel-agotado {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) rotate(-15deg);
-            background-color: rgba(255, 0, 0, 0.85);
+            transform: translate(-50%, -50%) rotate(-10deg);
+            background-color: #191970; /* Usamos tu color de acento azul marino */
             color: white;
-            padding: 8px 15px;
+            padding: 10px 20px;
             font-weight: bold;
             border: 2px solid white;
             z-index: 10;
-            font-size: 1.2em;
+            font-size: 1.1em;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
+       
     </style>
 </head>
 <body>
