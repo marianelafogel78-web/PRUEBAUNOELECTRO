@@ -539,12 +539,29 @@
         };
 
         const vaciarCarrito = () => {
-            if (confirm("¿ESTÁ SEGURO DE QUE DESEA VACIAR EL CARRITO?")) {
-                carrito = [];
-                guardarCarrito();
-                renderizarCarrito();
-                actualizarContadorCarrito();
-            }
+            Swal.fire({
+                title: '¿ESTÁS SEGURO?',
+                text: "SE BORRARÁN TODOS LOS PRODUCTOS DEL CARRITO",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#191970',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'SÍ, VACIAR',
+                cancelButtonText: 'CANCELAR'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    carrito = [];
+                    guardarCarrito();
+                    renderizarCarrito();
+                    actualizarContadorCarrito();
+                    Swal.fire({
+                        title: 'VACIADO',
+                        text: 'TU CARRITO ESTÁ VACÍO.',
+                        icon: 'success',
+                        confirmButtonColor: '#191970'
+                    });
+                }
+            });
         };
 
         const guardarCarrito = () => {
@@ -560,11 +577,11 @@
             const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
             
             if (carrito.length === 0) {
-                alert("EL CARRITO ESTÁ VACÍO.");
+                Swal.fire({ title: "CARRITO VACÍO", text: "POR FAVOR, AGREGA PRODUCTOS PRIMERO.", icon: "info", confirmButtonColor: "#191970" });
                 return;
             }
             if (nombreCliente === "") {
-                alert("POR FAVOR, INGRESE SU NOMBRE PARA EL PEDIDO.");
+                Swal.fire({ title: "FALTA TU NOMBRE", text: "POR FAVOR, INGRESA TU NOMBRE PARA EL PEDIDO.", icon: "warning", confirmButtonColor: "#191970" });
                 return;
             }
 
