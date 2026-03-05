@@ -268,6 +268,11 @@
                         EN STOCK <span id="total-en-stock">0</span>
                     </div>
                 </div>
+                <div style="margin-bottom: 20px;">
+    <button id="btn-ver-faltantes" onclick="filtrarSoloFaltantes()" style="background-color: #dc3545; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;">
+        ⚠️ MOSTRAR SOLO PRODUCTOS SIN STOCK
+    </button>
+</div>
 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 300px; border: 1px solid var(--color-borde); padding: 15px; border-radius: 8px;">
@@ -785,6 +790,30 @@
             document.getElementById('form-categoria')?.addEventListener('submit', gestionarFormularioCategoria);
             document.getElementById('buscador-admin')?.addEventListener('input', filtrarYRenderizarProductos);
         };
+        const filtrarSoloFaltantes = () => {
+    const btn = document.getElementById('btn-ver-faltantes');
+    if (btn.innerText.includes("MOSTRAR SOLO")) {
+        // Filtramos y aplicamos el trim para evitar errores de espacios
+        const faltantes = productos.filter(p => p.suspendido === true);
+        
+        if (faltantes.length === 0) { 
+            Swal.fire({ title: "¡TODO EN STOCK!", text: "No tienes productos agotados.", icon: "success", confirmButtonColor: "#191970" }); 
+            return; 
+        }
+
+        // Ordenamos alfabéticamente ignorando espacios
+        faltantes.sort((a, b) => a.nombre.trim().localeCompare(b.nombre.trim()));
+        
+        renderizarProductos(faltantes); 
+        btn.innerText = "🔄 MOSTRAR TODOS LOS PRODUCTOS";
+        btn.style.backgroundColor = "#191970";
+    } else {
+        filtrarProductos('TODOS');
+        btn.innerText = "⚠️ MOSTRAR SOLO PRODUCTOS SIN STOCK";
+        btn.style.backgroundColor = "#dc3545";
+    }
+};
     </script>
 </body>
 </html>
+
