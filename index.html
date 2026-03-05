@@ -33,15 +33,31 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
             margin-bottom: 20px;
         }
-        header h1 { margin: 0; font-size: 2.5em; color: white; }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.5em; 
+            color: white;
+        }
 
         main { padding: 20px; max-width: 1200px; margin: 0 auto; }
 
-        h2, h3 { border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px; margin-top: 30px; color: var(--color-texto); }
+        h2, h3 {
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 10px; margin-top: 30px; color: var(--color-texto);
+        }
         
-        .categoria-titulo { border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px; margin-bottom: 15px; font-size: 1.8em; font-weight: 700; }
+        .categoria-titulo {
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.8em; font-weight: 700;
+        }
 
-        section { background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+        section {
+            background-color: white; padding: 20px;
+            margin-bottom: 20px; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
 
         .contenedor-productos { display: flex; flex-wrap: wrap; gap: 20px; }
 
@@ -56,45 +72,142 @@
         .producto-card img { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 10px; }
         .producto-card h4 { margin: 5px 0; font-size: 1.1em; min-height: 40px; }
         .producto-card p.precio { font-weight: bold; color: var(--color-acento); font-size: 1.2em; margin: 10px 0; }
-        .producto-card button { background-color: var(--color-acento); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+        .producto-card button {
+            background-color: var(--color-acento);
+            color: white;
+            border: none; padding: 8px 15px; border-radius: 4px;
+            cursor: pointer;
+        }
         .producto-card button:disabled { background-color: #ccc; cursor: not-allowed; }
 
-        .carrito-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dotted var(--color-borde); }
+        /* Estilos para el Carrito */
+        .carrito-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; border-bottom: 1px dotted var(--color-borde);
+        }
+        .carrito-item:last-child { border-bottom: none; }
         #resumen-carrito { margin-top: 20px; text-align: right; }
         #resumen-carrito p { font-size: 1.5em; font-weight: bold; color: var(--color-acento); }
-        #btn-comprar-whatsapp { background-color: #25d366; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.2em; cursor: pointer; font-weight: bold; }
-        #btn-vaciar-carrito { background-color: #ff4d4d; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-right: 10px; }
+        #btn-comprar-whatsapp {
+            background-color: #25d366; color: white; border: none;
+            padding: 15px 30px; border-radius: 8px; font-size: 1.2em;
+            cursor: pointer; font-weight: bold;
+        }
+        #btn-vaciar-carrito {
+            background-color: #ff4d4d; color: white; border: none;
+            padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-right: 10px;
+        }
 
-        .tabs { display: flex; justify-content: center; margin-bottom: 20px; position: sticky; top: 0; z-index: 10; background-color: var(--color-fondo); padding: 10px 0; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }
-        .tab-button { padding: 10px 20px; cursor: pointer; background-color: var(--color-primario); color: var(--color-texto); border: none; margin: 0 5px; border-radius: 5px; font-weight: bold; }
+        /* Pestañas (Tabs) */
+        .tabs { 
+            display: flex; justify-content: center; 
+            margin-bottom: 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 10; 
+            background-color: var(--color-fondo); 
+            padding: 10px 0; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); 
+        }
+        .tab-button {
+            padding: 10px 20px; cursor: pointer; background-color: var(--color-primario);
+            color: var(--color-texto); border: none; margin: 0 5px;
+            border-radius: 5px; font-weight: bold;
+        }
         .tab-button.active { background-color: var(--color-acento); color: white; }
 
-        #admin-panel input, #admin-panel select { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--color-borde); border-radius: 4px; }
-        #btn-guardar-producto, #btn-guardar-categoria { background-color: var(--color-acento); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
-        
-        .admin-producto-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border: 1px solid var(--color-borde); margin-bottom: 5px; border-radius: 4px; background-color: white; }
-        .admin-acciones button { margin-left: 5px; padding: 5px 10px; cursor: pointer; border: none; border-radius: 3px; color: white; }
-        .btn-editar { background-color: #ffc107; color: black !important; }
-        .btn-eliminar { background-color: #dc3545; }
-        .btn-suspender { background-color: #17a2b8; }
+        /* Panel Admin */
+        #admin-panel input, #admin-panel select {
+            width: 100%; padding: 10px; margin-bottom: 10px;
+            border: 1px solid var(--color-borde); border-radius: 4px;
+        }
+        #btn-guardar-producto, #btn-guardar-categoria {
+            background-color: var(--color-acento); color: white; border: none;
+            padding: 10px 20px; border-radius: 4px; cursor: pointer;
+        }
+        .admin-producto-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px; border: 1px solid var(--color-borde);
+            margin-bottom: 5px; border-radius: 4px; background-color: white;
+        }
+        .admin-producto-info { flex-grow: 1; }
+        .admin-acciones button { margin-left: 5px; padding: 5px 10px; cursor: pointer; }
+        .btn-editar { background-color: #ffc107; border: none; border-radius: 3px; }
+        .btn-eliminar { background-color: #dc3545; color: white; border: none; border-radius: 3px; }
+        .btn-suspender { background-color: #17a2b8; color: white; border: none; border-radius: 3px; }
 
-        .stats-container { display: flex; gap: 15px; margin-bottom: 10px; }
-        .stat-card { background: var(--color-primario); padding: 15px; border-radius: 8px; flex: 1; text-align: center; border: 1px solid var(--color-acento); }
+        /* ESTADÍSTICAS ADMIN */
+        .stats-container {
+            display: flex; gap: 15px; margin-bottom: 20px;
+        }
+        .stat-card {
+            background: var(--color-primario); padding: 15px; border-radius: 8px;
+            flex: 1; text-align: center; border: 1px solid var(--color-acento);
+        }
         .stat-card span { display: block; font-size: 1.8em; font-weight: bold; color: var(--color-acento); }
 
-        .producto-sin-stock { opacity: 0.85; position: relative; }
-        .cartel-agotado { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-10deg); background-color: #191970; color: white; padding: 10px 20px; font-weight: bold; border: 2px solid white; z-index: 10; box-shadow: 0 4px 8px rgba(0,0,0,0.3); pointer-events: none; }
+        .info-json-mode {
+            background-color: #fff3cd; color: #856404; padding: 10px;
+            border: 1px solid #ffeeba; border-radius: 5px; font-size: 0.9em;
+            margin-bottom: 15px; text-transform: none;
+        }
 
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        /* Estilo sutil para productos agotados */
+        .producto-sin-stock {
+            opacity: 0.85; 
+            position: relative;
+        }
+
+        .cartel-agotado {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-10deg);
+            background-color: #191970; 
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            border: 2px solid white;
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            pointer-events: none; 
+        }
+
+        /* Botón WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
         .whatsapp-float img { width: 35px; height: 35px; }
 
-        @media (max-width: 768px) { .producto-card { width: calc(50% - 10px); } header h1 { font-size: 1.8em; } }
-        @media (max-width: 480px) { .producto-card { width: 100%; } }
+        @media (max-width: 768px) {
+            .producto-card { width: calc(50% - 10px); }
+            header h1 { font-size: 1.8em; }
+        }
+        @media (max-width: 480px) {
+            .producto-card { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-    <header><h1>JM.ELECTRONICA</h1></header>
+    <header>
+        <h1>JM.ELECTRONICA</h1>
+    </header>
 
     <main id="app-main">
         <div class="tabs">
@@ -107,7 +220,7 @@
             <section id="productos-seccion">
                 <h2>🛍️ NUESTROS PRODUCTOS</h2>
                 <div style="margin-bottom: 20px;">
-                    <label>FILTRAR POR CATEGORÍA:</label>
+                    <label for="select-filtros-tienda">FILTRAR POR CATEGORÍA:</label>
                     <select id="select-filtros-tienda" onchange="filtrarProductos(this.value)" style="width: 100%; padding: 10px; margin-top: 5px;">
                         <option value="TODOS">TODOS</option>
                     </select>
@@ -119,10 +232,11 @@
         <div id="carrito-panel" class="tab-content" style="display: none;">
             <section>
                 <h2>🛒 TU CARRITO</h2>
-                <div id="lista-carrito"></div>
+                <div id="lista-carrito">
+                    </div>
                 <div id="resumen-carrito">
                     <div style="margin-bottom: 20px; text-align: left;">
-                        <label>SU NOMBRE COMPLETO:</label>
+                        <label for="nombre-cliente-whatsapp">SU NOMBRE COMPLETO:</label>
                         <input type="text" id="nombre-cliente-whatsapp" placeholder="INGRESE SU NOMBRE PARA EL PEDIDO" style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid var(--color-borde); border-radius: 4px;">
                     </div>
                     <p>TOTAL: <span id="carrito-total">$0.00</span></p>
@@ -142,15 +256,17 @@
             <section id="gestion-seccion" style="display: none;">
                 <h2>⚙️ GESTIÓN DE TIENDA</h2>
                 
-                <div class="stats-container">
-                    <div class="stat-card">CARGADOS <span id="total-cargados">0</span></div>
-                    <div class="stat-card">EN STOCK <span id="total-en-stock">0</span></div>
+                <div class="info-json-mode">
+                    <strong>MODO EDICIÓN LOCAL:</strong> Los cambios que realice aquí solo se guardarán en este navegador. Para que sean permanentes en la web, debe descargar los archivos .json y subirlos a su repositorio de GitHub.
                 </div>
 
-                <div style="margin-bottom: 15px;">
-                    <button id="btn-ver-faltantes" onclick="filtrarSoloFaltantes()" style="background-color: #dc3545; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;">
-                        ⚠️ MOSTRAR SOLO PRODUCTOS SIN STOCK
-                    </button>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        CARGADOS <span id="total-cargados">0</span>
+                    </div>
+                    <div class="stat-card">
+                        EN STOCK <span id="total-en-stock">0</span>
+                    </div>
                 </div>
 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap;">
@@ -171,19 +287,21 @@
                             <input type="text" id="producto-nombre" placeholder="NOMBRE DEL PRODUCTO" required>
                             <input type="number" id="producto-precio" placeholder="PRECIO" step="0.01" required>
                             <input type="text" id="producto-foto" placeholder="URL DE LA IMAGEN" required>
-                            <select id="producto-categoria" required><option value="">SELECCIONE CATEGORÍA</option></select>
+                            <select id="producto-categoria" required>
+                                <option value="">SELECCIONE CATEGORÍA</option>
+                            </select>
                             <div style="display: flex; gap: 10px;">
                                 <button type="submit" id="btn-guardar-producto">GUARDAR PRODUCTO</button>
                                 <button type="button" id="btn-cancelar-edicion" style="display: none; background-color: #6c757d; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer;">CANCELAR</button>
                             </div>
                         </form>
-                        <button onclick="descargarJSON('productos')" style="margin-top: 10px; background-color: #007bff; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%;">DESCARGAR productos.json</button>
+                        <button onclick="descargarJSON('productos')" style="margin-top: 10px; background-color: #007bff; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; width: 100%;">DESCARGAR productos.json ACTUALIZADO</button>
                     </div>
                 </div>
 
                 <div style="margin-top: 30px;">
                     <h3>LISTADO DE PRODUCTOS</h3>
-                    <input type="text" id="buscador-admin" placeholder="BUSCAR POR NOMBRE O ID...">
+                    <input type="text" id="buscador-admin" placeholder="BUSCAR POR NOMBRE O ID..." style="margin-bottom: 15px;">
                     <div id="lista-admin-productos"></div>
                 </div>
             </section>
@@ -196,7 +314,7 @@
 
     <script>
         // =================================================================
-        // 1. VARIABLES Y ESTADO
+        // 1. VARIABLES Y CONFIGURACIÓN
         // =================================================================
         let productos = [];
         let categorias = [];
@@ -205,64 +323,81 @@
         const TELEFONO_WHATSAPP = "5493571536378"; 
 
         // =================================================================
-        // 2. CARGA DE DATOS
+        // 2. CARGA DE DATOS (FETCH)
         // =================================================================
         async function cargarDatosIniciales() {
             try {
                 const responseProd = await fetch('./productos.json?v=' + Date.now());
                 const responseCat = await fetch('./categorias.json?v=' + Date.now());
+                
+                if (!responseProd.ok || !responseCat.ok) throw new Error("Error al cargar archivos JSON");
+
                 productos = await responseProd.json();
                 categorias = await responseCat.json();
-                
+
                 renderizarFiltros();
                 filtrarProductos('TODOS');
                 renderizarCarrito();
                 actualizarContadorCarrito();
+                
                 document.getElementById('loading-message').style.display = 'none';
             } catch (error) {
-                console.error("Error cargando datos:", error);
-                document.getElementById('loading-message').innerHTML = "ERROR AL CARGAR DATOS.";
+                console.error("Error detallado:", error);
+                document.getElementById('loading-message').innerHTML = "ERROR AL CARGAR DATOS. ASEGÚRESE QUE LOS ARCHIVOS .JSON EXISTAN.";
             }
         }
 
         // =================================================================
-        // 3. FUNCIONES DE LA TIENDA
+        // 3. LÓGICA DE LA TIENDA
         // =================================================================
-        const renderizarProductos = (lista) => {
-            const seccion = document.getElementById('productos-seccion');
-            seccion.querySelectorAll('div:not([style*="margin-bottom"])').forEach(c => c.remove());
+        const renderizarProductos = (productosParaMostrar) => {
+            const productosSeccion = document.getElementById('productos-seccion');
+            
+            const contenedoresAnteriores = productosSeccion.querySelectorAll('div:not([style*="margin-bottom"])');
+            contenedoresAnteriores.forEach(c => c.remove());
 
-            // AGRUPAR POR CATEGORÍA
-            const productosPorCat = lista.reduce((acc, p) => {
-                const cat = p.categoria || 'SIN CATEGORÍA';
-                if (!acc[cat]) acc[cat] = [];
-                acc[cat].push(p);
+            if (productosParaMostrar.length === 0) {
+                const emptyMsg = document.createElement('p');
+                emptyMsg.style.textAlign = 'center';
+                emptyMsg.innerText = "NO SE ENCONTRARON PRODUCTOS.";
+                productosSeccion.appendChild(emptyMsg);
+                return;
+            }
+
+            const categoriasProductos = productosParaMostrar.reduce((acc, producto) => {
+                const categoriaNombre = producto.categoria || 'SIN CATEGORÍA';
+                if (!acc[categoriaNombre]) acc[categoriaNombre] = [];
+                acc[categoriaNombre].push(producto);
                 return acc;
             }, {});
 
-            // RENDERIZAR CADA CATEGORÍA EN ORDEN ALFABÉTICO
-            Object.keys(productosPorCat).sort().forEach(cat => {
-                const divCat = document.createElement('div');
-                divCat.innerHTML = `<h3 class="categoria-titulo">${cat}</h3><div class="contenedor-productos"></div>`;
-                const contenedor = divCat.querySelector('.contenedor-productos');
+            const categoriasOrdenadas = Object.keys(categoriasProductos).sort();
+
+            categoriasOrdenadas.forEach(categoria => {
+                const divCategoria = document.createElement('div');
+                divCategoria.innerHTML = `<h3 class="categoria-titulo">${categoria}</h3><div class="contenedor-productos"></div>`;
+                const contenedor = divCategoria.querySelector('.contenedor-productos');
                 
-                // ORDENAR PRODUCTOS DENTRO DE LA CATEGORÍA
-                productosPorCat[cat].sort((a, b) => a.nombre.localeCompare(b.nombre)).forEach(p => {
-                    const agotado = p.suspendido === true;
+                // ORDEN ALFABÉTICO AUTOMÁTICO
+                categoriasProductos[categoria].sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+                categoriasProductos[categoria].forEach(producto => {
+                    const esAgotado = producto.suspendido === true;
                     const card = document.createElement('div');
-                    card.className = `producto-card ${agotado ? 'producto-sin-stock' : ''}`;
+                    card.className = `producto-card ${esAgotado ? 'producto-sin-stock' : ''}`;
+                    
                     card.innerHTML = `
-                        ${agotado ? '<div class="cartel-agotado">SIN STOCK</div>' : ''}
-                        <img src="${p.foto}" alt="${p.nombre}" onerror="this.src='https://placehold.co/300x300?text=SIN+IMAGEN';">
-                        <h4>${p.nombre}</h4>
-                        <p class="precio">$${p.precio.toFixed(2)}</p>
-                        <button onclick="agregarAlCarrito(${p.id})" ${agotado ? 'disabled' : ''}>
-                            ${agotado ? 'AGOTADO' : 'AGREGAR AL CARRITO'}
+                        ${esAgotado ? '<div class="cartel-agotado">SIN STOCK</div>' : ''}
+                        <img src="${producto.foto}" alt="${producto.nombre}" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
+                        <h4>${producto.nombre}</h4>
+                        <p class="precio">$${producto.precio.toFixed(2)}</p>
+                        <button onclick="agregarAlCarrito(${producto.id})" ${esAgotado ? 'disabled' : ''}>
+                            ${esAgotado ? 'AGOTADO' : 'AGREGAR AL CARRITO'}
                         </button>
                     `;
                     contenedor.appendChild(card);
                 });
-                seccion.appendChild(divCat);
+                productosSeccion.appendChild(divCategoria);
             });
         };
 
@@ -276,61 +411,79 @@
         };
 
         const renderizarFiltros = () => {
-            const select = document.getElementById('select-filtros-tienda');
-            const selectProd = document.getElementById('producto-categoria');
+            const selectFiltros = document.getElementById('select-filtros-tienda');
+            const selectForm = document.getElementById('producto-categoria');
             const listaCatAdmin = document.getElementById('lista-categorias-admin');
+
+            const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
             
-            const opciones = categorias.map(c => `<option value="${c}">${c}</option>`).join('');
-            select.innerHTML = '<option value="TODOS">TODOS</option>' + opciones;
-            selectProd.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
-            listaCatAdmin.innerHTML = categorias.map(c => `<li>${c} <button onclick="eliminarCategoria('${c}')" style="color:red; cursor:pointer; background:none; border:none; font-weight:bold;">[X]</button></li>`).join('');
+            selectFiltros.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>' + opciones;
+            selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
+            
+            listaCatAdmin.innerHTML = categorias.map(cat => `
+                <li>
+                    ${cat} 
+                    <button onclick="eliminarCategoria('${cat}')" style="margin-left:10px; color:red; cursor:pointer; background:none; border:none;">[X]</button>
+                </li>
+            `).join('');
         };
 
         // =================================================================
-        // 4. CARRITO DE COMPRAS
+        // 4. LÓGICA DEL CARRITO
         // =================================================================
-        const agregarAlCarrito = async (id) => {
-            const producto = productos.find(p => p.id === id);
+        const agregarAlCarrito = async (productoId) => {
+            const producto = productos.find(p => p.id === productoId);
             
-            const { value: cantidad } = await Swal.fire({
-                title: 'CANTIDAD',
+            if (!producto || producto.suspendido) {
+                Swal.fire({ title: "LO SENTIMOS", text: "ESTE PRODUCTO NO TIENE STOCK.", icon: "error", confirmButtonColor: "#191970" });
+                return;
+            }
+
+            // VENTANA MODERNA DE CANTIDAD
+            const { value: cantidadIngresada } = await Swal.fire({
+                title: 'CANTIDAD...',
                 input: 'number',
                 inputValue: 1,
                 showCancelButton: true,
+                confirmButtonText: 'AGREGAR',
+                cancelButtonText: 'CANCELAR',
                 confirmButtonColor: '#191970',
-                inputValidator: (value) => {
-                    if (!value || value <= 0) return 'INGRESE UN NÚMERO VÁLIDO';
-                }
+                inputAttributes: { min: 1, step: 1 },
+                inputValidator: (value) => { if (!value || value <= 0) return 'POR FAVOR, INGRESE UN NÚMERO VÁLIDO.'; }
             });
 
-            if (cantidad) {
-                const itemExistente = carrito.find(item => item.id === id);
-                if (itemExistente) {
-                    itemExistente.cantidad += parseInt(cantidad);
-                } else {
-                    carrito.push({
-                        id: producto.id,
-                        nombre: producto.nombre,
-                        precio: producto.precio,
-                        cantidad: parseInt(cantidad)
-                    });
-                }
-                guardarCarrito();
-                renderizarCarrito();
-                actualizarContadorCarrito();
+            if (!cantidadIngresada) return; 
+            
+            let cantidad = parseInt(cantidadIngresada);
+
+            const itemEnCarrito = carrito.find(item => item.id === productoId);
+            if (itemEnCarrito) {
+                itemEnCarrito.cantidad += cantidad;
+            } else {
+                carrito.push({
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    precio: producto.precio,
+                    cantidad: cantidad
+                });
             }
+
+            guardarCarrito();
+            renderizarCarrito();
+            actualizarContadorCarrito();
+            Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: '¡PRODUCTO AGREGADO!', showConfirmButton: false, timer: 1500 });
         };
 
         const renderizarCarrito = () => {
-            const lista = document.getElementById('lista-carrito');
-            const totalElemento = document.getElementById('carrito-total');
+            const listaCarrito = document.getElementById('lista-carrito');
+            const carritoTotal = document.getElementById('carrito-total');
+            
+            listaCarrito.innerHTML = '';
             let total = 0;
 
-            lista.innerHTML = '';
-
             if (carrito.length === 0) {
-                lista.innerHTML = '<p style="text-align:center; padding: 20px;">TU CARRITO ESTÁ VACÍO</p>';
-                totalElemento.innerText = '$0.00';
+                listaCarrito.innerHTML = '<p style="text-align:center; padding: 20px;">EL CARRITO ESTÁ VACÍO.</p>';
+                carritoTotal.innerText = '$0.00';
                 return;
             }
 
@@ -338,49 +491,38 @@
                 const subtotal = item.precio * item.cantidad;
                 total += subtotal;
 
-                const div = document.createElement('div');
-                div.className = 'carrito-item';
-                div.innerHTML = `
+                const divItem = document.createElement('div');
+                divItem.className = 'carrito-item';
+                divItem.innerHTML = `
                     <div>
                         <strong>${item.nombre}</strong><br>
                         <small>$${item.precio.toFixed(2)} x ${item.cantidad}</small>
                     </div>
                     <div>
-                        <b>$${subtotal.toFixed(2)}</b>
-                        <button onclick="eliminarDelCarrito(${item.id})" style="margin-left:10px; border:none; color:red; cursor:pointer; background:none; font-size:1.2em;">🗑️</button>
+                        <span style="font-weight:bold; margin-right: 15px;">$${subtotal.toFixed(2)}</span>
+                        <button onclick="eliminarDelCarrito(${item.id})" style="background:none; border:none; color:red; cursor:pointer; font-size:1.2em;">🗑️</button>
                     </div>
                 `;
-                lista.appendChild(div);
+                listaCarrito.appendChild(divItem);
             });
 
-            totalElemento.innerText = `$${total.toFixed(2)}`;
+            carritoTotal.innerText = `$${total.toFixed(2)}`;
         };
 
-        const eliminarDelCarrito = (id) => {
-            carrito = carrito.filter(item => item.id !== id);
+        const eliminarDelCarrito = (productoId) => {
+            carrito = carrito.filter(item => item.id !== productoId);
             guardarCarrito();
             renderizarCarrito();
             actualizarContadorCarrito();
         };
 
         const vaciarCarrito = () => {
-            Swal.fire({
-                title: '¿VACIAR CARRITO?',
-                text: "SE ELIMINARÁN TODOS LOS PRODUCTOS SELECCIONADOS.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#191970',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'SÍ, VACIAR',
-                cancelButtonText: 'CANCELAR'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    carrito = [];
-                    guardarCarrito();
-                    renderizarCarrito();
-                    actualizarContadorCarrito();
-                }
-            });
+            if (confirm("¿ESTÁ SEGURO DE QUE DESEA VACIAR EL CARRITO?")) {
+                carrito = [];
+                guardarCarrito();
+                renderizarCarrito();
+                actualizarContadorCarrito();
+            }
         };
 
         const guardarCarrito = () => {
@@ -395,45 +537,44 @@
         const generarMensajeWhatsApp = () => {
             const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
             
-            if (!nombreCliente) {
-                Swal.fire({ title: "NOMBRE REQUERIDO", text: "POR FAVOR, INGRESE SU NOMBRE PARA EL PEDIDO.", icon: "warning", confirmButtonColor: "#191970" });
-                return;
-            }
-
             if (carrito.length === 0) {
-                Swal.fire({ title: "CARRITO VACÍO", text: "NO HAY PRODUCTOS PARA ENVIAR.", icon: "warning", confirmButtonColor: "#191970" });
+                alert("EL CARRITO ESTÁ VACÍO.");
+                return;
+            }
+            if (nombreCliente === "") {
+                alert("POR FAVOR, INGRESE SU NOMBRE PARA EL PEDIDO.");
                 return;
             }
 
-            let mensaje = `*PEDIDO DE JM.ELECTRONICA*\n`;
-            mensaje += `*CLIENTE:* ${nombreCliente.toUpperCase()}\n`;
-            mensaje += `----------------------------\n`;
-
-            let total = 0;
+            let mensaje = `*PEDIDO DE ${nombreCliente.toUpperCase()}*\n`;
+            mensaje += `--------------------------\n`;
+            
+            let totalPedido = 0;
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
-                total += subtotal;
-                mensaje += `• ${item.nombre} (x${item.cantidad}) - $${subtotal.toFixed(2)}\n`;
+                totalPedido += subtotal;
+                mensaje += `- ${item.nombre} (x${item.cantidad}) - SUBT: $${subtotal.toFixed(2)}\n`;
             });
 
-            mensaje += `----------------------------\n`;
-            mensaje += `*TOTAL DEL PEDIDO: $${total.toFixed(2)}*`;
+            mensaje += `--------------------------\n`;
+            mensaje += `*TOTAL DEL PEDIDO: $${totalPedido.toFixed(2)}*\n\n`;
+            mensaje += `_GRACIAS POR SU COMPRA! NOS COMUNICAREMOS PARA CONFIRMAR STOCK Y ENTREGA_`;
 
             const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
         };
 
         // =================================================================
-        // 5. PANEL DE ADMINISTRACIÓN
+        // 5. LÓGICA DE ADMINISTRACIÓN
         // =================================================================
         const iniciarSesionAdmin = () => {
-            const pass = document.getElementById('admin-password').value;
-            if (pass === CLAVE_ADMIN) {
+            const password = document.getElementById('admin-password').value;
+            if (password === CLAVE_ADMIN) {
                 document.getElementById('login-seccion').style.display = 'none';
                 document.getElementById('gestion-seccion').style.display = 'block';
                 filtrarYRenderizarProductos();
             } else {
-                Swal.fire({ title: "ERROR", text: "CONTRASEÑA INCORRECTA", icon: "error", confirmButtonColor: "#191970" });
+                alert("CONTRASEÑA INCORRECTA");
             }
         };
 
@@ -442,17 +583,16 @@
             const listaAdmin = document.getElementById('lista-admin-productos');
             listaAdmin.innerHTML = '';
 
-            // REORDENAR SIEMPRE ALFABÉTICAMENTE AL RENDERIZAR EL PANEL
-            productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-
             const filtrados = productos.filter(p => 
                 p.nombre.toLowerCase().includes(termino) || p.id.toString().includes(termino)
             );
 
+            // ORDEN ALFABÉTICO EN PANEL ADMIN
+            filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
             filtrados.forEach(p => {
                 const div = document.createElement('div');
                 div.className = `admin-producto-item ${p.suspendido ? 'admin-producto-suspendido' : ''}`;
-                
                 div.innerHTML = `
                     <div class="admin-producto-info">
                         <strong>[ID: ${p.id}] ${p.nombre}</strong> - $${p.precio.toFixed(2)}<br>
@@ -467,34 +607,9 @@
                 listaAdmin.appendChild(div);
             });
 
+            // ACTUALIZAR CONTEO
             document.getElementById('total-cargados').innerText = productos.length;
             document.getElementById('total-en-stock').innerText = productos.filter(p => !p.suspendido).length;
-        };
-
-        const filtrarSoloFaltantes = () => {
-            const listaAdmin = document.getElementById('lista-admin-productos');
-            const boton = document.getElementById('btn-ver-faltantes');
-            
-            if (boton.innerText.includes("MOSTRAR SOLO")) {
-                const faltantes = productos.filter(p => p.suspendido === true);
-                if (faltantes.length === 0) {
-                    Swal.fire({ title: "¡TODO EN STOCK!", text: "NO TIENES PRODUCTOS AGOTADOS.", icon: "success", confirmButtonColor: "#191970" });
-                    return;
-                }
-                listaAdmin.innerHTML = '';
-                faltantes.sort((a, b) => a.nombre.localeCompare(b.nombre)).forEach(p => {
-                    const div = document.createElement('div');
-                    div.className = 'admin-producto-item';
-                    div.innerHTML = `<strong>${p.nombre}</strong> <button class="btn-suspender" onclick="alternarStock(${p.id})">REHABILITAR</button>`;
-                    listaAdmin.appendChild(div);
-                });
-                boton.innerText = "🔄 MOSTRAR TODOS";
-                boton.style.backgroundColor = "#191970";
-            } else {
-                filtrarYRenderizarProductos();
-                boton.innerText = "⚠️ MOSTRAR SOLO PRODUCTOS SIN STOCK";
-                boton.style.backgroundColor = "#dc3545";
-            }
         };
 
         const gestionarFormularioProducto = (e) => {
@@ -502,7 +617,7 @@
             const idEdicion = document.getElementById('producto-id-edicion').value;
             const nuevoP = {
                 id: idEdicion ? parseInt(idEdicion) : Date.now(),
-                nombre: document.getElementById('producto-nombre').value.toUpperCase().trim(),
+                nombre: document.getElementById('producto-nombre').value.toUpperCase(),
                 precio: parseFloat(document.getElementById('producto-precio').value),
                 foto: document.getElementById('producto-foto').value,
                 categoria: document.getElementById('producto-categoria').value,
@@ -516,18 +631,14 @@
                 productos.push(nuevoP);
             }
 
-            // REORDENAR LA LISTA MAESTRA DESPUÉS DE LA OPERACIÓN
-            productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-
             limpiarFormulario();
             filtrarYRenderizarProductos();
             filtrarProductos('TODOS');
-            
-            Swal.fire({ title: '¡GUARDADO!', text: 'EL PRODUCTO SE REGISTRÓ Y ORDENÓ CORRECTAMENTE.', icon: 'success', confirmButtonColor: '#191970' });
+            alert("PRODUCTO GUARDADO EN ESTA SESIÓN.");
         };
 
         const cargarProductoParaEditar = (id) => {
-            const p = productos.find(prod => prod.id === id);
+            const p = productos.find(p => p.id === id);
             document.getElementById('producto-id-edicion').value = p.id;
             document.getElementById('producto-nombre').value = p.nombre;
             document.getElementById('producto-precio').value = p.precio;
@@ -535,40 +646,29 @@
             document.getElementById('producto-categoria').value = p.categoria;
             
             document.getElementById('titulo-form-producto').innerText = "EDITAR PRODUCTO";
-            document.getElementById('btn-guardar-producto').innerText = "ACTUALIZAR DATOS";
-            document.getElementById('btn-cancelar-edicion').style.display = 'block';
+            document.getElementById('btn-guardar-producto').innerText = "ACTUALIZAR CAMBIOS";
+            document.getElementById('btn-cancelar-edicion').style.display = "block";
             window.scrollTo(0, 0);
         };
 
         const limpiarFormulario = () => {
             document.getElementById('form-producto').reset();
-            document.getElementById('producto-id-edicion').value = '';
+            document.getElementById('producto-id-edicion').value = "";
             document.getElementById('titulo-form-producto').innerText = "AGREGAR PRODUCTO";
             document.getElementById('btn-guardar-producto').innerText = "GUARDAR PRODUCTO";
-            document.getElementById('btn-cancelar-edicion').style.display = 'none';
+            document.getElementById('btn-cancelar-edicion').style.display = "none";
         };
 
         const eliminarProducto = (id) => {
-            Swal.fire({
-                title: '¿ELIMINAR PRODUCTO?',
-                text: "ESTA ACCIÓN NO SE PUEDE DESHACER.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#dc3545',
-                cancelButtonColor: '#6c757d',
-                confirmButtonText: 'SÍ, BORRAR',
-                cancelButtonText: 'CANCELAR'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    productos = productos.filter(p => p.id !== id);
-                    filtrarYRenderizarProductos();
-                    filtrarProductos('TODOS');
-                }
-            });
+            if (confirm("¿BORRAR ESTE PRODUCTO DE LA LISTA?")) {
+                productos = productos.filter(p => p.id !== id);
+                filtrarYRenderizarProductos();
+                filtrarProductos('TODOS');
+            }
         };
 
         const alternarStock = (id) => {
-            const p = productos.find(prod => prod.id === id);
+            const p = productos.find(p => p.id === id);
             p.suspendido = !p.suspendido;
             filtrarYRenderizarProductos();
             filtrarProductos('TODOS');
@@ -576,33 +676,32 @@
 
         const gestionarFormularioCategoria = (e) => {
             e.preventDefault();
-            const nombre = document.getElementById('nueva-categoria-nombre').value.toUpperCase().trim();
-            if (nombre && !categorias.includes(nombre)) {
+            const nombre = document.getElementById('nueva-categoria-nombre').value.toUpperCase();
+            if (!categorias.includes(nombre)) {
                 categorias.push(nombre);
                 categorias.sort();
                 renderizarFiltros();
                 document.getElementById('form-categoria').reset();
             } else {
-                Swal.fire({ title: "AVISO", text: "CATEGORÍA YA EXISTE O NOMBRE VACÍO.", icon: "info", confirmButtonColor: "#191970" });
+                alert("LA CATEGORÍA YA EXISTE");
             }
         };
 
         const eliminarCategoria = (cat) => {
-            if (confirm(`¿ELIMINAR LA CATEGORÍA "${cat}"?`)) {
+            if (confirm(`¿ELIMINAR CATEGORÍA "${cat}"? LOS PRODUCTOS QUEDARÁN SIN CATEGORÍA.`)) {
                 categorias = categorias.filter(c => c !== cat);
                 renderizarFiltros();
             }
         };
 
         const descargarJSON = (tipo) => {
-            const data = tipo === 'productos' ? productos : categorias;
+            let data = tipo === 'productos' ? productos : categorias;
             const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
             a.download = `${tipo}.json`;
             a.click();
-            URL.revokeObjectURL(url);
         };
 
         // =================================================================
@@ -613,7 +712,7 @@
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             
             document.getElementById(`${pestana}-panel`).style.display = 'block';
-            if(event) event.target.classList.add('active');
+            event.target.classList.add('active');
 
             if (pestana === 'tienda') {
                 renderizarProductos(productos);
@@ -621,7 +720,6 @@
                 if(selectFiltros) selectFiltros.value = 'TODOS';
             }
             if (pestana === 'carrito') renderizarCarrito();
-            if (pestana === 'admin') filtrarYRenderizarProductos();
             
             window.scrollTo(0, 0);
         };
@@ -643,3 +741,4 @@
     </script>
 </body>
 </html>
+
