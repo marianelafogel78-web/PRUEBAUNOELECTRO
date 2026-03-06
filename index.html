@@ -234,14 +234,15 @@
                 <h2>🛒 TU CARRITO</h2>
                 <div id="lista-carrito">
                     </div>
+     
                 <div id="resumen-carrito">
                     <div style="margin-bottom: 20px; text-align: left;">
-                        <label for="nombre-cliente-whatsapp">SU NOMBRE COMPLETO:</label>
+                        <label for="nombre-cliente-whatsapp">A NOMBRE DE QUIEN HACEMOS EL PEDIDO:</label>
                         <input type="text" id="nombre-cliente-whatsapp" placeholder="INGRESE SU NOMBRE PARA EL PEDIDO" style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid var(--color-borde); border-radius: 4px;">
                     </div>
                     <p>TOTAL: <span id="carrito-total">$0.00</span></p>
                     <button id="btn-vaciar-carrito">VACIAR CARRITO</button>
-                    <button id="btn-comprar-whatsapp">ENVIAR PEDIDO POR WHATSAPP</button>
+                    <button id="btn-comprar-whatsapp">LISTO! ENVIAR MI PEDIDO POR WHATSAPP</button>
                 </div>
             </section>
         </div>
@@ -585,8 +586,7 @@
                 return;
             }
 
-            let mensaje = `*PEDIDO DE ${nombreCliente.toUpperCase()}*\n`;
-            mensaje += `--------------------------\n`;
+            let mensaje = `*¡HOLA! SOY ${nombreCliente.toUpperCase()}, TE ENVÍO MI PEDIDO:* \n;
             
             let totalPedido = 0;
             carrito.forEach(item => {
@@ -597,7 +597,7 @@
 
             mensaje += `--------------------------\n`;
             mensaje += `*TOTAL DEL PEDIDO: $${totalPedido.toFixed(2)}*\n\n`;
-            mensaje += `_GRACIAS POR SU COMPRA! NOS COMUNICAREMOS PARA CONFIRMAR STOCK Y ENTREGA_`;
+            mensaje += _Aguardo tu confirmación para recibir el pedido en mi local y realizar el pago._;
 
             const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
             window.open(url, '_blank');
@@ -788,3 +788,4 @@
     </script>
 </body>
 </html>
+
