@@ -205,24 +205,39 @@
 </head>
 <body>
 
-   <header style="background-color: var(--color-acento); padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 15px; position: relative; min-height: 100px;">
+   <header style="background-color: var(--color-acento); padding: 20px 20px 40px 20px; text-align: center; position: relative;">
+    <h1 style="margin: 0; font-size: 2.8em; color: white;">JM.ELECTRONICA</h1>
     
-    <img src="https://i.ibb.co/6R2M3k7/JM-Logo.png" 
-         alt="JM Logo" 
-         style="width: 70px; height: 70px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255,255,255,0.2);">
-
-    <div style="text-align: left;">
-        <h1 style="margin: 0; font-size: 1.8em; color: white; line-height: 1;">JM.ELECTRONICA</h1>
-        <p style="color: white; 
-                  font-weight: bold; 
-                  font-style: italic; 
-                  margin: 5px 0 0 0; 
-                  font-size: 0.9em; 
-                  letter-spacing: 0.5px;
-                  opacity: 0.9;">
-            MAYORISTA DIRECTO
-        </p>
-    </div>
+    <p style="color: white; 
+              font-weight: bold; 
+              font-style: italic; 
+              position: absolute; 
+              bottom: 8px; 
+              right: 25px; 
+              margin: 0; 
+              font-size: 1em; 
+              letter-spacing: 0.5px;
+              opacity: 0.9;">
+        MAYORISTA DIRECTO
+        <button onclick="abrirAyuda()" style="
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        background-color: white;
+        color: var(--color-acento);
+        border: 2px solid var(--color-acento);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;">?</button>
+    </p>
 </header>
 
     <main id="app-main">
@@ -810,6 +825,50 @@
             document.getElementById('form-categoria')?.addEventListener('submit', gestionarFormularioCategoria);
             document.getElementById('buscador-admin')?.addEventListener('input', filtrarYRenderizarProductos);
         };
+        function abrirAyuda() {
+    Swal.fire({
+        title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
+        html: `
+            <div style="text-align: left; font-size: 14px; text-transform: none;">
+                <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CÓMO HAGO MI PEDIDO?</summary>
+                    <p style="margin-top: 5px;">Navegá la tienda, agregá tus productos al carrito y, al finalizar, tocá el botón verde. Se abrirá tu WhatsApp con el detalle listo para enviarnos. ¡Te responderemos al eseguida!</p>
+                </details>
+
+                <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿TIENE COSTO EL ENVÍO Y CUÁNTO TARDA?</summary>
+                    <p style="margin-top: 5px;">En <b>Río Tercero y zona el envío es GRATIS</b>. Coordinamos la entrega con vos para que recibas tu pedido en un máximo de 7 días hábiles.</p>
+                </details>
+
+                <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CUÁNDO Y CÓMO PAGO MI COMPRA?</summary>
+                    <p style="margin-top: 5px;">Pagás recién cuando recibís el producto en tu mano. Aceptamos efectivo o transferencia bancaria al momento de la entrega.</p>
+                </details>
+
+                <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿QUÉ PASA SI UN PRODUCTO TIENE UNA FALLA?</summary>
+                    <p style="margin-top: 5px;">Comprá con total seguridad. Todos nuestros artículos tienen <b>garantía de cambio por 30 días</b> si presentan alguna falla de fábrica.</p>
+                </details>
+
+                <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿DUDAS SOBRE QUÉ CABLE O CARGADOR LLEVAR?</summary>
+                    <p style="margin-top: 5px;">Evitá errores! Tenemos una guía rápida de compatibilidad para que lleves lo que realmente necesitás.</p>
+                    <button onclick="window.location.href='https://wa.me/5493571536378?text=Hola JM Electronica, necesito asesoramiento técnico sobre cargadores y cables. ¿Me podrían enviar la lista de compatibilidad?'" 
+                            style="background-color: #25d366; color: white; border: none; padding: 10px; border-radius: 4px; font-size: 12px; cursor: pointer; margin-top: 10px; width: 100%; font-weight: bold;">
+                        SOLICITAR GUÍA TÉCNICA POR WHATSAPP
+                    </button>
+                </details>
+
+                <p style="margin-top: 20px; font-weight: bold; text-align: center; color: #191970;">¿TENÉS OTRA CONSULTA?</p>
+                <p style="text-align: center;">¡No te quedes con la duda! Escribinos directamente por WhatsApp y te asesoramos personalmente.</p>
+            </div>
+        `,
+        showConfirmButton: true,
+        confirmButtonText: 'CERRAR',
+        confirmButtonColor: '#191970',
+        background: '#F8F8FF'
+    });
+}
     </script>
 </body>
 </html>
