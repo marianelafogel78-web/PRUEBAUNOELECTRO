@@ -960,39 +960,44 @@ function verFotoGuia() {
         confirmButtonText: 'ENTENDIDO',
         confirmButtonColor: '#191970'
     });
-}<script>
-    // LÓGICA PARA LA PANTALLA DE BIENVENIDA
     const welcomeScreen = document.getElementById('welcome-screen');
-    let touchStartY = 0;
+let touchStartY = 0;
+    
+// LÓGICA MEJORADA PARA LA PANTALLA DE BIENVENIDA
+const welcomeScreen = document.getElementById('welcome-screen');
 
-    // 1. Detectar cuando el usuario empieza a tocar la pantalla
-    window.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-    });
-
-    // 2. Detectar el movimiento del dedo hacia arriba
-    window.addEventListener('touchmove', (e) => {
-        let touchEndY = e.touches[0].clientY;
-        // Si el dedo sube más de 50 píxeles, ocultamos la pantalla
-        if (touchStartY - touchEndY > 50) { 
-            welcomeScreen.classList.add('hide-welcome');
-            
-            // Borramos el elemento después de la animación para que no use memoria
-            setTimeout(() => {
-                welcomeScreen.style.display = 'none';
-            }, 800);
-        }
-    });
-
-    // 3. También funciona haciendo clic (por si entran desde una computadora)
-    welcomeScreen.addEventListener('click', () => {
+// Función para sacar la cortina azul
+function ocultarBienvenida() {
+    if (welcomeScreen) {
         welcomeScreen.classList.add('hide-welcome');
         setTimeout(() => {
             welcomeScreen.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Habilita el scroll del catálogo
         }, 800);
-    });
+    }
+}
 
-   
+// Escuchar el deslizamiento (Touch)
+let touchStartY = 0;
+window.addEventListener('touchstart', (e) => {
+    touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+window.addEventListener('touchend', (e) => {
+    let touchEndY = e.changedTouches[0].screenY;
+    if (touchStartY - touchEndY > 30) { // Si desliza un poquito hacia arriba, se va
+        ocultarBienvenida();
+    }
+}, { passive: true });
+
+// Escuchar el Click (para PC o toques simples)
+welcomeScreen.addEventListener('click', ocultarBienvenida);
+
+// Escuchar la ruedita del mouse (para PC)
+window.addEventListener('wheel', (e) => {
+    if (e.deltaY > 0) ocultarBienvenida();
+}, { passive: true });
+
     </script>
 </body>
 </html>
