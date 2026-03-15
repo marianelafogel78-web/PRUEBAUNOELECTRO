@@ -904,6 +904,36 @@ function verFotoGuia() {
         confirmButtonColor: '#191970'
     });
 }
+// PASO 3: Lógica para que la pantalla se retire
+const pantallaCarga = document.getElementById('welcome-screen');
+
+function deslizarArriba() {
+    if (pantallaCarga) {
+        pantallaCarga.classList.add('hide-welcome');
+        console.log("Deslizando..."); // Esto es para probar
+        setTimeout(() => {
+            pantallaCarga.style.display = 'none';
+        }, 500);
+    }
+}
+
+// 1. Detectar Click (PC y Celu)
+if (pantallaCarga) {
+    pantallaCarga.addEventListener('click', deslizarArriba);
+}
+
+// 2. Detectar Deslizamiento (Celular)
+let toqueInicioY = 0;
+window.addEventListener('touchstart', (e) => {
+    toqueInicioY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+window.addEventListener('touchend', (e) => {
+    let toqueFinY = e.changedTouches[0].screenY;
+    if (toqueInicioY - toqueFinY > 50) { 
+        deslizarArriba();
+    }
+}, { passive: true });
 
     </script>
 </body>
