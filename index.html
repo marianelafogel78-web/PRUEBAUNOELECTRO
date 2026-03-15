@@ -274,11 +274,10 @@
 
 /* Clase para ocultar la pantalla al deslizar */
 .hide-welcome {
-    transform: translateY(-100%);
+    transform: translateY(-100%) !important;
+    transition: transform 0.8s ease-in-out !important;
 }
-    </style
-</head>
-<body>
+
     <div id="welcome-screen">
     <div class="welcome-content">
         <img src="LOGO.png" alt="JM Electrónica">
@@ -960,43 +959,39 @@ function verFotoGuia() {
         confirmButtonText: 'ENTENDIDO',
         confirmButtonColor: '#191970'
     });
+  // LÓGICA DE LA PANTALLA DE BIENVENIDA
     const welcomeScreen = document.getElementById('welcome-screen');
-let touchStartY = 0;
-    
-// LÓGICA MEJORADA PARA LA PANTALLA DE BIENVENIDA
-const welcomeScreen = document.getElementById('welcome-screen');
+    let touchStartY = 0;
 
-// Función para sacar la cortina azul
-function ocultarBienvenida() {
+    function ocultarBienvenida() {
+        if (welcomeScreen) {
+            welcomeScreen.classList.add('hide-welcome');
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 800);
+        }
+    }
+
+    // Escuchar el deslizamiento (Celulares)
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+        let touchEndY = e.changedTouches[0].screenY;
+        if (touchStartY - touchEndY > 30) { 
+            ocultarBienvenida();
+        }
+    }, { passive: true });
+
+    // Escuchar el Click y la Ruedita (PC)
     if (welcomeScreen) {
-        welcomeScreen.classList.add('hide-welcome');
-        setTimeout(() => {
-            welcomeScreen.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Habilita el scroll del catálogo
-        }, 800);
+        welcomeScreen.addEventListener('click', ocultarBienvenida);
     }
-}
-
-// Escuchar el deslizamiento (Touch)
-let touchStartY = 0;
-window.addEventListener('touchstart', (e) => {
-    touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-window.addEventListener('touchend', (e) => {
-    let touchEndY = e.changedTouches[0].screenY;
-    if (touchStartY - touchEndY > 30) { // Si desliza un poquito hacia arriba, se va
-        ocultarBienvenida();
-    }
-}, { passive: true });
-
-// Escuchar el Click (para PC o toques simples)
-welcomeScreen.addEventListener('click', ocultarBienvenida);
-
-// Escuchar la ruedita del mouse (para PC)
-window.addEventListener('wheel', (e) => {
-    if (e.deltaY > 0) ocultarBienvenida();
-}, { passive: true });
+    window.addEventListener('wheel', (e) => {
+        if (e.deltaY > 0) ocultarBienvenida();
+    }, { passive: true }); 
 
     </script>
 </body>
