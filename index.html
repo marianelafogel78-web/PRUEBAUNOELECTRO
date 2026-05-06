@@ -496,22 +496,30 @@
         };
 
         const renderizarFiltros = () => {
-            const selectFiltros = document.getElementById('select-filtros-tienda');
-            const selectForm = document.getElementById('producto-categoria');
-            const listaCatAdmin = document.getElementById('lista-categorias-admin');
+    const selectFiltros = document.getElementById('select-filtros-tienda'); // Este es tu nuevo buscador
+    const selectForm = document.getElementById('producto-categoria');
+    const listaCatAdmin = document.getElementById('lista-categorias-admin');
 
-            const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
-            
-            selectFiltros.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>' + opciones;
-            selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
-            
-            listaCatAdmin.innerHTML = categorias.map(cat => `
-                <li>
-                    ${cat} 
-                    <button onclick="eliminarCategoria('${cat}')" style="margin-left:10px; color:red; cursor:pointer; background:none; border:none;">[X]</button>
-                </li>
-            `).join('');
-        };
+    const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+    
+    // IMPORTANTE: Esta línea llena las categorías en la pantalla del cliente
+    if(selectFiltros) {
+        selectFiltros.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>' + opciones;
+    }
+    
+    if(selectForm) {
+        selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
+    }
+    
+    if(listaCatAdmin) {
+        listaCatAdmin.innerHTML = categorias.map(cat => `
+            <li>
+                ${cat} 
+                <button onclick="eliminarCategoria('${cat}')" style="margin-left:10px; color:red; cursor:pointer; background:none; border:none;">[X]</button>
+            </li>
+        `).join('');
+    }
+};
 
         // =================================================================
         // 4. LÓGICA DEL CARRITO
@@ -861,6 +869,7 @@
         // =================================================================
         window.onload = () => {
             cargarDatosIniciales();
+            renderizarFiltros();
             
             document.getElementById('btn-vaciar-carrito')?.addEventListener('click', vaciarCarrito);
             document.getElementById('btn-comprar-whatsapp')?.addEventListener('click', generarMensajeWhatsApp);
