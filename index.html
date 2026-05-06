@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JM.ELECTRONICA - CATALOGO ONLINE</title>
-
-<meta property="og:title" content="JM.ELECTRONICA - CATÁLOGO ONLINE">
-<meta property="og:description" content="Catálogo mayorista de electrónica. Comprá fácil por WhatsApp.">
-<meta property="og:image" content="https://marianelafogel78-web.github.io/ELECTRONICA/preview.jpg">
-<meta property="og:url" content="https://marianelafogel78-web.github.io/ELECTRONICA/">
-<meta property="og:type" content="website">
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
@@ -243,6 +237,18 @@
 <div id="welcome-screen">
     <img src="LOGO.png" alt="Logo" class="welcome-logo">
     <h1>CATÁLOGO ELECTRÓNICA</h1>
+    <!-- FIRMA APPSFOGEL - MARGEN INFERIOR DERECHO -->
+    <span style="position: absolute; 
+                 bottom: 15px; 
+                 right: 20px; 
+                 color: rgba(255, 255, 255, 0.35); 
+                 font-size: 10px; 
+                 letter-spacing: 1px; 
+                 font-weight: bold; 
+                 pointer-events: none;
+                 text-transform: uppercase;">
+        CREATED BY APPSFOGEL — SISTEMAS A MEDIDA
+    </span>
 </div>
    <header style="background-color: var(--color-acento); padding: 20px 20px 40px 20px; text-align: center; position: relative;">
     <h1 style="margin: 0; font-size: 2.8em; color: white;">JM.ELECTRÓNICA</h1>
@@ -274,19 +280,31 @@
     <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; border: 1px solid var(--color-acento); color: var(--color-acento);">❓</button>
 </div>
 
-        <div id="tienda-panel" class="tab-content">
-            <section id="productos-seccion">
-                <h2>🛍️ NUESTROS PRODUCTOS</h2>
-                <div style="margin-bottom: 20px;">
-                    <label for="select-filtros-tienda">FILTRAR POR CATEGORÍA:</label>
-                    <select id="select-filtros-tienda" onchange="filtrarProductos(this.value)" style="width: 100%; padding: 10px; margin-top: 5px;">
-                        <option value="TODOS">TODOS</option>
-                    </select>
-                </div>
-                <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
-            </section>
+       <div id="tienda-panel" class="tab-content">
+    <section id="productos-seccion">
+        <h2>🛍️ NUESTROS PRODUCTOS</h2>
+        
+        <!-- ESTE ES EL NUEVO BLOQUE COMBINADO -->
+        <div style="margin-bottom: 25px; display: flex; flex-direction: column; gap: 12px;">
+            
+            <!-- BUSCADOR POR TEXTO -->
+            <input type="text" id="buscador-tienda-texto" 
+                   placeholder="🔍 BUSCAR (EJ: CARGADOR, V8, TIPO C...)" 
+                   oninput="ejecutarFiltroCombinado()"
+                   style="width: 100%; padding: 12px; border: 1px solid var(--color-borde); border-radius: 8px; text-transform: uppercase; font-weight: bold;">
+            
+            <!-- FILTRO POR CATEGORÍA (MANTENEMOS EL QUE YA TENÍAS) -->
+            <div>
+                <label for="select-filtros-tienda" style="font-size: 0.8em; font-weight: bold;">O FILTRAR POR CATEGORÍA:</label>
+                <select id="select-filtros-tienda" onchange="ejecutarFiltroCombinado()" style="width: 100%; padding: 10px; margin-top: 5px;">
+                    <option value="TODOS">TODOS LOS PRODUCTOS</option>
+                </select>
+            </div>
         </div>
 
+        <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
+    </section>
+</div>si
         <div id="carrito-panel" class="tab-content" style="display: none;">
             <section>
                 <h2>🛒 TU CARRITO</h2>
@@ -945,6 +963,30 @@ window.addEventListener('touchend', (e) => {
         deslizarArriba();
     }
 }, { passive: true });
+
+// --- NUEVA FUNCIÓN PARA FILTRADO COMBINADO EN TIENDA ---
+const ejecutarFiltroCombinado = () => {
+    // 1. Capturamos lo que el usuario escribió (en minúsculas para que no haya error)
+    const textoBusqueda = document.getElementById('buscador-tienda-texto').value.toLowerCase();
+    
+    // 2. Capturamos qué categoría tiene seleccionada
+    const categoriaSeleccionada = document.getElementById('select-filtros-tienda').value;
+
+    // 3. Filtramos el array de productos
+    const productosFiltrados = productos.filter(p => {
+        // ¿El nombre contiene lo que escribió el usuario?
+        const coincideNombre = p.nombre.toLowerCase().includes(textoBusqueda);
+        
+        // ¿Es de la categoría elegida o está en 'TODOS'?
+        const coincideCategoria = (categoriaSeleccionada === 'TODOS' || p.categoria === categoriaSeleccionada);
+        
+        // El producto se muestra solo si cumple AMBAS condiciones
+        return coincideNombre && coincideCategoria;
+    });
+
+    // 4. Mandamos los productos filtrados a la pantalla
+    renderizarProductos(productosFiltrados);
+};
 
     </script>
 </body>
