@@ -35,7 +35,7 @@
         }
         header h1 { 
             margin: 0; 
-            font-size: 2.5em; 
+            font-size: 2em; 
             color: white;
         }
 
@@ -247,48 +247,64 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 padding: 10px 15px;
 ">
 
-    <!-- FILA SUPERIOR -->
     <div style="
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    ">
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+flex-wrap: nowrap;
+width: 100%;
+">
+    
 
         <!-- IZQUIERDA -->
-        <div style="
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        ">
-
-            <img src="LOGO.png" style="
-            height: 60px;
-            object-fit: contain;
-            ">
-
-            <div>
-                <div style="
-                font-size: 1.3em;
-                font-weight: 700;
-                color: #191970;
-                line-height: 1;
-                ">
-                    JM.ELECTRÓNICA
-                </div>
-
-               <div style="
-font-size: 1em;
-font-weight: 700;
+<div style="
+display: flex;
+align-items: center;
+gap: 6px;
 color: #191970;
-line-height: 1;
-margin-top: 2px;
 ">
-    & ACCESORIOS
-</div>
-            </div>
 
+    <!-- JM GRANDE -->
+    <div style="
+    font-size: 2.44em;
+    font-weight: 800;
+    line-height: 0.9;
+    transform: translateY(-2px);
+    font-family: 'Montserrat', sans-serif;
+    ">
+        JM
+    </div>
+
+    <!-- TEXTO DERECHO -->
+    <div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    ">
+
+        <div style="
+        font-size: 0.82em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1;
+        ">
+            ELECTRÓNICA
         </div>
+
+        <div style="
+        font-size: 0.82em;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        line-height: 1;
+        margin-top: 3px;
+        ">
+            & ACCESORIOS
+        </div>
+
+    </div>
+
+</div>
 
         <!-- DERECHA -->
         <div style="
@@ -327,7 +343,8 @@ margin-top: 2px;
     <!-- BUSCADORES -->
     <div style="
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 8px;
     margin-top: 12px;
     ">
 
@@ -342,6 +359,14 @@ margin-top: 2px;
         border: 1px solid #ccc;
         border-radius: 6px;
         ">
+        <div style="
+font-size: 1em;
+color: #555;
+opacity: 0.8;
+padding: 0 2px;
+">
+⌕
+</div>
 
         <select
         id="select-filtros-tienda"
