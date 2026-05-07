@@ -238,57 +238,132 @@
     <img src="LOGO.png" alt="Logo" class="welcome-logo">
     <h1>CATÁLOGO ELECTRÓNICA</h1>
 </div>
-  <header style="background-color: #ffffff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.08);">
+ <header style="
+position: sticky;
+top: 0;
+z-index: 999;
+background: white;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+padding: 10px 15px;
+">
 
-    <!-- LOGO IZQUIERDA -->
-    <div style="display: flex; align-items: center;">
-        <img src="LOGO.png" alt="Logo" style="height: 40px; max-width: 120px; object-fit: contain;">
+    <!-- FILA SUPERIOR -->
+    <div style="
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    ">
+
+        <!-- IZQUIERDA -->
+        <div style="
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        ">
+
+            <img src="LOGO.png" style="
+            height: 60px;
+            object-fit: contain;
+            ">
+
+            <div>
+                <div style="
+                font-size: 1.3em;
+                font-weight: 700;
+                color: #191970;
+                line-height: 1;
+                ">
+                    JM.ELECTRÓNICA
+                </div>
+
+               <div style="
+font-size: 1em;
+font-weight: 700;
+color: #191970;
+line-height: 1;
+margin-top: 2px;
+">
+    & ACCESORIOS
+</div>
+            </div>
+
+        </div>
+
+        <!-- DERECHA -->
+        <div style="
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 1.2em;
+        ">
+
+            <span onclick="mostrarPestana('tienda', event)" style="cursor:pointer;">🏠</span>
+
+            <span onclick="mostrarPestana('carrito', event)" style="cursor:pointer; position: relative;">
+                🛒
+                <span id="carrito-count" style="
+                position: absolute;
+                top: -8px;
+                right: -10px;
+                background: red;
+                color: white;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 0.55em;
+                ">
+                    0
+                </span>
+            </span>
+
+            <span onclick="mostrarPestana('admin', event)" style="cursor:pointer;">🔑</span>
+
+            <span onclick="abrirAyuda()" style="cursor:pointer;">?</span>
+
+        </div>
+
     </div>
 
-    <!-- ICONOS DERECHA -->
-    <div style="display: flex; gap: 12px; font-size: 1.1em; color: #191970;">
+    <!-- BUSCADORES -->
+    <div style="
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    ">
 
-        <span onclick="mostrarPestana('tienda', event)" style="cursor:pointer;">🏬</span>
+        <input
+        type="text"
+        id="buscador-productos"
+        placeholder="Buscar producto..."
+        oninput="buscarProductos()"
+        style="
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        ">
 
-        <span onclick="mostrarPestana('carrito', event)" style="cursor:pointer; position: relative;">
-            🛒
-            <span id="carrito-count" style="position: absolute; top: -8px; right: -10px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.6em;">0</span>
-        </span>
-
-        <span onclick="mostrarPestana('admin', event)" style="cursor:pointer;">🔑</span>
-
-        <span onclick="abrirAyuda()" style="cursor:pointer;">❓</span>
+        <select
+        id="select-filtros-tienda"
+        onchange="filtrarProductos(this.value)"
+        style="
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        ">
+            <option value="TODOS">TODOS</option>
+        </select>
 
     </div>
 
 </header>
-
     <main id="app-main">
        
 
         <div id="tienda-panel" class="tab-content">
             <section id="productos-seccion">
-               <div style="display: flex; gap: 8px; margin-bottom: 10px; position: sticky; top: 60px; background: #ffffff; padding: 8px; z-index: 50; flex-wrap: wrap;">
-
-    <!-- BUSCADOR POR PRODUCTO -->
-    <input 
-        type="text" 
-        id="buscador-productos" 
-        placeholder="Buscar producto..." 
-        oninput="buscarProductos()" 
-        style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px;"
-    >
-
-    <!-- FILTRO POR CATEGORIA -->
-    <select 
-        id="select-filtros-tienda" 
-        onchange="filtrarProductos(this.value)" 
-        style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px;"
-    >
-        <option value="TODOS">TODOS</option>
-    </select>
-
-</div>
+            
                 <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
             </section>
         </div>
