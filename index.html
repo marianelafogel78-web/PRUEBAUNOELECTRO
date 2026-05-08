@@ -305,19 +305,25 @@ box-sizing: border-box;
     oninput="buscarProductos()"
     style="
     flex: 1;
+    min-width: 0;
+    max-width: 48%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-size: 0.85em;
     ">
 
     <select
     id="select-filtros-tienda"
     onchange="filtrarProductos(this.value)"
     style="
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+   flex: 1;
+   min-width: 0;
+   max-width: 48%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 6px;
+   font-size: 0.85em;
     ">
         <option value="TODOS">TODOS</option>
     </select>
@@ -546,7 +552,7 @@ const buscarProductos = () => {
 
             const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
             
-            selectFiltros.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>' + opciones;
+            selectFiltros.innerHTML = '<option value="TODOS">TODOS</option>' + opciones;
             selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
             
             listaCatAdmin.innerHTML = categorias.map(cat => `
