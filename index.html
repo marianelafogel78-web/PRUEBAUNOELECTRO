@@ -872,7 +872,7 @@ const buscarProductos = () => {
             document.getElementById('carrito-count').innerText = totalItems;
         };
 
-        const generarMensajeWhatsApp = () => {
+       const generarMensajeWhatsApp = () => {
     const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
     const aclaracionPedido = document.getElementById('aclaracion-pedido').value.trim();
     
@@ -889,18 +889,18 @@ const buscarProductos = () => {
     mensaje += `--------------------------\n`;
     
     let totalPedido = 0;
-    // Definimos el formato de moneda una sola vez
     const formatoMoneda = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
 
     carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
         totalPedido += subtotal;
-        // Cambiamos $subtotal.toFixed(2) por el formato con puntos y comas
-        mensaje += `- ${item.nombre} (x${item.cantidad}) - SUBT: ${formatoMoneda.format(subtotal)}\n`;
+        
+        // LIMPIEZA TOTAL: Eliminamos el "-" y los espacios al inicio.
+        // La línea empieza directamente con el NOMBRE.
+        mensaje += `${item.nombre.trim()} (x${item.cantidad}) - SUBT: ${formatoMoneda.format(subtotal)}\n`;
     });
 
     mensaje += `--------------------------\n`;
-    // Aplicamos el mismo formato al total del pedido
     mensaje += `*TOTAL DEL PEDIDO: ${formatoMoneda.format(totalPedido)}*\n\n`;
 
     if (aclaracionPedido !== "") {
