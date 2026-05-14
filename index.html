@@ -241,102 +241,42 @@
    <header style="background-color: var(--color-acento); padding: 20px 20px 40px 20px; text-align: center; position: relative;">
     <h1 style="margin: 0; font-size: 2.8em; color: white;">JM.ELECTRÓNICA</h1>
     
-  
+    <p style="color: white; 
+              font-weight: bold; 
+              font-style: italic; 
+              position: absolute; 
+              bottom: 8px; 
+              right: 25px; 
+              margin: 0; 
+              font-size: 1em; 
+              letter-spacing: 0.5px;
+              opacity: 0.9;">
+        MAYORISTA DIRECTO
+    </p>
 </header>
 
     <main id="app-main">
-       <div class="tabs" style="
-position: sticky;
-top: 0;
-z-index: 100;
-background-color: var(--color-fondo);
-display: flex;
-flex-direction: column;
-padding: 10px;
-gap: 10px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-">
-
-    <div style="
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    width: 100%;
-    ">
-
-        <button id="tab-tienda" class="tab-button active" onclick="mostrarPestana('tienda', event)" title="TIENDA" style="flex: 1; margin: 0 5px; font-size: 1.5em;">☰</button>
-
-        <button id="tab-carrito" class="tab-button" onclick="mostrarPestana('carrito', event)" title="CARRITO" style="flex: 1; margin: 0 5px; font-size: 1.5em; position: relative;">
-            🛒
-            <span id="carrito-count" style="
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: red;
-            color: white;
-            border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 0.6em;
-            ">
-                0
-            </span>
-        </button>
-
-        <button id="tab-admin" class="tab-button" onclick="mostrarPestana('admin', event)" title="ADMIN" style="flex: 1; margin: 0 5px; font-size: 1.5em;">⚙</button>
-
-        <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; color: black;">?</button>
-
-    </div>
-
-<div style="
-display: flex;
-gap: 6px;
-margin-top: 10px;
-width: calc(100% - 10px);
-margin-left: auto;
-margin-right: auto;
-box-sizing: border-box;
-">
-
-    <input
-    type="text"
-    id="buscador-productos"
-    placeholder="Buscar producto..."
-    oninput="buscarProductos()"
-    style="
-    flex: 1;
-    min-width: 0;
-    max-width: 48%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.85em;
-    ">
-
-    <select
-    id="select-filtros-tienda"
-    onchange="filtrarProductos(this.value)"
-    style="
-   flex: 1;
-   min-width: 0;
-   max-width: 48%;
-   padding: 10px;
-   border: 1px solid #ccc;
-   border-radius: 6px;
-   font-size: 0.85em;
-    ">
-        <option value="TODOS">TODOS</option>
-    </select>
-
+        <div class="tabs" style="position: sticky; top: 0; z-index: 100; background-color: var(--color-fondo); display: flex; justify-content: space-around; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <button id="tab-tienda" class="tab-button active" onclick="mostrarPestana('tienda', event)" title="TIENDA" style="flex: 1; margin: 0 5px; font-size: 1.5em;">🛍️</button>
+    
+    <button id="tab-carrito" class="tab-button" onclick="mostrarPestana('carrito', event)" title="CARRITO" style="flex: 1; margin: 0 5px; font-size: 1.5em; position: relative;">
+        🛒<span id="carrito-count" style="position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.6em;">0</span>
+    </button>
+    
+    <button id="tab-admin" class="tab-button" onclick="mostrarPestana('admin', event)" title="ADMIN" style="flex: 1; margin: 0 5px; font-size: 1.5em;">🔑</button>
+    
+    <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; border: 1px solid var(--color-acento); color: var(--color-acento);">❓</button>
 </div>
-
-</div>
-
 
         <div id="tienda-panel" class="tab-content">
             <section id="productos-seccion">
-                
-               
+                <h2>🛍️ NUESTROS PRODUCTOS</h2>
+                <div style="margin-bottom: 20px;">
+                    <label for="select-filtros-tienda">FILTRAR POR CATEGORÍA:</label>
+                    <select id="select-filtros-tienda" onchange="filtrarProductos(this.value)" style="width: 100%; padding: 10px; margin-top: 5px;">
+                        <option value="TODOS">TODOS</option>
+                    </select>
+                </div>
                 <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
             </section>
         </div>
@@ -369,7 +309,7 @@ box-sizing: border-box;
 
         <div id="admin-panel" class="tab-content" style="display: none;">
             <section id="login-seccion">
-                <h2>⚙️ACCESO ADMINISTRADOR</h2>
+                <h2>🔑 ACCESO ADMINISTRADOR</h2>
                 <input type="password" id="admin-password" placeholder="CONTRASEÑA">
                 <button id="btn-login" style="width: 100%; padding: 10px; background-color: var(--color-acento); color: white; border: none; border-radius: 4px; cursor: pointer;">INGRESAR</button>
             </section>
@@ -511,7 +451,7 @@ box-sizing: border-box;
                         ${esAgotado ? '<div class="cartel-agotado">SIN STOCK</div>' : ''}
                         <img src="${producto.foto}" alt="${producto.nombre}" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
                         <h4>${producto.nombre}</h4>
-                        <p class="precio">$${producto.precio.toFixed(2)}</p>
+                        <p class="precio">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(producto.precio)}</p>
                         <button onclick="agregarAlCarrito(${producto.id})" ${esAgotado ? 'disabled' : ''}>
                             ${esAgotado ? 'AGOTADO' : 'AGREGAR AL CARRITO'}
                         </button>
@@ -531,20 +471,6 @@ box-sizing: border-box;
             }
         };
 
-const buscarProductos = () => {
-
-    const texto = document
-        .getElementById('buscador-productos')
-        .value
-        .toLowerCase();
-
-    const filtrados = productos.filter(producto =>
-        producto.nombre.toLowerCase().includes(texto)
-    );
-
-    renderizarProductos(filtrados);
-};
-
         const renderizarFiltros = () => {
             const selectFiltros = document.getElementById('select-filtros-tienda');
             const selectForm = document.getElementById('producto-categoria');
@@ -552,7 +478,7 @@ const buscarProductos = () => {
 
             const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
             
-            selectFiltros.innerHTML = '<option value="TODOS">TODOS</option>' + opciones;
+            selectFiltros.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>' + opciones;
             selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
             
             listaCatAdmin.innerHTML = categorias.map(cat => `
