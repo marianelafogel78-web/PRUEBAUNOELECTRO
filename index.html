@@ -28,7 +28,7 @@
         }
 
         header {
-            background-color: var(--color-acento); 
+            background-color: white;
             padding: 20px; text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
             margin-bottom: 20px;
@@ -88,16 +88,27 @@
         .carrito-item:last-child { border-bottom: none; }
         #resumen-carrito { margin-top: 20px; text-align: right; }
         #resumen-carrito p { font-size: 1.5em; font-weight: bold; color: var(--color-acento); }
-        #btn-comprar-whatsapp {
-            background-color: #25d366; color: white; border: none;
-            padding: 15px 30px; border-radius: 8px; font-size: 1.2em;
-            cursor: pointer; font-weight: bold;
-        }
-        #btn-vaciar-carrito {
-            background-color: #ff4d4d; color: white; border: none;
-            padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-right: 10px;
-        }
-
+       #btn-comprar-whatsapp {
+    background-color: white;
+    color: #191970;
+    border: 2px solid #191970;
+    padding: 8px 30px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: bold;
+}
+        
+    #btn-vaciar-carrito {
+    background-color: white;
+    color: #191970 !important;
+    border: 2px solid #191970;
+    padding: 6px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+}
         /* Pestañas (Tabs) */
         .tabs { 
             display: flex; justify-content: center; 
@@ -231,52 +242,184 @@
     transform: translateY(-100%) !important;
     transition: transform 0.4s ease-in-out !important;
 }
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 6px 16px;
+    border: 1px solid rgba(25, 25, 112, 0.18);
+    border-radius: 14px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(25, 25, 112, 0.06);
+}
+
+.logo-jm {
+    font-size: 4em;
+    font-weight: 900;
+    color: #191970;
+    line-height: 1;
+}
+
+.logo-texto {
+    color: #191970;
+    text-align: left;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.logo-texto div:first-child {
+    font-size: 1.5em;
+}
+
+.logo-texto div:last-child {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.welcome-title {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: white;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+}
+
+.welcome-signature {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+
+    font-size: 0.75em;
+    color: rgba(255,255,255,0.35);
+
+    letter-spacing: 1px;
+}
     </style>
 </head>
 <body>
 <div id="welcome-screen">
     <img src="LOGO.png" alt="Logo" class="welcome-logo">
-    <h1>CATÁLOGO ELECTRÓNICA</h1>
+
+    <h1 class="welcome-title">catálogo electrónica</h1>
+
+    <div class="welcome-signature">APPSFOGEL</div>
 </div>
-   <header style="background-color: var(--color-acento); padding: 20px 20px 40px 20px; text-align: center; position: relative;">
-    <h1 style="margin: 0; font-size: 2.8em; color: white;">JM.ELECTRÓNICA</h1>
-    
-    <p style="color: white; 
-              font-weight: bold; 
-              font-style: italic; 
-              position: absolute; 
-              bottom: 8px; 
-              right: 25px; 
-              margin: 0; 
-              font-size: 1em; 
-              letter-spacing: 0.5px;
-              opacity: 0.9;">
-        MAYORISTA DIRECTO
-    </p>
+
+  <header style="
+background: linear-gradient(to bottom, #ffffff, #e8ecff);
+padding: 10px 20px 12px 20px;
+position: relative;
+border-bottom: 2px solid #dcdcff;
+box-shadow: 0 4px 12px rgba(25, 25, 112, 0.12);
+">
+
+    <div class="logo-header">
+        <div class="logo-jm">JM</div>
+
+        <div class="logo-texto">
+            <div>ELECTRÓNICA</div>
+            <div>& ACCESORIOS</div>
+           
+        </div>
+    </div>
+
 </header>
 
     <main id="app-main">
-        <div class="tabs" style="position: sticky; top: 0; z-index: 100; background-color: var(--color-fondo); display: flex; justify-content: space-around; padding: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-    <button id="tab-tienda" class="tab-button active" onclick="mostrarPestana('tienda', event)" title="TIENDA" style="flex: 1; margin: 0 5px; font-size: 1.5em;">🛍️</button>
-    
-    <button id="tab-carrito" class="tab-button" onclick="mostrarPestana('carrito', event)" title="CARRITO" style="flex: 1; margin: 0 5px; font-size: 1.5em; position: relative;">
-        🛒<span id="carrito-count" style="position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 0.6em;">0</span>
-    </button>
-    
-    <button id="tab-admin" class="tab-button" onclick="mostrarPestana('admin', event)" title="ADMIN" style="flex: 1; margin: 0 5px; font-size: 1.5em;">🔑</button>
-    
-    <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; border: 1px solid var(--color-acento); color: var(--color-acento);">❓</button>
+       <div class="tabs" style="
+position: sticky;
+top: 0;
+z-index: 100;
+background-color: var(--color-fondo);
+display: flex;
+flex-direction: column;
+padding: 10px;
+gap: 10px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+">
+
+    <div style="
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    width: 100%;
+    ">
+
+        <button id="tab-tienda" class="tab-button active" onclick="mostrarPestana('tienda', event)" title="TIENDA" style="flex: 1; margin: 0 5px; font-size: 1.5em;">☰</button>
+
+        <button id="tab-carrito" class="tab-button" onclick="mostrarPestana('carrito', event)" title="CARRITO" style="flex: 1; margin: 0 5px; font-size: 1.5em; position: relative;">
+            🛒
+            <span id="carrito-count" style="
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.6em;
+            ">
+                0
+            </span>
+        </button>
+
+        <button id="tab-admin" class="tab-button" onclick="mostrarPestana('admin', event)" title="ADMIN" style="flex: 1; margin: 0 5px; font-size: 1.5em;">⚙</button>
+
+        <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; color: black;">?</button>
+
+    </div>
+
+<div style="
+display: flex;
+gap: 6px;
+margin-top: 10px;
+width: calc(100% - 10px);
+margin-left: auto;
+margin-right: auto;
+box-sizing: border-box;
+">
+
+    <input
+    type="text"
+    id="buscador-productos"
+    placeholder="Buscar producto..."
+    oninput="buscarProductos()"
+    style="
+    flex: 1;
+    min-width: 0;
+    max-width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.85em;
+    ">
+
+    <select
+    id="select-filtros-tienda"
+    onchange="filtrarProductos(this.value)"
+    style="
+   flex: 1;
+   min-width: 0;
+   max-width: 48%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 6px;
+   font-size: 0.85em;
+    ">
+        <option value="TODOS">TODOS</option>
+    </select>
+
 </div>
+
+</div>
+
 
         <div id="tienda-panel" class="tab-content">
             <section id="productos-seccion">
-                <h2>🛍️ NUESTROS PRODUCTOS</h2>
-                <div style="margin-bottom: 20px;">
-                    <label for="select-filtros-tienda">FILTRAR POR CATEGORÍA:</label>
-                    <select id="select-filtros-tienda" onchange="filtrarProductos(this.value)" style="width: 100%; padding: 10px; margin-top: 5px;">
-                        <option value="TODOS">TODOS</option>
-                    </select>
-                </div>
+                
+               
                 <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
             </section>
         </div>
@@ -289,8 +432,32 @@
                 <div id="resumen-carrito">
                     <div style="margin-bottom: 20px; text-align: left;">
                         <label for="nombre-cliente-whatsapp">A NOMBRE DE QUIEN HACEMOS EL PEDIDO?:</label>
-                        <input type="text" id="nombre-cliente-whatsapp" placeholder="INGRESE SU NOMBRE PARA EL PEDIDO" style="width: 100%; padding: 12px; margin-top: 5px; border: 1px solid var(--color-borde); border-radius: 4px;">
-                    </div>
+                        <input 
+                      type="text" 
+                     id="nombre-cliente-whatsapp" 
+                     placeholder="INGRESE SU NOMBRE PARA EL PEDIDO"
+                     oninput="guardarNombreCliente()"
+                     style="width: 100%; padding: 9px; margin-top: 5px; border: 1px solid var(--color-borde); border-radius: 4px;">
+
+                <div style="margin-bottom: 20px; margin-top: 12px; text-align: left;">
+    <label for="aclaracion-pedido">
+        ¿QUERÉS AGREGAR ALGUNA ACLARACIÓN O DETALLE PARA TU PEDIDO?:
+    </label>
+
+    <textarea
+        id="aclaracion-pedido"
+        placeholder="EJ: COLOR DESEADO, HORARIO DE ENTREGA, CONSULTAS O DETALLES IMPORTANTES..."
+        style="
+        width: 100%;
+        padding: 12px;
+        margin-top: 5px;
+        border: 1px solid var(--color-borde);
+        border-radius: 4px;
+        min-height: 90px;
+        resize: vertical;
+        ">
+    </textarea>
+</div>
                     <p style="text-align: center; 
           color: var(--color-acento); 
           font-style: italic; 
@@ -298,7 +465,7 @@
           margin-bottom: 15px; 
           text-transform: none; 
           opacity: 0.85;">
-    * Recordá que para mantener nuestros precios mayoristas, el monto mínimo de compra es de $100.000.
+    * Recordá que el monto mínimo de compra es de $100.000. Gracias!
 </p>
                     <p>TOTAL: <span id="carrito-total">$0.00</span></p>
                     <button id="btn-vaciar-carrito">VACIAR CARRITO</button>
@@ -309,7 +476,7 @@
 
         <div id="admin-panel" class="tab-content" style="display: none;">
             <section id="login-seccion">
-                <h2>🔑 ACCESO ADMINISTRADOR</h2>
+                <h2>⚙️ACCESO ADMINISTRADOR</h2>
                 <input type="password" id="admin-password" placeholder="CONTRASEÑA">
                 <button id="btn-login" style="width: 100%; padding: 10px; background-color: var(--color-acento); color: white; border: none; border-radius: 4px; cursor: pointer;">INGRESAR</button>
             </section>
@@ -416,6 +583,8 @@
             
             const contenedoresAnteriores = productosSeccion.querySelectorAll('div:not([style*="margin-bottom"])');
             contenedoresAnteriores.forEach(c => c.remove());
+            const mensajesAnteriores = productosSeccion.querySelectorAll('p');
+mensajesAnteriores.forEach(m => m.remove());
 
             if (productosParaMostrar.length === 0) {
                 const emptyMsg = document.createElement('p');
@@ -452,9 +621,36 @@
                         <img src="${producto.foto}" alt="${producto.nombre}" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
                         <h4>${producto.nombre}</h4>
                         <p class="precio">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(producto.precio)}</p>
-                        <button onclick="agregarAlCarrito(${producto.id})" ${esAgotado ? 'disabled' : ''}>
-                            ${esAgotado ? 'AGOTADO' : 'AGREGAR AL CARRITO'}
-                        </button>
+                        <div style="
+display: flex;
+gap: 8px;
+align-items: center;
+margin-top: 10px;
+">
+
+    <input
+    type="number"
+    id="cantidad-${producto.id}"
+    value="1"
+    min="1"
+    style="
+    width: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    ">
+
+    <button
+    onclick="agregarAlCarrito(${producto.id})"
+    ${esAgotado ? 'disabled' : ''}
+    style="
+    flex: 1;
+    ">
+        ${esAgotado ? 'AGOTADO' : 'AÑADIR'}
+    </button>
+
+</div>
                     `;
                     contenedor.appendChild(card);
                 });
@@ -463,13 +659,44 @@
         };
 
         const filtrarProductos = (categoria) => {
-            if (categoria === 'TODOS') {
-                renderizarProductos(productos);
-            } else {
-                const filtrados = productos.filter(p => p.categoria === categoria);
-                renderizarProductos(filtrados);
-            }
-        };
+    if (categoria === 'TODOS') {
+        renderizarProductos(productos);
+    } else {
+        const filtrados = productos.filter(p => p.categoria === categoria);
+        renderizarProductos(filtrados);
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
+
+const buscarProductos = () => {
+
+    const texto = document
+        .getElementById('buscador-productos')
+        .value
+        .toLowerCase();
+
+    const empiezan = productos.filter(producto =>
+        producto.nombre.toLowerCase().startsWith(texto)
+    );
+
+    const contienen = productos.filter(producto =>
+        producto.nombre.toLowerCase().includes(texto) &&
+        !producto.nombre.toLowerCase().startsWith(texto)
+    );
+
+    const filtrados = [...empiezan, ...contienen];
+
+    renderizarProductos(filtrados);
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
 
         const renderizarFiltros = () => {
             const selectFiltros = document.getElementById('select-filtros-tienda');
@@ -478,7 +705,7 @@
 
             const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
             
-            selectFiltros.innerHTML = '<option value="TODOS">TODOS LOS PRODUCTOS</option>' + opciones;
+            selectFiltros.innerHTML = '<option value="TODOS">CATEGORÍAS</option>' + opciones;
             selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
             
             listaCatAdmin.innerHTML = categorias.map(cat => `
@@ -492,49 +719,59 @@
         // =================================================================
         // 4. LÓGICA DEL CARRITO
         // =================================================================
-        const agregarAlCarrito = async (productoId) => {
-            const producto = productos.find(p => p.id === productoId);
+       const agregarAlCarrito = (productoId) => {
+    const producto = productos.find(p => p.id === productoId);
+
+    if (!producto || producto.suspendido) {
+        alert("Este producto no tiene stock");
+        return;
+    }
+
+    const inputCantidad = document.getElementById(`cantidad-${productoId}`);
+    if (!inputCantidad) return;
+
+    const cantidad = parseInt(inputCantidad.value);
+    if (!cantidad || cantidad <= 0) return;
+
+    const itemEnCarrito = carrito.find(item => item.id === productoId);
+
+    if (itemEnCarrito) {
+        itemEnCarrito.cantidad += cantidad;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            foto: producto.foto,
+            cantidad: cantidad
+        });
+    }
+
+    guardarCarrito();
+    renderizarCarrito();
+    actualizarContadorCarrito();
+
+// --- CARTEL DE PRODUCTO AGREGADO (NOTIFICACIÓN SIMPLIFICADA) ---
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        background: '#F8F8FF',
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+
+    Toast.fire({
+        icon: 'success',
+        title: 'PRODUCTO AGREGADO',
+        iconColor: '#191970'
+    });
+};
             
-            if (!producto || producto.suspendido) {
-                Swal.fire({ title: "LO SENTIMOS", text: "ESTE PRODUCTO NO TIENE STOCK.", icon: "error", confirmButtonColor: "#191970" });
-                return;
-            }
-
-            // VENTANA MODERNA DE CANTIDAD
-            const { value: cantidadIngresada } = await Swal.fire({
-                title: 'CANTIDAD...',
-                input: 'number',
-                inputValue: 1,
-                showCancelButton: true,
-                confirmButtonText: 'AGREGAR',
-                cancelButtonText: 'CANCELAR',
-                confirmButtonColor: '#191970',
-                inputAttributes: { min: 1, step: 1 },
-                inputValidator: (value) => { if (!value || value <= 0) return 'POR FAVOR, INGRESE UN NÚMERO VÁLIDO.'; }
-            });
-
-            if (!cantidadIngresada) return; 
-            
-            let cantidad = parseInt(cantidadIngresada);
-
-            const itemEnCarrito = carrito.find(item => item.id === productoId);
-            if (itemEnCarrito) {
-                itemEnCarrito.cantidad += cantidad;
-            } else {
-                carrito.push({
-                    id: producto.id,
-                    nombre: producto.nombre,
-                    precio: producto.precio,
-                    foto: producto.foto, // CAMBIO: GUARDAR FOTO PARA CARRITO
-                    cantidad: cantidad
-                });
-            }
-
-            guardarCarrito();
-            renderizarCarrito();
-            actualizarContadorCarrito();
-            Swal.fire({ toast: true, position: 'top-end', icon: 'success', title: '¡PRODUCTO AGREGADO!', showConfirmButton: false, timer: 1500 });
-        };
 
         const cambiarCantidadCarrito = (productoId, nuevaCantidad) => {
             const cantidad = parseInt(nuevaCantidad);
@@ -582,14 +819,14 @@
                         </div>
                     </div>
                     <div>
-                        <span style="font-weight:bold; margin-right: 15px;">$${subtotal.toFixed(2)}</span>
+                        <span style="font-weight:bold; margin-right: 15px;">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(subtotal)}</span>
                         <button onclick="eliminarDelCarrito(${item.id})" style="background:none; border:none; color:red; cursor:pointer; font-size:1.2em;">🗑️</button>
                     </div>
                 `;
                 listaCarrito.appendChild(divItem);
             });
 
-            carritoTotal.innerText = `$${total.toFixed(2)}`;
+            carritoTotal.innerText = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(total);
         };
 
         const eliminarDelCarrito = (productoId) => {
@@ -597,6 +834,7 @@
             guardarCarrito();
             renderizarCarrito();
             actualizarContadorCarrito();
+             
         };
 
         const vaciarCarrito = () => {
@@ -635,34 +873,44 @@
         };
 
         const generarMensajeWhatsApp = () => {
-            const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
-            
-            if (carrito.length === 0) {
-                Swal.fire({ title: "CARRITO VACÍO", text: "POR FAVOR, AGREGA PRODUCTOS PRIMERO.", icon: "info", confirmButtonColor: "#191970" });
-                return;
-            }
-            if (nombreCliente === "") {
-                Swal.fire({ title: "FALTA TU NOMBRE", text: "POR FAVOR, INGRESA TU NOMBRE PARA EL PEDIDO.", icon: "warning", confirmButtonColor: "#191970" });
-                return;
-            }
+    const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
+    const aclaracionPedido = document.getElementById('aclaracion-pedido').value.trim();
+    
+    if (carrito.length === 0) {
+        Swal.fire({ title: "CARRITO VACÍO", text: "POR FAVOR, AGREGA PRODUCTOS PRIMERO.", icon: "info", confirmButtonColor: "#191970" });
+        return;
+    }
+    if (nombreCliente === "") {
+        Swal.fire({ title: "FALTA TU NOMBRE", text: "POR FAVOR, INGRESA TU NOMBRE PARA EL PEDIDO.", icon: "warning", confirmButtonColor: "#191970" });
+        return;
+    }
 
-             let mensaje = `HOLA, SOY *${nombreCliente.toUpperCase()}*.\nESTE ES MI PEDIDO:\n`;
-            mensaje += `--------------------------\n`;
-            
-            let totalPedido = 0;
-            carrito.forEach(item => {
-                const subtotal = item.precio * item.cantidad;
-                totalPedido += subtotal;
-                mensaje += `- ${item.nombre} (x${item.cantidad}) - SUBT: $${subtotal.toFixed(2)}\n`;
-            });
+    let mensaje = `HOLA, SOY *${nombreCliente.toUpperCase()}*.\nESTE ES MI PEDIDO:\n`;
+    mensaje += `--------------------------\n`;
+    
+    let totalPedido = 0;
+    // Definimos el formato de moneda una sola vez
+    const formatoMoneda = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
 
-            mensaje += `--------------------------\n`;
-            mensaje += `*TOTAL DEL PEDIDO: $${totalPedido.toFixed(2)}*\n\n`;
-            mensaje += `_QUEDO A LA ESPERA DE TU CONFIRMACION PARA COORDINAR ENTREGA_`;
+    carrito.forEach(item => {
+        const subtotal = item.precio * item.cantidad;
+        totalPedido += subtotal;
+        // Cambiamos $subtotal.toFixed(2) por el formato con puntos y comas
+        mensaje += `- ${item.nombre} (x${item.cantidad}) - SUBT: ${formatoMoneda.format(subtotal)}\n`;
+    });
 
-            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        };
+    mensaje += `--------------------------\n`;
+    // Aplicamos el mismo formato al total del pedido
+    mensaje += `*TOTAL DEL PEDIDO: ${formatoMoneda.format(totalPedido)}*\n\n`;
+
+    if (aclaracionPedido !== "") {
+        mensaje += `*ACLARACIONES DEL PEDIDO:*\n${aclaracionPedido}\n\n`;
+    }
+    mensaje += `_QUEDO A LA ESPERA DE TU CONFIRMACION PARA COORDINAR ENTREGA_`;
+
+    const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+};
 
         // =================================================================
         // 5. LÓGICA DE ADMINISTRACIÓN
