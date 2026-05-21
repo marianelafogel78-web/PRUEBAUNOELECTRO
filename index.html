@@ -302,7 +302,7 @@
 <div id="welcome-screen">
     <img src="LOGO.png" alt="Logo" class="welcome-logo">
 
-    <h1 class="welcome-title">catálogo accesorios</h1>
+    <h1 class="welcome-title">catálogo electrónica</h1>
 
     <div class="welcome-signature">APPSFOGEL</div>
 </div>
@@ -421,6 +421,7 @@ box-sizing: border-box;
                 
                
                 <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
+                <div id="nuevos-ingresos-seccion"></div>
             </section>
         </div>
 
@@ -577,7 +578,95 @@ box-sizing: border-box;
 
         // =================================================================
         // 3. LÓGICA DE LA TIENDA
+
         // =================================================================
+
+const renderizarNuevosIngresos = () => {
+
+    const seccionNuevos = document.getElementById('nuevos-ingresos-seccion');
+
+    if (!seccionNuevos) return;
+
+    // TOMA LOS ÚLTIMOS 15 PRODUCTOS ACTIVOS
+    const nuevosProductos = productos
+    .filter(p => !p.suspendido)
+    .sort((a, b) => (b.fechaIngreso || 0) - (a.fechaIngreso || 0))
+    .slice(0, 15);
+
+    // SI NO HAY PRODUCTOS
+    if (nuevosProductos.length === 0) {
+        seccionNuevos.innerHTML = '';
+        return;
+    }
+
+    seccionNuevos.innerHTML = `
+        <div style="margin-bottom: 35px;">
+            <h3 class="categoria-titulo">🔥 NUEVOS INGRESOS</h3>
+
+            <div class="contenedor-productos">
+                ${nuevosProductos.map(producto => `
+                    <div class="producto-card">
+
+                        <div style="
+                            position:absolute;
+                            top:10px;
+                            left:10px;
+                            background:#191970;
+                            color:white;
+                            padding:6px 10px;
+                            border-radius:8px;
+                            font-size:0.75em;
+                            font-weight:bold;
+                            z-index:5;
+                        ">
+                            NUEVO
+                        </div>
+
+                        <img src="${producto.foto}" alt="${producto.nombre}"
+                        onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
+
+                        <h4>${producto.nombre}</h4>
+
+                        <p class="precio">
+                            ${new Intl.NumberFormat('es-AR', {
+                                style: 'currency',
+                                currency: 'ARS'
+                            }).format(producto.precio)}
+                        </p>
+
+                        <div style="
+                            display:flex;
+                            gap:8px;
+                            align-items:center;
+                            margin-top:10px;
+                        ">
+
+                            <input
+                                type="number"
+                                id="cantidad-nuevo-${producto.id}"
+                                value="1"
+                                min="1"
+                                style="
+                                    width:60px;
+                                    padding:8px;
+                                    border:1px solid #ccc;
+                                    border-radius:6px;
+                                    text-align:center;
+                                ">
+
+                            <button
+                                onclick="agregarAlCarritoDesdeNuevos(${producto.id})"
+                                style="flex:1;">
+                                AÑADIR
+                            </button>
+
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+};
         const renderizarProductos = (productosParaMostrar) => {
             const productosSeccion = document.getElementById('productos-seccion');
             
@@ -658,11 +747,21 @@ margin-top: 10px;
             });
         };
 
-        const filtrarProductos = (categoria) => {
+       const filtrarProductos = (categoria) => {
+
+    // ACTUALIZA SIEMPRE NUEVOS INGRESOS
+    renderizarNuevosIngresos();
+
     if (categoria === 'TODOS') {
+
         renderizarProductos(productos);
+
     } else {
-        const filtrados = productos.filter(p => p.categoria === categoria);
+
+        const filtrados = productos.filter(
+            p => p.categoria === categoria
+        );
+
         renderizarProductos(filtrados);
     }
 
@@ -763,6 +862,57 @@ const buscarProductos = () => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
+    });
+
+    Toast.fire({
+        icon: 'success',
+        title: 'PRODUCTO AGREGADO',
+        iconColor: '#191970'
+    });
+};
+
+
+const agregarAlCarritoDesdeNuevos = (productoId) => {
+
+    const producto = productos.find(p => p.id === productoId);
+
+    if (!producto || producto.suspendido) {
+        alert("Este producto no tiene stock");
+        return;
+    }
+
+    const inputCantidad = document.getElementById(`cantidad-nuevo-${productoId}`);
+    if (!inputCantidad) return;
+
+    const cantidad = parseInt(inputCantidad.value);
+
+    if (!cantidad || cantidad <= 0) return;
+
+    const itemEnCarrito = carrito.find(item => item.id === productoId);
+
+    if (itemEnCarrito) {
+        itemEnCarrito.cantidad += cantidad;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            foto: producto.foto,
+            cantidad: cantidad
+        });
+    }
+
+    guardarCarrito();
+    renderizarCarrito();
+    actualizarContadorCarrito();
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        background: '#F8F8FF'
     });
 
     Toast.fire({
@@ -977,6 +1127,7 @@ const buscarProductos = () => {
                 precio: parseFloat(document.getElementById('producto-precio').value),
                 foto: document.getElementById('producto-foto').value,
                 categoria: document.getElementById('producto-categoria').value,
+                fechaIngreso: Date.now(),
                 suspendido: idEdicion ? productos.find(p => p.id === parseInt(idEdicion)).suspendido : false
             };
 
@@ -1023,12 +1174,23 @@ const buscarProductos = () => {
             }
         };
 
-        const alternarStock = (id) => {
-            const p = productos.find(p => p.id === id);
-            p.suspendido = !p.suspendido;
-            filtrarYRenderizarProductos();
-            filtrarProductos('TODOS');
-        };
+       const alternarStock = (id) => {
+
+    const p = productos.find(p => p.id === id);
+
+    p.suspendido = !p.suspendido;
+
+    // SI SE REHABILITA → VUELVE A NUEVOS INGRESOS
+    if (!p.suspendido) {
+        p.fechaIngreso = Date.now();
+    }
+
+    filtrarYRenderizarProductos();
+
+    renderizarNuevosIngresos();
+
+    filtrarProductos('TODOS');
+};
 
         const gestionarFormularioCategoria = (e) => {
             e.preventDefault();
@@ -1096,13 +1258,13 @@ const buscarProductos = () => {
         };
 function abrirAyuda() {
     Swal.fire({
-        title: '<span style="color: #191970;">GUIA DE COMPRAS</span>',
+        title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
         html: `
             <div style="text-align: left; font-size: 14px; text-transform: none;">
                 <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CÓMO HAGO MI PEDIDO?</summary>
-    <p style="margin-top: 5px;">Navegá la tienda y agregá tus productos al carrito. Al finalizar, tocá el botón verde para enviarnos el pedido por WhatsApp. <b>Importante:</b> Revisá que el carrito tenga solo lo que querés llevar y vacialo al terminar para tu próxima compra.</p>
-</details>
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CÓMO HAGO MI PEDIDO?</summary>
+                    <p style="margin-top: 5px;">Navegá la tienda, agregá tus productos al carrito y, al finalizar, tocá el botón verde. Se abrirá tu WhatsApp con el detalle listo para enviarnos. ¡Te responderemos al instante!</p>
+                </details>
 
                 <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
                     <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿TIENE COSTO EL ENVÍO Y CUÁNTO TARDA?</summary>
@@ -1111,7 +1273,7 @@ function abrirAyuda() {
 
                 <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
                     <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CUÁNDO Y CÓMO PAGO MI COMPRA?</summary>
-                    <p style="margin-top: 5px;">Pagás recién cuando recibís el pedido en tu mano. Aceptamos efectivo o transferencia al momento de la entrega.</p>
+                    <p style="margin-top: 5px;">Pagás recién cuando recibís el pedido en tu mano. Aceptamos efectivo o transferencia bancaria al momento de la entrega.</p>
                 </details>
 
                 <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
@@ -1120,9 +1282,13 @@ function abrirAyuda() {
                 </details>
 
                 <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CÓMO ELIJO EL MODELO O COLOR DE MIS ACCESORIOS?</summary>
-    <p style="margin-top: 5px;">Para artículos con variantes (como lentes o colores de bijou), podés finalizar tu pedido normalmente. Una vez que recibamos tu mensaje, coordinamos por WhatsApp para enviarte fotos de los modelos disponibles o te los mostramos al momento de la entrega.</p>
-</details>
+                    <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿DUDAS SOBRE QUÉ CABLE O CARGADOR LLEVAR?</summary>
+                    <p style="margin-top: 5px;">¡Evitá errores! Consultá nuestra guía rápida de fichas y potencias aquí mismo para llevar lo que realmente necesitás:</p>
+                    <button id="btn-ver-guia" 
+                            style="background-color: #191970; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-top: 10px; width: 100%; font-weight: bold;">
+                        VER GUÍA DE PRODUCTOS 📱
+                    </button>
+                </details>
 
                 <p style="margin-top: 20px; font-weight: bold; text-align: center; color: #191970;">¿TENÉS OTRA CONSULTA?</p>
                 <p style="text-align: center;">¡No te quedes con la duda! Escribinos directamente por WhatsApp y te asesoramos personalmente.</p>
