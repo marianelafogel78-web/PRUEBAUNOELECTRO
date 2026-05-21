@@ -680,7 +680,9 @@ console.log("NUEVOS INGRESOS FUNCIONANDO");
         const renderizarProductos = (productosParaMostrar) => {
             const productosSeccion = document.getElementById('productos-seccion');
             
-            const contenedoresAnteriores = productosSeccion.querySelectorAll('div:not([style*="margin-bottom"])');
+            const contenedoresAnteriores = productosSeccion.querySelectorAll(
+    'div:not(#loading-message):not(#nuevos-ingresos-seccion)'
+);
             contenedoresAnteriores.forEach(c => c.remove());
             const mensajesAnteriores = productosSeccion.querySelectorAll('p');
 mensajesAnteriores.forEach(m => m.remove());
