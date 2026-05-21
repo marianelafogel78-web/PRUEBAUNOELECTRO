@@ -596,10 +596,18 @@ console.log("NUEVOS INGRESOS FUNCIONANDO");
     .slice(0, 15);
 
     // SI NO HAY PRODUCTOS
-    if (nuevosProductos.length === 0) {
-        seccionNuevos.innerHTML = '';
-        return;
-    }
+   if (nuevosProductos.length === 0) {
+
+    seccionNuevos.innerHTML = `
+        <h3 class="categoria-titulo">
+            🔥 NUEVOS INGRESOS
+        </h3>
+
+        <p>NO HAY PRODUCTOS NUEVOS</p>
+    `;
+
+    return;
+}
 
     seccionNuevos.innerHTML = `
         <div style="margin-bottom: 35px;">
