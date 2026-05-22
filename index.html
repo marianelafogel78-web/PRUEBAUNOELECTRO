@@ -212,6 +212,97 @@
         @media (max-width: 480px) {
             .producto-card { width: 100%; }
         }
+
+/* --- ESTILOS COMPLEMENTARIOS PARA NUEVOS INGRESOS --- */
+        #carrusel-nuevos {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 5px 5px 15px 5px;
+            /* Inercia de scroll nativa para iOS y Android */
+            -webkit-overflow-scrolling: touch; 
+        }
+
+        /* Ocultar barra de scroll molesta en celulares pero mantener funcionalidad */
+        #carrusel-nuevos::-webkit-scrollbar {
+            height: 5px;
+        }
+        #carrusel-nuevos::-webkit-scrollbar-thumb {
+            background-color: var(--color-secundario);
+            border-radius: 10px;
+        }
+
+        /* Tarjeta minificada exclusiva para el carrusel */
+        .tarjeta-nuevo-mini {
+            flex: 0 0 145px; /* Ancho fijo para que entren varias de corrido */
+            max-width: 145px;
+            background-color: var(--color-primario);
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .tarjeta-nuevo-mini img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .tarjeta-nuevo-mini h4 {
+            margin: 4px 0;
+            font-size: 0.85em;
+            min-height: 34px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .tarjeta-nuevo-mini p.precio {
+            font-weight: bold;
+            color: var(--color-acento);
+            font-size: 0.95em;
+            margin: 6px 0;
+        }
+
+        .tarjeta-nuevo-mini input.cant-mini {
+            width: 45px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+
+        .tarjeta-nuevo-mini button.btn-mini {
+            flex: 1;
+            padding: 6px 8px;
+            font-size: 0.75em;
+            border-radius: 4px;
+        }
+
+        /* Etiqueta flotante premium "NUEVO" */
+        .badge-nuevo-flotante {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background-color: var(--color-acento);
+            color: white;
+            font-size: 0.65em;
+            font-weight: bold;
+            padding: 3px 6px;
+            border-radius: 4px;
+            z-index: 5;
+            letter-spacing: 0.5px;
+            border: 1px solid white;
+        }
 /* PANTALLA DE BIENVENIDA */
 #welcome-screen {
     position: fixed;
@@ -415,24 +506,18 @@ box-sizing: border-box;
 
 </div>
 
+<div id="tienda-panel" class="tab-content">
+            
+            <section id="seccion-nuevos-ingresos" style="display: none; background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h2 id="titulo-nuevos" style="border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px; margin-top: 5px; margin-bottom: 15px; color: var(--color-texto);">🔥 NUEVOS INGRESOS</h2>
+                <div id="carrusel-nuevos">
+                    </div>
+            </section>
 
-        <div id="tienda-panel" class="tab-content">
             <section id="productos-seccion">
                 
                
                 <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
-                <div id="nuevos-ingresos-seccion">
-
-    <h2 style="
-        background:red;
-        color:white;
-        padding:20px;
-        text-align:center;
-    ">
-        PRUEBA NUEVOS INGRESOS
-    </h2>
-
-</div>
             </section>
         </div>
 
@@ -579,6 +664,8 @@ box-sizing: border-box;
                 filtrarProductos('TODOS');
                 renderizarCarrito();
                 actualizarContadorCarrito();
+
+                 inicializarNuevosIngresos();
                 
                 document.getElementById('loading-message').style.display = 'none';
             } catch (error) {
@@ -589,111 +676,11 @@ box-sizing: border-box;
 
         // =================================================================
         // 3. LÓGICA DE LA TIENDA
-
         // =================================================================
-
-const renderizarNuevosIngresos = () => {
-
-console.log("NUEVOS INGRESOS FUNCIONANDO");
-
-    const seccionNuevos = document.getElementById('nuevos-ingresos-seccion');
-
-    if (!seccionNuevos) return;
-
-    // TOMA LOS ÚLTIMOS 15 PRODUCTOS ACTIVOS
-    const nuevosProductos = productos
-    .filter(p => !p.suspendido)
-    .sort((a, b) => (b.fechaIngreso || 0) - (a.fechaIngreso || 0))
-    .slice(0, 15);
-
-    // SI NO HAY PRODUCTOS
-   if (nuevosProductos.length === 0) {
-
-    seccionNuevos.innerHTML = `
-        <h3 class="categoria-titulo">
-            🔥 NUEVOS INGRESOS
-        </h3>
-
-        <p>NO HAY PRODUCTOS NUEVOS</p>
-    `;
-
-    return;
-}
-
-    seccionNuevos.innerHTML = `
-        <div style="margin-bottom: 35px;">
-            <h3 class="categoria-titulo">🔥 NUEVOS INGRESOS</h3>
-
-            <div class="contenedor-productos">
-                ${nuevosProductos.map(producto => `
-                    <div class="producto-card">
-
-                        <div style="
-                            position:absolute;
-                            top:10px;
-                            left:10px;
-                            background:#191970;
-                            color:white;
-                            padding:6px 10px;
-                            border-radius:8px;
-                            font-size:0.75em;
-                            font-weight:bold;
-                            z-index:5;
-                        ">
-                            NUEVO
-                        </div>
-
-                        <img src="${producto.foto}" alt="${producto.nombre}"
-                        onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
-
-                        <h4>${producto.nombre}</h4>
-
-                        <p class="precio">
-                            ${new Intl.NumberFormat('es-AR', {
-                                style: 'currency',
-                                currency: 'ARS'
-                            }).format(producto.precio)}
-                        </p>
-
-                        <div style="
-                            display:flex;
-                            gap:8px;
-                            align-items:center;
-                            margin-top:10px;
-                        ">
-
-                            <input
-                                type="number"
-                                id="cantidad-nuevo-${producto.id}"
-                                value="1"
-                                min="1"
-                                style="
-                                    width:60px;
-                                    padding:8px;
-                                    border:1px solid #ccc;
-                                    border-radius:6px;
-                                    text-align:center;
-                                ">
-
-                            <button
-                                onclick="agregarAlCarritoDesdeNuevos(${producto.id})"
-                                style="flex:1;">
-                                AÑADIR
-                            </button>
-
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-    `;
-};
         const renderizarProductos = (productosParaMostrar) => {
             const productosSeccion = document.getElementById('productos-seccion');
             
-            const contenedoresAnteriores = productosSeccion.querySelectorAll(
-    'div:not(#loading-message):not(#nuevos-ingresos-seccion)'
-);
+            const contenedoresAnteriores = productosSeccion.querySelectorAll('div:not([style*="margin-bottom"])');
             contenedoresAnteriores.forEach(c => c.remove());
             const mensajesAnteriores = productosSeccion.querySelectorAll('p');
 mensajesAnteriores.forEach(m => m.remove());
@@ -770,21 +757,11 @@ margin-top: 10px;
             });
         };
 
-       const filtrarProductos = (categoria) => {
-
-    // ACTUALIZA SIEMPRE NUEVOS INGRESOS
-    renderizarNuevosIngresos();
-
+        const filtrarProductos = (categoria) => {
     if (categoria === 'TODOS') {
-
         renderizarProductos(productos);
-
     } else {
-
-        const filtrados = productos.filter(
-            p => p.categoria === categoria
-        );
-
+        const filtrados = productos.filter(p => p.categoria === categoria);
         renderizarProductos(filtrados);
     }
 
@@ -885,57 +862,6 @@ const buscarProductos = () => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-    });
-
-    Toast.fire({
-        icon: 'success',
-        title: 'PRODUCTO AGREGADO',
-        iconColor: '#191970'
-    });
-};
-
-
-const agregarAlCarritoDesdeNuevos = (productoId) => {
-
-    const producto = productos.find(p => p.id === productoId);
-
-    if (!producto || producto.suspendido) {
-        alert("Este producto no tiene stock");
-        return;
-    }
-
-    const inputCantidad = document.getElementById(`cantidad-nuevo-${productoId}`);
-    if (!inputCantidad) return;
-
-    const cantidad = parseInt(inputCantidad.value);
-
-    if (!cantidad || cantidad <= 0) return;
-
-    const itemEnCarrito = carrito.find(item => item.id === productoId);
-
-    if (itemEnCarrito) {
-        itemEnCarrito.cantidad += cantidad;
-    } else {
-        carrito.push({
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            foto: producto.foto,
-            cantidad: cantidad
-        });
-    }
-
-    guardarCarrito();
-    renderizarCarrito();
-    actualizarContadorCarrito();
-
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        background: '#F8F8FF'
     });
 
     Toast.fire({
@@ -1150,8 +1076,9 @@ const agregarAlCarritoDesdeNuevos = (productoId) => {
                 precio: parseFloat(document.getElementById('producto-precio').value),
                 foto: document.getElementById('producto-foto').value,
                 categoria: document.getElementById('producto-categoria').value,
-                fechaIngreso: Date.now(),
                 suspendido: idEdicion ? productos.find(p => p.id === parseInt(idEdicion)).suspendido : false
+                fechaIngreso: productoExistente && productoExistente.fechaIngreso ? productoExistente.fechaIngreso : Date.now()
+           
             };
 
             if (idEdicion) {
@@ -1197,23 +1124,13 @@ const agregarAlCarritoDesdeNuevos = (productoId) => {
             }
         };
 
-       const alternarStock = (id) => {
-
-    const p = productos.find(p => p.id === id);
-
-    p.suspendido = !p.suspendido;
-
-    // SI SE REHABILITA → VUELVE A NUEVOS INGRESOS
-    if (!p.suspendido) {
-        p.fechaIngreso = Date.now();
-    }
-
-    filtrarYRenderizarProductos();
-
-    renderizarNuevosIngresos();
-
-    filtrarProductos('TODOS');
-};
+        const alternarStock = (id) => {
+            const p = productos.find(p => p.id === id);
+            p.suspendido = !p.suspendido;
+            filtrarYRenderizarProductos();
+            filtrarProductos('TODOS');
+            inicializarNuevosIngresos();
+        };
 
         const gestionarFormularioCategoria = (e) => {
             e.preventDefault();
@@ -1279,6 +1196,67 @@ const agregarAlCarritoDesdeNuevos = (productoId) => {
             document.getElementById('form-categoria')?.addEventListener('submit', gestionarFormularioCategoria);
             document.getElementById('buscador-admin')?.addEventListener('input', filtrarYRenderizarProductos);
         };
+
+// --- LÓGICA AUTOMÁTICA DE NUEVOS INGRESOS ---
+function inicializarNuevosIngresos() {
+    const contenedorCarrusel = document.getElementById('carrusel-nuevos');
+    const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
+    
+    if (!contenedorCarrusel || !productos || productos.length === 0) return;
+
+    // 1. Filtrar productos activos (no suspendidos) y que tengan una marca de tiempo
+    // 2. Ordenar de más nuevo a más viejo basándose en fechaIngreso
+    // 3. Tomar los últimos 15
+    const productosNuevos = productos
+        .filter(p => p.suspendido !== true && p.fechaIngreso)
+        .sort((a, b) => b.fechaIngreso - a.fechaIngreso)
+        .slice(0, 15);
+
+    // Si no hay productos nuevos cargados aún con fecha, ocultamos la sección por completo
+    if (productosNuevos.length === 0) {
+        seccionNuevos.style.display = 'none';
+        return;
+    }
+
+    // Si hay productos calificados, mostramos la sección
+    seccionNuevos.style.display = 'block';
+    contenedorCarrusel.innerHTML = '';
+
+    // 4. Renderizar las tarjetas mini clonando de forma limpia la estructura del catálogo
+    productosNuevos.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'tarjeta-nuevo-mini';
+        
+        card.innerHTML = `
+            <span class="badge-nuevo-flotante">NUEVO</span>
+            <img src="${p.foto}" alt="${p.nombre}" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
+            <h4>${p.nombre}</h4>
+            <p class="precio">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(p.precio)}</p>
+            <div style="display: flex; gap: 4px; align-items: center; margin-top: 5px;">
+                <input type="number" id="cantidad-nuevo-${p.id}" value="1" min="1" class="cant-mini">
+                <button onclick="agregarAlCarritoDesdeNuevos(${p.id})" class="btn-mini" style="background-color: var(--color-acento); color: white; border: none; cursor: pointer;">
+                    AÑADIR
+                </button>
+            </div>
+        `;
+        contenedorCarrusel.appendChild(card);
+    });
+}
+
+// Función puente para añadir al carrito respetando el input de cantidad del carrusel
+window.agregarAlCarritoDesdeNuevos = (productoId) => {
+    const inputMini = document.getElementById(`cantidad-nuevo-${productoId}`);
+    const inputNormal = document.getElementById(`cantidad-${productoId}`);
+    
+    // Si el usuario cambia la cantidad en el carrusel, sincronizamos temporalmente el input normal para usar tu función base
+    if (inputMini && inputNormal) {
+        inputNormal.value = inputMini.value;
+    }
+    // Ejecutamos tu función original de añadir al carrito sin tocarle una línea
+    agregarAlCarrito(productoId);
+};
+
+
 function abrirAyuda() {
     Swal.fire({
         title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
