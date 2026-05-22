@@ -761,7 +761,7 @@ margin-top: 10px;
             // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
             if (seccionNuevos) {
-                // Si elige "TODOS" se muestra, si elige otra categoría se oculta por completo
+                // Si elige "TODOS" (que es la opción por defecto del select) se muestra, si elige otra se oculta
                 seccionNuevos.style.display = (categoria === 'TODOS') ? 'block' : 'none';
             }
             // ----------------------------------------------
@@ -780,12 +780,13 @@ margin-top: 10px;
         };
 
         const buscarProductos = () => {
-            const texto = document.getElementById('buscador-productos').value.toLowerCase();
+            // Convertimos a minúsculas y usamos .trim() para eliminar espacios vacíos que confundan al código
+            const texto = document.getElementById('buscador-productos').value.toLowerCase().trim();
 
             // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
             if (seccionNuevos) {
-                // Si el usuario escribe algo se oculta, si limpia el buscador vuelve a aparecer
+                // Si el buscador quedó completamente vacío, el carrusel DEBE volver a verse
                 seccionNuevos.style.display = (texto === '') ? 'block' : 'none';
             }
             // ----------------------------------------------
