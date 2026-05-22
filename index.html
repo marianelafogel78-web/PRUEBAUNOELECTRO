@@ -1192,6 +1192,9 @@ margin-top: 10px;
                 renderizarProductos(productos);
                 const selectFiltros = document.getElementById('select-filtros-tienda');
                 if(selectFiltros) selectFiltros.value = 'TODOS';
+                const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
+                if (seccionNuevos) {
+                    seccionNuevos.style.display = 'block';
             }
             if (pestana === 'carrito') renderizarCarrito();
             
