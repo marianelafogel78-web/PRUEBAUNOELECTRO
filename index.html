@@ -1181,7 +1181,7 @@ margin-top: 10px;
         // =================================================================
         // 6. NAVEGACIÓN
         // =================================================================
-        const mostrarPestana = (pestana, event) => {
+       const mostrarPestana = (pestana, event) => {
             document.querySelectorAll('.tab-content').forEach(p => p.style.display = 'none');
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             
@@ -1192,14 +1192,18 @@ margin-top: 10px;
                 renderizarProductos(productos);
                 const selectFiltros = document.getElementById('select-filtros-tienda');
                 if(selectFiltros) selectFiltros.value = 'TODOS';
+
+                // --- CORRECCIÓN: VOLVER A MOSTRAR NUEVOS INGRESOS AL RESETEAR LA TIENDA ---
                 const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
                 if (seccionNuevos) {
                     seccionNuevos.style.display = 'block';
+                }
+                // ------------------------------------------------------------------------
             }
             if (pestana === 'carrito') renderizarCarrito();
             
             window.scrollTo(0, 0);
-        };
+        }; // <--- ¡AQUÍ ESTÁ LA LLAVE QUE FALTABA CERRAR!
 
         // =================================================================
         // 7. INICIALIZACIÓN
