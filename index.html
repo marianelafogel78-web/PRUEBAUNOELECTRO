@@ -1223,7 +1223,7 @@ function inicializarNuevosIngresos() {
 const productosNuevos = productos
         .filter(p => p.suspendido !== true)
         .reverse()
-        .slice(0, 15);
+        .slice(0, 20);
 
     if (productosNuevos.length === 0) {
         seccionNuevos.style.display = 'none';
