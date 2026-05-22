@@ -1222,7 +1222,7 @@ function inicializarNuevosIngresos() {
 
     const productosNuevos = productos
         .filter(p => p.suspendido !== true && p.fechaIngreso)
-        .sort((a, b) => b.fechaIngreso - a.fechaIngreso)
+        
         .slice(0, 15);
 
     if (productosNuevos.length === 0) {
