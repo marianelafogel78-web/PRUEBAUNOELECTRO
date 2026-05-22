@@ -1070,15 +1070,18 @@ const buscarProductos = () => {
         const gestionarFormularioProducto = (e) => {
             e.preventDefault();
             const idEdicion = document.getElementById('producto-id-edicion').value;
+            
+            // Declaramos correctamente la constante para buscar si el producto ya existía
+            const productoExistente = idEdicion ? productos.find(p => p.id === parseInt(idEdicion)) : null;
+
             const nuevoP = {
                 id: idEdicion ? parseInt(idEdicion) : Date.now(),
                 nombre: document.getElementById('producto-nombre').value.toUpperCase(),
                 precio: parseFloat(document.getElementById('producto-precio').value),
                 foto: document.getElementById('producto-foto').value,
                 categoria: document.getElementById('producto-categoria').value,
-                suspendido: idEdicion ? productos.find(p => p.id === parseInt(idEdicion)).suspendido : false
+                suspendido: productoExistente ? productoExistente.suspendido : false, // <--- ACÁ SE AGREGÓ LA COMA CORREGIDA
                 fechaIngreso: productoExistente && productoExistente.fechaIngreso ? productoExistente.fechaIngreso : Date.now()
-           
             };
 
             if (idEdicion) {
