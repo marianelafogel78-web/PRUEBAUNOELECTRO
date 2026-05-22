@@ -1220,9 +1220,9 @@ function inicializarNuevosIngresos() {
     
     if (!contenedorCarrusel || !productos || productos.length === 0) return;
 
-    const productosNuevos = productos
-        .filter(p => p.suspendido !== true && p.fechaIngreso)
-        
+const productosNuevos = productos
+        .filter(p => p.suspendido !== true)
+        .reverse()
         .slice(0, 15);
 
     if (productosNuevos.length === 0) {
