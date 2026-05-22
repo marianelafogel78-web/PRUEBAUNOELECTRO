@@ -1200,32 +1200,39 @@ const buscarProductos = () => {
             document.getElementById('buscador-admin')?.addEventListener('input', filtrarYRenderizarProductos);
         };
 
-// --- LÓGICA AUTOMÁTICA DE NUEVOS INGRESOS ---
+// --- LÓGICA AUTOMÁTICA DE NUEVOS INGRESOS (ORDEN CORREGIDO) ---
+
+// 1. Primero declaramos la función puente para el carrito
+window.agregarAlCarritoDesdeNuevos = (productoId) => {
+    const inputMini = document.getElementById(`cantidad-nuevo-${productoId}`);
+    const inputNormal = document.getElementById(`cantidad-${productoId}`);
+    
+    if (inputMini && inputNormal) {
+        inputNormal.value = inputMini.value;
+    }
+    agregarAlCarrito(productoId);
+};
+
+// 2. Después declaramos la inicialización del carrusel
 function inicializarNuevosIngresos() {
     const contenedorCarrusel = document.getElementById('carrusel-nuevos');
     const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
     
     if (!contenedorCarrusel || !productos || productos.length === 0) return;
 
-    // 1. Filtrar productos activos (no suspendidos) y que tengan una marca de tiempo
-    // 2. Ordenar de más nuevo a más viejo basándose en fechaIngreso
-    // 3. Tomar los últimos 15
     const productosNuevos = productos
         .filter(p => p.suspendido !== true && p.fechaIngreso)
         .sort((a, b) => b.fechaIngreso - a.fechaIngreso)
         .slice(0, 15);
 
-    // Si no hay productos nuevos cargados aún con fecha, ocultamos la sección por completo
     if (productosNuevos.length === 0) {
         seccionNuevos.style.display = 'none';
         return;
     }
 
-    // Si hay productos calificados, mostramos la sección
     seccionNuevos.style.display = 'block';
     contenedorCarrusel.innerHTML = '';
 
-    // 4. Renderizar las tarjetas mini clonando de forma limpia la estructura del catálogo
     productosNuevos.forEach(p => {
         const card = document.createElement('div');
         card.className = 'tarjeta-nuevo-mini';
