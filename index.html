@@ -758,44 +758,56 @@ margin-top: 10px;
         };
 
         const filtrarProductos = (categoria) => {
-    if (categoria === 'TODOS') {
-        renderizarProductos(productos);
-    } else {
-        const filtrados = productos.filter(p => p.categoria === categoria);
-        renderizarProductos(filtrados);
-    }
+            // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
+            const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
+            if (seccionNuevos) {
+                // Si elige "TODOS" se muestra, si elige otra categoría se oculta por completo
+                seccionNuevos.style.display = (categoria === 'TODOS') ? 'block' : 'none';
+            }
+            // ----------------------------------------------
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-};
+            if (categoria === 'TODOS') {
+                renderizarProductos(productos);
+            } else {
+                const filtrados = productos.filter(p => p.categoria === categoria);
+                renderizarProductos(filtrados);
+            }
 
-const buscarProductos = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
 
-    const texto = document
-        .getElementById('buscador-productos')
-        .value
-        .toLowerCase();
+        const buscarProductos = () => {
+            const texto = document.getElementById('buscador-productos').value.toLowerCase();
 
-    const empiezan = productos.filter(producto =>
-        producto.nombre.toLowerCase().startsWith(texto)
-    );
+            // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
+            const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
+            if (seccionNuevos) {
+                // Si el usuario escribe algo se oculta, si limpia el buscador vuelve a aparecer
+                seccionNuevos.style.display = (texto === '') ? 'block' : 'none';
+            }
+            // ----------------------------------------------
 
-    const contienen = productos.filter(producto =>
-        producto.nombre.toLowerCase().includes(texto) &&
-        !producto.nombre.toLowerCase().startsWith(texto)
-    );
+            const empiezan = productos.filter(producto =>
+                producto.nombre.toLowerCase().startsWith(texto)
+            );
 
-    const filtrados = [...empiezan, ...contienen];
+            const contienen = productos.filter(producto =>
+                producto.nombre.toLowerCase().includes(texto) &&
+                !producto.nombre.toLowerCase().startsWith(texto)
+            );
 
-    renderizarProductos(filtrados);
+            const filtrados = [...empiezan, ...contienen];
 
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-};
+            renderizarProductos(filtrados);
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
 
         const renderizarFiltros = () => {
             const selectFiltros = document.getElementById('select-filtros-tienda');
@@ -1223,7 +1235,7 @@ function inicializarNuevosIngresos() {
 const productosNuevos = productos
         .filter(p => p.suspendido !== true)
         .reverse()
-        .slice(0, 20);
+        .slice(0, 25);
 
     if (productosNuevos.length === 0) {
         seccionNuevos.style.display = 'none';
