@@ -638,6 +638,11 @@ box-sizing: border-box;
     </a>
 
     <script>
+
+// --- DETECTOR DE ENLACE SECRETO ADMINISTRATIVO ---
+const urlParams = new URLSearchParams(window.location.search);
+const esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel') === '9110';
+
         // =================================================================
         // 1. VARIABLES Y CONFIGURACIÓN
         // =================================================================
@@ -1299,7 +1304,23 @@ window.agregarAlCarritoDesdeNuevos = (productoId) => {
 };
 
 
+let ultimoToqueAyuda = 0;
+
 function abrirAyuda() {
+    const tiempoActual = new Date().getTime();
+    const diferenciaTiempo = tiempoActual - ultimoToqueAyuda;
+    
+    // SI SOS EL DUEÑO Y TOCÁS RE RÁPIDO (MENOS DE MEDIO SEGUNDO): SE ABRE EL PANEL DIRECTO
+    if (diferenciaTiempo < 500 && esDuenioAutenticado) {
+        Swal.close(); // Cerramos el cartel por las dudas
+        mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+        return; // Frena acá para que a vos no se te abra tu propio menú de preguntas
+    }
+    
+    // Guardamos el momento de este toque
+    ultimoToqueAyuda = tiempoActual;
+
+    // TU MENÚ DE PREGUNTAS FRECUENTES EXACTO (Para clientes y primer toque tuyo)
     Swal.fire({
         title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
         html: `
@@ -1406,6 +1427,11 @@ window.addEventListener('touchend', (e) => {
         deslizarArriba();
     }
 }, { passive: true });
+
+// --- MANDA AL DUEÑO DIRECTO AL PANEL AL CARGAR LA PÁGINA ---
+if (esDuenioAutenticado) {
+    mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+}
 
     </script>
 </body>
