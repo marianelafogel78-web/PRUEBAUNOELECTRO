@@ -783,7 +783,7 @@ margin-top: 10px;
             // Convertimos a minúsculas y usamos .trim() para eliminar espacios vacíos que confundan al código
             const texto = document.getElementById('buscador-productos').value.toLowerCase().trim();
            
-       // --- ACCESO SECRETO ADMISTRATIVO ---
+            // --- ACCESO SECRETO ADMISTRATIVO ---
             if (texto === 'mf2025') {
                 // Limpiamos el buscador para que no quede escrito
                 document.getElementById('buscador-productos').value = '';
@@ -791,7 +791,9 @@ margin-top: 10px;
                 // Forzamos la apertura del panel administrativo
                 mostrarPestana('admin', { target: { classList: { add: () => {} } } });
                 return; // Cortamos la ejecución para que no busque productos con esa palabra
-}
+            }
+
+           
 
             // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
