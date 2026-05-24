@@ -784,7 +784,8 @@ margin-top: 10px;
             });
         };
 
-        const buscarProductos = () => {
+       
+const buscarProductos = () => {
             // Convertimos a minúsculas y usamos .trim() para eliminar espacios vacíos que confundan al código
             const texto = document.getElementById('buscador-productos').value.toLowerCase().trim();
            
@@ -793,11 +794,10 @@ margin-top: 10px;
                 // Limpiamos el buscador para que no quede escrito
                 document.getElementById('buscador-productos').value = '';
                 
-                // Forzamos la apertura del panel administrativo
-                mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+                // Forzamos la apertura del panel administrativo de forma limpia y segura
+                mostrarPestana('admin');
                 return; // Cortamos la ejecución para que no busque productos con esa palabra
             }
-
            
 
             // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
@@ -1316,10 +1316,10 @@ function abrirAyuda() {
     
     ultimoToqueAyuda = tiempoActual;
     
-    // 1. Si hacés doble clic rápido, te manda al panel y frena todo
+    // 1. Si hacés doble clic rápido, te manda al panel de forma limpia y directa
     if (diferenciaTiempo > 50 && diferenciaTiempo < 400 && esDuenioAutenticado) {
         Swal.close();
-        mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+        mostrarPestana('admin'); // <-- Limpio acá también
         return; 
     }
 
