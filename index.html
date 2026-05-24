@@ -1428,9 +1428,37 @@ window.addEventListener('touchend', (e) => {
     }
 }, { passive: true });
 
-// --- MANDA AL DUEÑO DIRECTO AL PANEL AL CARGAR LA PÁGINA ---
+// --- CONTROL DE ACCESO PARA EL DUEÑO (APPSFOGEL) ---
+let ultimoToqueAyuda = 0;
+
 if (esDuenioAutenticado) {
+    // Al entrar con la URL secreta, te manda directo al panel al cargar la página
     mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+
+    // Modificamos el botón "?" de la barra para que detecte tu doble toque en el celu
+    const botonAyudaMenu = document.querySelector('button[onclick="abrirAyuda()"]');
+    if (botonAyudaMenu) {
+        // Le quitamos la función normal para manejarla nosotros de forma inteligente
+        botonAyudaMenu.removeAttribute('onclick');
+        
+        botonAyudaMenu.addEventListener('click', (e) => {
+            const tiempoActual = new Date().getTime();
+            const diferenciaTiempo = tiempoActual - ultimoToqueAyuda;
+            ultimoToqueAyuda = tiempoActual;
+
+            // Si tocás dos veces rápido (menos de medio segundo)
+            if (diferenciaTiempo > 50 && diferenciaTiempo < 500) {
+                mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+            } else {
+                // Si es un toque común, espera un instante para confirmar que no viene otro y abre la ayuda
+                setTimeout(() => {
+                    if (new Date().getTime() - ultimoToqueAyuda >= 400) {
+                        abrirAyuda();
+                    }
+                }, 400);
+            }
+        });
+    }
 }
 
     </script>
