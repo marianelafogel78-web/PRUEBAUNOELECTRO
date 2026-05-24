@@ -641,7 +641,7 @@ box-sizing: border-box;
 
 // --- DETECTOR DE ENLACE SECRETO ADMINISTRATIVO ---
 const urlParams = new URLSearchParams(window.location.search);
-let const esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel') === '9110';
+let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel') === '9110';
 
         // =================================================================
         // 1. VARIABLES Y CONFIGURACIÓN
@@ -1441,7 +1441,7 @@ window.addEventListener('touchend', (e) => {
 
 // --- MANDA AL DUEÑO DIRECTO AL PANEL AL CARGAR LA PÁGINA ---
 if (esDuenioAutenticado) {
-    mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+    mostrarPestana('admin',
 }
 
     </script>
