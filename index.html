@@ -456,8 +456,6 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             </span>
         </button>
 
-       
-
         <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; color: black;">?</button>
 
     </div>
@@ -515,8 +513,6 @@ box-sizing: border-box;
             </section>
 
             <section id="productos-seccion">
-                
-               
                 <div id="loading-message" style="text-align: center; padding: 20px;">CARGANDO PRODUCTOS...</div>
             </section>
         </div>
@@ -533,7 +529,6 @@ box-sizing: border-box;
                       type="text" 
                      id="nombre-cliente-whatsapp" 
                      placeholder="INGRESE SU NOMBRE PARA EL PEDIDO"
-                     oninput="guardarNombreCliente()"
                      style="width: 100%; padding: 9px; margin-top: 5px; border: 1px solid var(--color-borde); border-radius: 4px;">
 
                 <div style="margin-bottom: 20px; margin-top: 12px; text-align: left;">
@@ -670,7 +665,7 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
                 renderizarCarrito();
                 actualizarContadorCarrito();
 
-                 inicializarNuevosIngresos();
+                inicializarNuevosIngresos();
                 
                 document.getElementById('loading-message').style.display = 'none';
             } catch (error) {
@@ -688,7 +683,7 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
             const contenedoresAnteriores = productosSeccion.querySelectorAll('div:not([style*="margin-bottom"])');
             contenedoresAnteriores.forEach(c => c.remove());
             const mensajesAnteriores = productosSeccion.querySelectorAll('p');
-mensajesAnteriores.forEach(m => m.remove());
+            mensajesAnteriores.forEach(m => m.remove());
 
             if (productosParaMostrar.length === 0) {
                 const emptyMsg = document.createElement('p');
@@ -725,36 +720,12 @@ mensajesAnteriores.forEach(m => m.remove());
                         <img src="${producto.foto}" alt="${producto.nombre}" onclick="abrirFotoGrande('${producto.foto}', '${producto.nombre}')" style="cursor: pointer;" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
                         <h4>${producto.nombre}</h4>
                         <p class="precio">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(producto.precio)}</p>
-                        <div style="
-display: flex;
-gap: 8px;
-align-items: center;
-margin-top: 10px;
-">
-
-    <input
-    type="number"
-    id="cantidad-${producto.id}"
-    value="1"
-    min="1"
-    style="
-    width: 60px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    text-align: center;
-    ">
-
-    <button
-    onclick="agregarAlCarrito(${producto.id})"
-    ${esAgotado ? 'disabled' : ''}
-    style="
-    flex: 1;
-    ">
-        ${esAgotado ? 'AGOTADO' : 'AÑADIR'}
-    </button>
-
-</div>
+                        <div style="display: flex; gap: 8px; align-items: center; margin-top: 10px;">
+                            <input type="number" id="cantidad-${producto.id}" value="1" min="1" style="width: 60px; padding: 8px; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
+                            <button onclick="agregarAlCarrito(${producto.id})" ${esAgotado ? 'disabled' : ''} style="flex: 1;">
+                                ${esAgotado ? 'AGOTADO' : 'AÑADIR'}
+                            </button>
+                        </div>
                     `;
                     contenedor.appendChild(card);
                 });
@@ -763,13 +734,10 @@ margin-top: 10px;
         };
 
         const filtrarProductos = (categoria) => {
-            // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
             if (seccionNuevos) {
-                // Si elige "TODOS" (que es la opción por defecto del select) se muestra, si elige otra se oculta
                 seccionNuevos.style.display = (categoria === 'TODOS') ? 'block' : 'none';
             }
-            // ----------------------------------------------
 
             if (categoria === 'TODOS') {
                 renderizarProductos(productos);
@@ -778,31 +746,23 @@ margin-top: 10px;
                 renderizarProductos(filtrados);
             }
 
-            window.scrollTo
+            window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
-        
+        };
 
-       
-const buscarProductos = () => {
-            // Convertimos a minúsculas y usamos .trim() para eliminar espacios vacíos que confundan al código
+        const buscarProductos = () => {
             const texto = document.getElementById('buscador-productos').value.toLowerCase().trim();
            
-            // --- ACCESO SECRETO ADMISTRATIVO ---
+            // --- ACCESO SECRETO ADMINISTRATIVO ---
             if (texto === 'mf2025') {
-                // Limpiamos el buscador para que no quede escrito
                 document.getElementById('buscador-productos').value = '';
-                
-                // Le avisamos al código que ya estás autenticada para habilitar el doble clic
                 esDuenioAutenticado = true;
-                
-                // Forzamos la apertura del panel administrativo de forma limpia y segura
                 mostrarPestana('admin');
-                return; // Cortamos la ejecución para que no busque productos con esa palabra
+                return;
             }
 
-            // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
             if (texto.length > 0) {
                 if (seccionNuevos) seccionNuevos.style.display = 'none';
@@ -818,11 +778,6 @@ const buscarProductos = () => {
             );
 
             renderizarProductos(filtrados);
-        };
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
         };
 
         const renderizarFiltros = () => {
@@ -847,59 +802,57 @@ const buscarProductos = () => {
         // 4. LÓGICA DEL CARRITO
         // =================================================================
        const agregarAlCarrito = (productoId) => {
-    const producto = productos.find(p => p.id === productoId);
+            const producto = productos.find(p => p.id === productoId);
 
-    if (!producto || producto.suspendido) {
-        alert("Este producto no tiene stock");
-        return;
-    }
+            if (!producto || producto.suspendido) {
+                alert("Este producto no tiene stock");
+                return;
+            }
 
-    const inputCantidad = document.getElementById(`cantidad-${productoId}`);
-    if (!inputCantidad) return;
+            const inputCantidad = document.getElementById(`cantidad-${productoId}`);
+            if (!inputCantidad) return;
 
-    const cantidad = parseInt(inputCantidad.value);
-    if (!cantidad || cantidad <= 0) return;
+            const cantidad = parseInt(inputCantidad.value);
+            if (!cantidad || cantidad <= 0) return;
 
-    const itemEnCarrito = carrito.find(item => item.id === productoId);
+            const itemEnCarrito = carrito.find(item => item.id === productoId);
 
-    if (itemEnCarrito) {
-        itemEnCarrito.cantidad += cantidad;
-    } else {
-        carrito.push({
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            foto: producto.foto,
-            cantidad: cantidad
-        });
-    }
+            if (itemEnCarrito) {
+                itemEnCarrito.cantidad += cantidad;
+            } else {
+                carrito.push({
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    precio: producto.precio,
+                    foto: producto.foto,
+                    cantidad: cantidad
+                });
+            }
 
-    guardarCarrito();
-    renderizarCarrito();
-    actualizarContadorCarrito();
+            guardarCarrito();
+            renderizarCarrito();
+            actualizarContadorCarrito();
 
-// --- CARTEL DE PRODUCTO AGREGADO (NOTIFICACIÓN SIMPLIFICADA) ---
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        background: '#F8F8FF',
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    });
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                background: '#F8F8FF',
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
 
-    Toast.fire({
-        icon: 'success',
-        title: 'PRODUCTO AGREGADO',
-        iconColor: '#191970'
-    });
-};
+            Toast.fire({
+                icon: 'success',
+                title: 'PRODUCTO AGREGADO',
+                iconColor: '#191970'
+            });
+        };
             
-
         const cambiarCantidadCarrito = (productoId, nuevaCantidad) => {
             const cantidad = parseInt(nuevaCantidad);
             if (isNaN(cantidad) || cantidad <= 0) {
@@ -961,7 +914,6 @@ const buscarProductos = () => {
             guardarCarrito();
             renderizarCarrito();
             actualizarContadorCarrito();
-             
         };
 
         const vaciarCarrito = () => {
@@ -1000,44 +952,41 @@ const buscarProductos = () => {
         };
 
        const generarMensajeWhatsApp = () => {
-    const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
-    const aclaracionPedido = document.getElementById('aclaracion-pedido').value.trim();
-    
-    if (carrito.length === 0) {
-        Swal.fire({ title: "CARRITO VACÍO", text: "POR FAVOR, AGREGA PRODUCTOS PRIMERO.", icon: "info", confirmButtonColor: "#191970" });
-        return;
-    }
-    if (nombreCliente === "") {
-        Swal.fire({ title: "FALTA TU NOMBRE", text: "POR FAVOR, INGRESA TU NOMBRE PARA EL PEDIDO.", icon: "warning", confirmButtonColor: "#191970" });
-        return;
-    }
+            const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
+            const aclaracionPedido = document.getElementById('aclaracion-pedido').value.trim();
+            
+            if (carrito.length === 0) {
+                Swal.fire({ title: "CARRITO VACÍO", text: "POR FAVOR, AGREGA PRODUCTOS PRIMERO.", icon: "info", confirmButtonColor: "#191970" });
+                return;
+            }
+            if (nombreCliente === "") {
+                Swal.fire({ title: "FALTA TU NOMBRE", text: "POR FAVOR, INGRESA TU NOMBRE PARA EL PEDIDO.", icon: "warning", confirmButtonColor: "#191970" });
+                return;
+            }
 
-    let mensaje = `HOLA, SOY *${nombreCliente.toUpperCase()}*.\nESTE ES MI PEDIDO:\n`;
-    mensaje += `--------------------------\n`;
-    
-    let totalPedido = 0;
-    const formatoMoneda = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
+            let mensaje = `HOLA, SOY *${nombreCliente.toUpperCase()}*.\nESTE ES MI PEDIDO:\n`;
+            mensaje += `--------------------------\n`;
+            
+            let totalPedido = 0;
+            const formatoMoneda = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' });
 
-    carrito.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        totalPedido += subtotal;
-        
-        // LIMPIEZA TOTAL: Eliminamos el "-" y los espacios al inicio.
-        // La línea empieza directamente con el NOMBRE.
-        mensaje += `${item.nombre.trim()} (x${item.cantidad}) - SUBT: ${formatoMoneda.format(subtotal)}\n`;
-    });
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                totalPedido += subtotal;
+                mensaje += `${item.nombre.trim()} (x${item.cantidad}) - SUBT: ${formatoMoneda.format(subtotal)}\n`;
+            });
 
-    mensaje += `--------------------------\n`;
-    mensaje += `*TOTAL DEL PEDIDO: ${formatoMoneda.format(totalPedido)}*\n\n`;
+            mensaje += `--------------------------\n`;
+            mensaje += `*TOTAL DEL PEDIDO: ${formatoMoneda.format(totalPedido)}*\n\n`;
 
-    if (aclaracionPedido !== "") {
-        mensaje += `*ACLARACIONES DEL PEDIDO:*\n${aclaracionPedido}\n\n`;
-    }
-    mensaje += `_QUEDO A LA ESPERA DE TU CONFIRMACION PARA COORDINAR ENTREGA_`;
+            if (aclaracionPedido !== "") {
+                mensaje += `*ACLARACIONES DEL PEDIDO:*\n${aclaracionPedido}\n\n`;
+            }
+            mensaje += `_QUEDO A LA ESPERA DE TU CONFIRMACION PARA COORDINAR ENTREGA_`;
 
-    const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-};
+            const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        };
 
         // =================================================================
         // 5. LÓGICA DE ADMINISTRACIÓN
@@ -1062,14 +1011,11 @@ const buscarProductos = () => {
                 p.nombre.toLowerCase().includes(termino) || p.id.toString().includes(termino)
             );
 
-            // ORDEN ALFABÉTICO EN PANEL ADMIN
             filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
             filtrados.forEach(p => {
                 const div = document.createElement('div');
                 div.className = `admin-producto-item ${p.suspendido ? 'admin-producto-suspendido' : ''}`;
-                
-                // CAMBIO: ESTILO PARA MOSTRAR FOTO A LA IZQUIERDA EN ADMIN
                 div.style.display = 'flex';
                 div.style.alignItems = 'center';
                 div.style.gap = '15px';
@@ -1090,7 +1036,6 @@ const buscarProductos = () => {
                 listaAdmin.appendChild(div);
             });
 
-            // ACTUALIZAR CONTEO
             document.getElementById('total-cargados').innerText = productos.length;
             document.getElementById('total-en-stock').innerText = productos.filter(p => !p.suspendido).length;
         };
@@ -1098,8 +1043,6 @@ const buscarProductos = () => {
         const gestionarFormularioProducto = (e) => {
             e.preventDefault();
             const idEdicion = document.getElementById('producto-id-edicion').value;
-            
-            // Declaramos correctamente la constante para buscar si el producto ya existía
             const productoExistente = idEdicion ? productos.find(p => p.id === parseInt(idEdicion)) : null;
 
             const nuevoP = {
@@ -1108,7 +1051,7 @@ const buscarProductos = () => {
                 precio: parseFloat(document.getElementById('producto-precio').value),
                 foto: document.getElementById('producto-foto').value,
                 categoria: document.getElementById('producto-categoria').value,
-                suspendido: productoExistente ? productoExistente.suspendido : false, // <--- ACÁ SE AGREGÓ LA COMA CORREGIDA
+                suspendido: productoExistente ? productoExistente.suspendido : false,
                 fechaIngreso: productoExistente && productoExistente.fechaIngreso ? productoExistente.fechaIngreso : Date.now()
             };
 
@@ -1202,11 +1145,9 @@ const buscarProductos = () => {
             
             document.getElementById(`${pestana}-panel`).style.display = 'block';
             
-            // 1. CORRECCIÓN SEGURA: Solo añadimos la clase activa si viene de un clic real
             if (event && event.target && event.target.classList) {
                 event.target.classList.add('active');
             } else {
-                // Si entra automático como administrador, iluminamos el botón de la tienda por defecto
                 document.getElementById('tab-tienda')?.classList.add('active');
             }
 
@@ -1224,9 +1165,164 @@ const buscarProductos = () => {
             
             window.scrollTo(0, 0);
         };
+
         // =================================================================
-        // 7. INICIALIZACIÓN
+        // 7. INICIALIZACIÓN Y FUNCIONES COMPLEMENTARIAS
         // =================================================================
+        window.agregarAlCarritoDesdeNuevos = (productoId) => {
+            const inputMini = document.getElementById(`cantidad-nuevo-${productoId}`);
+            const inputNormal = document.getElementById(`cantidad-${productoId}`);
+            
+            if (inputMini && inputNormal) {
+                inputNormal.value = inputMini.value;
+            }
+            agregarAlCarrito(productoId);
+        };
+
+        function inicializarNuevosIngresos() {
+            const contenedorCarrusel = document.getElementById('carrusel-nuevos');
+            const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
+            
+            if (!contenedorCarrusel || !productos || productos.length === 0) return;
+
+            const productosNuevos = productos
+                .filter(p => p.suspendido !== true)
+                .reverse()
+                .slice(0, 25);
+
+            if (productosNuevos.length === 0) {
+                seccionNuevos.style.display = 'none';
+                return;
+            }
+
+            seccionNuevos.style.display = 'block';
+            contenedorCarrusel.innerHTML = '';
+
+            productosNuevos.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'tarjeta-nuevo-mini';
+                
+                card.innerHTML = `
+                    <span class="badge-nuevo-flotante">NUEVO</span>
+                    <img src="${p.foto}" alt="${p.nombre}" onclick="abrirFotoGrande('${p.foto}', '${p.nombre}')" style="cursor: pointer;" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
+                    <h4>${p.nombre}</h4>
+                    <p class="precio">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(p.precio)}</p>
+                    <div style="display: flex; gap: 4px; align-items: center; margin-top: 5px;">
+                        <input type="number" id="cantidad-nuevo-${p.id}" value="1" min="1" class="cant-mini">
+                        <button onclick="agregarAlCarritoDesdeNuevos(${p.id})" class="btn-mini" style="background-color: var(--color-acento); color: white; border: none; cursor: pointer;">
+                            AÑADIR
+                        </button>
+                    </div>
+                `;
+                contenedorCarrusel.appendChild(card);
+            });
+        }
+
+        let ultimoToqueAyuda = 0;
+
+        function abrirAyuda() {
+            const tiempoActual = new Date().getTime();
+            const diferenciaTiempo = tiempoActual - ultimoToqueAyuda;
+            
+            ultimoToqueAyuda = tiempoActual;
+            
+            if (diferenciaTiempo > 50 && diferenciaTiempo < 400 && esDuenioAutenticado) {
+                Swal.close();
+                mostrarPestana('admin');
+                return; 
+            }
+
+            setTimeout(() => {
+                if (new Date().getTime() - ultimoToqueAyuda < 350 && esDuenioAutenticado) return;
+
+                Swal.fire({
+                    title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
+                    html: `
+                        <div style="text-align: left; font-size: 14px; text-transform: none;">
+                            <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                                <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CÓMO HAGO MI PEDIDO?</summary>
+                                <p style="margin-top: 5px;">Navegá la tienda, agregá tus productos al carrito y, al finalizar, tocá el botón verde. Se abrirá tu WhatsApp con el detalle listo para enviarnos. ¡Te responderemos al instante!</p>
+                            </details>
+
+                            <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                                <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿TIENE COSTO EL ENVÍO Y CUÁNTO TARDA?</summary>
+                                <p style="margin-top: 5px;">En <b>Río Tercero y zona el envío es GRATIS</b>. Coordinamos la entrega con vos para que recibas tu pedido en un máximo de 7 días hábiles.</p>
+                            </details>
+
+                            <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                                <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CUÁNDO Y CÓMO PAGO MI COMPRA?</summary>
+                                <p style="margin-top: 5px;">Pagás recién cuando recibís el pedido en tu mano. Aceptamos efectivo o transferencia bancaria al momento de la entrega.</p>
+                            </details>
+
+                            <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                                <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿QUÉ PASA SI UN PRODUCTO TIENE UNA FALLA?</summary>
+                                <p style="margin-top: 5px;">Comprá con total seguridad. Todos nuestros artículos tienen <b>garantía de cambio por 30 días</b> si presentan alguna falla de fábrica.</p>
+                            </details>
+
+                            <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
+                                <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿DUDAS SOBRE QUÉ CABLE O CARGADOR LLEVAR?</summary>
+                                <p style="margin-top: 5px;">¡Evitá errores! Consultá nuestra guía rápida de fichas y potencias aquí mismo para llevar lo que realmente necesitás:</p>
+                                <button id="btn-ver-guia" 
+                                        style="background-color: #191970; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-top: 10px; width: 100%; font-weight: bold;">
+                                    VER GUÍA DE PRODUCTOS 📱
+                                </button>
+                            </details>
+
+                            <p style="margin-top: 20px; font-weight: bold; text-align: center; color: #191970;">¿TENÉS OTRA CONSULTA?</p>
+                            <p style="text-align: center;">¡No te quedes con la duda! Escribinos directamente por WhatsApp y te asesoramos personalmente.</p>
+                        </div>
+                    `,
+                    showConfirmButton: true,
+                    confirmButtonText: 'CERRAR',
+                    confirmButtonColor: '#191970',
+                    background: '#F8F8FF',
+                    didOpen: () => {
+                        const boton = document.getElementById('btn-ver-guia');
+                        if (boton) {
+                            boton.onclick = function() {
+                                verFotoGuia();
+                            };
+                        }
+                    }
+                });
+            }, 300);
+        }
+
+        function verFotoGuia() {
+            Swal.fire({
+                imageUrl: 'guia-tecnica.png',
+                imageAlt: 'Guía Técnica JM Electrónica',
+                width: '95%',
+                confirmButtonText: 'ENTENDIDO',
+                confirmButtonColor: '#191970'
+            });
+        }
+
+        function abrirFotoGrande(urlFoto, nombreProducto) {
+            Swal.fire({
+                imageUrl: urlFoto,
+                imageAlt: nombreProducto,
+                width: '95%',
+                showConfirmButton: false, 
+                showCloseButton: true,    
+                background: '#ffffff',
+                customClass: {
+                    popup: 'popup-foto-grande'
+                }
+            });
+        }
+
+        const pantallaCarga = document.getElementById('welcome-screen');
+
+        function deslizarArriba() {
+            if (pantallaCarga) {
+                pantallaCarga.classList.add('hide-welcome');
+                setTimeout(() => {
+                    pantallaCarga.style.display = 'none';
+                }, 500);
+            }
+        }
+
         window.onload = () => {
             cargarDatosIniciales();
             
@@ -1237,207 +1333,27 @@ const buscarProductos = () => {
             document.getElementById('btn-cancelar-edicion')?.addEventListener('click', limpiarFormulario);
             document.getElementById('form-categoria')?.addEventListener('submit', gestionarFormularioCategoria);
             document.getElementById('buscador-admin')?.addEventListener('input', filtrarYRenderizarProductos);
+
+            if (pantallaCarga) {
+                pantallaCarga.addEventListener('click', deslizarArriba);
+            }
+
+            if (esDuenioAutenticado) {
+                mostrarPestana('admin');
+            }
         };
 
-// --- LÓGICA AUTOMÁTICA DE NUEVOS INGRESOS (ORDEN CORREGIDO) ---
+        let toqueInicioY = 0;
+        window.addEventListener('touchstart', (e) => {
+            toqueInicioY = e.changedTouches[0].screenY;
+        }, { passive: true });
 
-// 1. Primero declaramos la función puente para el carrito
-window.agregarAlCarritoDesdeNuevos = (productoId) => {
-    const inputMini = document.getElementById(`cantidad-nuevo-${productoId}`);
-    const inputNormal = document.getElementById(`cantidad-${productoId}`);
-    
-    if (inputMini && inputNormal) {
-        inputNormal.value = inputMini.value;
-    }
-    agregarAlCarrito(productoId);
-};
-
-// 2. Después declaramos la inicialización del carrusel
-function inicializarNuevosIngresos() {
-    const contenedorCarrusel = document.getElementById('carrusel-nuevos');
-    const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
-    
-    if (!contenedorCarrusel || !productos || productos.length === 0) return;
-
-const productosNuevos = productos
-        .filter(p => p.suspendido !== true)
-        .reverse()
-        .slice(0, 25);
-
-    if (productosNuevos.length === 0) {
-        seccionNuevos.style.display = 'none';
-        return;
-    }
-
-    seccionNuevos.style.display = 'block';
-    contenedorCarrusel.innerHTML = '';
-
-    productosNuevos.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'tarjeta-nuevo-mini';
-        
-        card.innerHTML = `
-            <span class="badge-nuevo-flotante">NUEVO</span>
-           <img src="${p.foto}" alt="${p.nombre}" onclick="abrirFotoGrande('${p.foto}', '${p.nombre}')" style="cursor: pointer;" onerror="this.onerror=null; this.src='https://placehold.co/300x300?text=Sin+Imagen';">
-            <h4>${p.nombre}</h4>
-            <p class="precio">${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(p.precio)}</p>
-            <div style="display: flex; gap: 4px; align-items: center; margin-top: 5px;">
-                <input type="number" id="cantidad-nuevo-${p.id}" value="1" min="1" class="cant-mini">
-                <button onclick="agregarAlCarritoDesdeNuevos(${p.id})" class="btn-mini" style="background-color: var(--color-acento); color: white; border: none; cursor: pointer;">
-                    AÑADIR
-                </button>
-            </div>
-        `;
-        contenedorCarrusel.appendChild(card);
-    });
-}
-
-// Función puente para añadir al carrito respetando el input de cantidad del carrusel
-window.agregarAlCarritoDesdeNuevos = (productoId) => {
-    const inputMini = document.getElementById(`cantidad-nuevo-${productoId}`);
-    const inputNormal = document.getElementById(`cantidad-${productoId}`);
-    
-    // Si el usuario cambia la cantidad en el carrusel, sincronizamos temporalmente el input normal para usar tu función base
-    if (inputMini && inputNormal) {
-        inputNormal.value = inputMini.value;
-    }
-    // Ejecutamos tu función original de añadir al carrito sin tocarle una línea
-    agregarAlCarrito(productoId);
-};
-
-
-let ultimoToqueAyuda = 0;
-
-function abrirAyuda() {
-    const tiempoActual = new Date().getTime();
-    const diferenciaTiempo = tiempoActual - ultimoToqueAyuda;
-    
-    ultimoToqueAyuda = tiempoActual;
-    
-    // 1. Si hacés doble clic rápido, te manda al panel de forma limpia y directa
-    if (diferenciaTiempo > 50 && diferenciaTiempo < 400 && esDuenioAutenticado) {
-        Swal.close();
-        mostrarPestana('admin'); // <-- Limpio acá también
-        return; 
-    }
-
-    // 2. Si es un solo clic, esperamos 300 milisegundos para validar que no sea un doble clic
-    setTimeout(() => {
-        if (new Date().getTime() - ultimoToqueAyuda < 350 && esDuenioAutenticado) return;
-
-        // TU MENÚ DE PREGUNTAS FRECUENTES EXACTO
-        Swal.fire({
-            title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
-            html: `
-                <div style="text-align: left; font-size: 14px; text-transform: none;">
-                    <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-                        <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CÓMO HAGO MI PEDIDO?</summary>
-                        <p style="margin-top: 5px;">Navegá la tienda, agregá tus productos al carrito y, al finalizar, tocá el botón verde. Se abrirá tu WhatsApp con el detalle listo para enviarnos. ¡Te responderemos al instante!</p>
-                    </details>
-
-                    <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-                        <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿TIENE COSTO EL ENVÍO Y CUÁNTO TARDA?</summary>
-                        <p style="margin-top: 5px;">En <b>Río Tercero y zona el envío es GRATIS</b>. Coordinamos la entrega con vos para que recibas tu pedido en un máximo de 7 días hábiles.</p>
-                    </details>
-
-                    <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-                        <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿CUÁNDO Y CÓMO PAGO MI COMPRA?</summary>
-                        <p style="margin-top: 5px;">Pagás recién cuando recibís el pedido en tu mano. Aceptamos efectivo o transferencia bancaria al momento de la entrega.</p>
-                    </details>
-
-                    <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-                        <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿QUÉ PASA SI UN PRODUCTO TIENE UNA FALLA?</summary>
-                        <p style="margin-top: 5px;">Comprá con total seguridad. Todos nuestros artículos tienen <b>garantía de cambio por 30 días</b> si presentan alguna falla de fábrica.</p>
-                    </details>
-
-                    <details style="margin-bottom: 10px; border-bottom: 1px solid #DDA0DD; padding-bottom: 5px;">
-                        <summary style="font-weight: bold; color: #191970; cursor: pointer;">¿DUDAS SOBRE QUÉ CABLE O CARGADOR LLEVAR?</summary>
-                        <p style="margin-top: 5px;">¡Evitá errores! Consultá nuestra guía rápida de fichas y potencias aquí mismo para llevar lo que realmente necesitás:</p>
-                        <button id="btn-ver-guia" 
-                                style="background-color: #191970; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-top: 10px; width: 100%; font-weight: bold;">
-                            VER GUÍA DE PRODUCTOS 📱
-                        </button>
-                    </details>
-
-                    <p style="margin-top: 20px; font-weight: bold; text-align: center; color: #191970;">¿TENÉS OTRA CONSULTA?</p>
-                    <p style="text-align: center;">¡No te quedes con la duda! Escribinos directamente por WhatsApp y te asesoramos personalmente.</p>
-                </div>
-            `,
-            showConfirmButton: true,
-            confirmButtonText: 'CERRAR',
-            confirmButtonColor: '#191970',
-            background: '#F8F8FF',
-            didOpen: () => {
-                const boton = document.getElementById('btn-ver-guia');
-                if (boton) {
-                    boton.onclick = function() {
-                        verFotoGuia();
-                    };
-                }
+        window.addEventListener('touchend', (e) => {
+            let toqueFinY = e.changedTouches[0].screenY;
+            if (toqueInicioY - toqueFinY > 50) { 
+                deslizarArriba();
             }
-        });
-    }, 300); // <-- CIERRE CORRECTO DEL TEMPORIZADOR
-}
-
-function verFotoGuia() {
-    // Usamos el nombre del archivo directo, sin URLs largas de GitHub
-    Swal.fire({
-        imageUrl: 'guia-tecnica.png',
-        imageAlt: 'Guía Técnica JM Electrónica',
-        width: '95%',
-        confirmButtonText: 'ENTENDIDO',
-        confirmButtonColor: '#191970'
-    });
-}
-
-function abrirFotoGrande(urlFoto, nombreProducto) {
-    Swal.fire({
-        imageUrl: urlFoto,
-        imageAlt: nombreProducto,
-        width: '95%',
-        showConfirmButton: false, // Quitamos el botón para que se vea la foto limpia
-        showCloseButton: true,    // Ponemos una "X" arriba a la derecha para cerrar fácil
-        background: '#ffffff',
-        customClass: {
-            popup: 'popup-foto-grande'
-        }
-    });
-}
-// PASO 3: Lógica para que la pantalla se retire
-const pantallaCarga = document.getElementById('welcome-screen');
-
-function deslizarArriba() {
-    if (pantallaCarga) {
-        pantallaCarga.classList.add('hide-welcome');
-        console.log("Deslizando..."); // Esto es para probar
-        setTimeout(() => {
-            pantallaCarga.style.display = 'none';
-        }, 500);
-    }
-}
-
-// 1. Detectar Click (PC y Celu)
-if (pantallaCarga) {
-    pantallaCarga.addEventListener('click', deslizarArriba);
-}
-
-// 2. Detectar Deslizamiento (Celular)
-let toqueInicioY = 0;
-window.addEventListener('touchstart', (e) => {
-    toqueInicioY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-window.addEventListener('touchend', (e) => {
-    let toqueFinY = e.changedTouches[0].screenY;
-    if (toqueInicioY - toqueFinY > 50) { 
-        deslizarArriba();
-    }
-}, { passive: true });
-
-// --- MANDA AL DUEÑO DIRECTO AL PANEL AL CARGAR LA PÁGINA (SI ENTRA POR URL) ---
-if (esDuenioAutenticado) {
-    mostrarPestana('admin');
-}
+        }, { passive: true });
 
     </script>
 </body>
