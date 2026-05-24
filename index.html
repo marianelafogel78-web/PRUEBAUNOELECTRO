@@ -1310,13 +1310,24 @@ function abrirAyuda() {
     const tiempoActual = new Date().getTime();
     const diferenciaTiempo = tiempoActual - ultimoToqueAyuda;
     
-    // SI SOS EL DUEÑO Y TOCÁS RE RÁPIDO (MENOS DE MEDIO SEGUNDO): SE ABRE EL PANEL DIRECTO
-    if (diferenciaTiempo < 500 && esDuenioAutenticado) {
-        Swal.close(); // Cerramos el cartel por las dudas
-        mostrarPestana('admin', { target: { classList: { add: () => {} } } });
-        return; // Frena acá para que a vos no se te abra tu propio menú de preguntas
-    }
+    ultimoToqueAyuda = tiempoActual;
     
+    // 1. Si hacés doble clic rápido, te manda al panel y frena todo
+
+    if (diferenciaTiempo > 50 && diferenciaTiempo < 400 && esDuenioAutenticado) {
+        Swal.close();
+        mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+        return; 
+    }
+
+    // 2. Si es un solo clic, esperamos 300 milisegundos para asegurarnos de que no vas a hacer un segundo clic
+    setTimeout(() => {
+        // Si en ese microsegundo volviste a hacer clic (doble clic), no abrimos las preguntas
+        if (new Date().getTime() - ultimoToqueAyuda < 350 && esDuenioAutenticado) return;
+
+        // TU MENÚ DE PREGUNTAS FRECUENTES (Acá abajo empieza tu Swal.fire original)
+        Swal.fire({
+            title: '<span style="color: #191970;">AYUDA Y PREGUNTAS</span>',
     // Guardamos el momento de este toque
     ultimoToqueAyuda = tiempoActual;
 
@@ -1428,37 +1439,9 @@ window.addEventListener('touchend', (e) => {
     }
 }, { passive: true });
 
-// --- CONTROL DE ACCESO PARA EL DUEÑO (APPSFOGEL) ---
-let ultimoToqueAyuda = 0;
-
+// --- MANDA AL DUEÑO DIRECTO AL PANEL AL CARGAR LA PÁGINA ---
 if (esDuenioAutenticado) {
-    // Al entrar con la URL secreta, te manda directo al panel al cargar la página
     mostrarPestana('admin', { target: { classList: { add: () => {} } } });
-
-    // Modificamos el botón "?" de la barra para que detecte tu doble toque en el celu
-    const botonAyudaMenu = document.querySelector('button[onclick="abrirAyuda()"]');
-    if (botonAyudaMenu) {
-        // Le quitamos la función normal para manejarla nosotros de forma inteligente
-        botonAyudaMenu.removeAttribute('onclick');
-        
-        botonAyudaMenu.addEventListener('click', (e) => {
-            const tiempoActual = new Date().getTime();
-            const diferenciaTiempo = tiempoActual - ultimoToqueAyuda;
-            ultimoToqueAyuda = tiempoActual;
-
-            // Si tocás dos veces rápido (menos de medio segundo)
-            if (diferenciaTiempo > 50 && diferenciaTiempo < 500) {
-                mostrarPestana('admin', { target: { classList: { add: () => {} } } });
-            } else {
-                // Si es un toque común, espera un instante para confirmar que no viene otro y abre la ayuda
-                setTimeout(() => {
-                    if (new Date().getTime() - ultimoToqueAyuda >= 400) {
-                        abrirAyuda();
-                    }
-                }, 400);
-            }
-        });
-    }
 }
 
     </script>
