@@ -641,7 +641,7 @@ box-sizing: border-box;
 
 // --- DETECTOR DE ENLACE SECRETO ADMINISTRATIVO ---
 const urlParams = new URLSearchParams(window.location.search);
-const esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel') === '9110';
+let const esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel') === '9110';
 
         // =================================================================
         // 1. VARIABLES Y CONFIGURACIÓN
@@ -793,6 +793,9 @@ const buscarProductos = () => {
             if (texto === 'mf2025') {
                 // Limpiamos el buscador para que no quede escrito
                 document.getElementById('buscador-productos').value = '';
+                
+                // ¡ESTA ES LA LÍNEA NUEVA!: Le avisamos al código que ya estás autenticada
+                esDuenioAutenticado = true; 
                 
                 // Forzamos la apertura del panel administrativo de forma limpia y segura
                 mostrarPestana('admin');
