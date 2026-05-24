@@ -1203,25 +1203,29 @@ margin-top: 10px;
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             
             document.getElementById(`${pestana}-panel`).style.display = 'block';
-            event.target.classList.add('active');
+            
+            // 1. CORRECCIÓN SEGURA: Solo añadimos la clase activa si viene de un clic real
+            if (event && event.target && event.target.classList) {
+                event.target.classList.add('active');
+            } else {
+                // Si entra automático como administrador, iluminamos el botón de la tienda por defecto
+                document.getElementById('tab-tienda')?.classList.add('active');
+            }
 
             if (pestana === 'tienda') {
                 renderizarProductos(productos);
                 const selectFiltros = document.getElementById('select-filtros-tienda');
                 if(selectFiltros) selectFiltros.value = 'TODOS';
 
-                // --- CORRECCIÓN: VOLVER A MOSTRAR NUEVOS INGRESOS AL RESETEAR LA TIENDA ---
                 const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
                 if (seccionNuevos) {
                     seccionNuevos.style.display = 'block';
                 }
-                // ------------------------------------------------------------------------
             }
             if (pestana === 'carrito') renderizarCarrito();
             
             window.scrollTo(0, 0);
-        }; // <--- ¡AQUÍ ESTÁ LA LLAVE QUE FALTABA CERRAR!
-
+        };
         // =================================================================
         // 7. INICIALIZACIÓN
         // =================================================================
