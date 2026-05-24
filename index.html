@@ -456,7 +456,7 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             </span>
         </button>
 
-        <button id="tab-admin" class="tab-button" onclick="mostrarPestana('admin', event)" title="ADMIN" style="flex: 1; margin: 0 5px; font-size: 1.5em;">⚙</button>
+       
 
         <button class="tab-button" onclick="abrirAyuda()" title="AYUDA" style="flex: 1; margin: 0 5px; font-size: 1.5em; background-color: white; color: black;">?</button>
 
@@ -509,7 +509,7 @@ box-sizing: border-box;
 <div id="tienda-panel" class="tab-content">
             
             <section id="seccion-nuevos-ingresos" style="display: none; background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <h2 id="titulo-nuevos" style="border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px; margin-top: 5px; margin-bottom: 15px; color: var(--color-texto);">🔥 NUEVOS INGRESOS</h2>
+                <h2 id="titulo-nuevos" style="border-bottom: 2px solid var(--color-secundario); padding-bottom: 10px; margin-top: 5px; margin-bottom: 15px; color: var(--color-texto);">🔥 ÚLTIMOS INGRESOS</h2>
                 <div id="carrusel-nuevos">
                     </div>
             </section>
@@ -782,6 +782,15 @@ margin-top: 10px;
         const buscarProductos = () => {
             // Convertimos a minúsculas y usamos .trim() para eliminar espacios vacíos que confundan al código
             const texto = document.getElementById('buscador-productos').value.toLowerCase().trim();
+           
+       // --- ACCESO SECRETO ADMISTRATIVO ---
+            if (texto === 'mf2025') {
+                // Limpiamos el buscador para que no quede escrito
+                document.getElementById('buscador-productos').value = '';
+                
+                // Forzamos la apertura del panel administrativo
+                mostrarPestana('admin', { target: { classList: { add: () => {} } } });
+                return; // Cortamos la ejecución para que no busque productos con esa palabra
 
             // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
