@@ -763,6 +763,7 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
                 return;
             }
 
+            // --- CONTROL INTELIGENTE DE NUEVOS INGRESOS ---
             const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
             if (texto.length > 0) {
                 if (seccionNuevos) seccionNuevos.style.display = 'none';
@@ -772,9 +773,10 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
                 return;
             }
 
+            // --- FILTRADO DE PRODUCTOS ---
             const filtrados = productos.filter(p => 
-                p.nombre.toLowerCase().includes(texto) || 
-                p.codigo.toLowerCase().includes(texto)
+                (p.nombre && p.nombre.toLowerCase().includes(texto)) || 
+                (p.codigo && p.codigo.toLowerCase().includes(texto))
             );
 
             renderizarProductos(filtrados);
