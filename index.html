@@ -1177,7 +1177,7 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
         // =================================================================
         // 6. NAVEGACIÓN
         // =================================================================
-       const mostrarPestana = (pestana, event) => {
+       const mostrarPestana = async (pestana, event) => { // Agregamos async aquí
             document.querySelectorAll('.tab-content').forEach(p => p.style.display = 'none');
             document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
             
@@ -1199,7 +1199,18 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
                     seccionNuevos.style.display = 'block';
                 }
             }
-            if (pestana === 'carrito') renderizarCarrito();
+            
+            // --- AQUÍ ESTÁ EL CAMBIO PARA EL CARRITO ---
+            if (pestana === 'carrito') {
+                try {
+                    // Descargamos los datos frescos de nuevo antes de mostrar
+                    const responseProd = await fetch('./productos.json?v=' + Date.now());
+                    productos = await responseProd.json();
+                } catch (e) {
+                    console.log("Error al refrescar datos en carrito");
+                }
+                renderizarCarrito();
+            }
             
             window.scrollTo(0, 0);
         };
