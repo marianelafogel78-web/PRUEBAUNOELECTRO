@@ -1,13 +1,5 @@
 [
   {
-    "id": 1,
-    "nombre": "RECEPTOR BT PARA  AUTO",
-    "precio": 2625,
-    "foto": "https://i.postimg.cc/C5nDwTLf/cargadorauto.png",
-    "categoria": "CARGADORES",
-    "suspendido": false
-  },
-  {
     "id": 4,
     "nombre": "CARGADOR RAPIDO TIPO C ROYALCELL 5.0A",
     "precio": 3690,
@@ -80,14 +72,6 @@
     "suspendido": false
   },
   {
-    "id": 22,
-    "nombre": "ESTACION DE CARGA 10 PUERTOS USB TOTAL 60W",
-    "precio": 17170,
-    "foto": "https://i.postimg.cc/DyB1qBvs/CAR-59051.jpg",
-    "categoria": "FUENTES DE CARGA/ADAPTADORES",
-    "suspendido": false
-  },
-  {
     "id": 23,
     "nombre": "FUENTE ALIMENTACION UNIVERSAL 12V 3A",
     "precio": 5205,
@@ -129,11 +113,12 @@
   },
   {
     "id": 29,
-    "nombre": "CABLE MALLA TIPO C DATOS 3.1A",
+    "nombre": "CABLE M. TIPO C DATOS 3.1A",
     "precio": 1470,
     "foto": "https://i.postimg.cc/MpBny6Kj/CAB-41002.jpg",
     "categoria": "CABLES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780771371750
   },
   {
     "id": 30,
@@ -176,14 +161,6 @@
     "suspendido": false
   },
   {
-    "id": 36,
-    "nombre": "CABLE AUXILIAR 1M CAJA",
-    "precio": 855,
-    "foto": "https://i.postimg.cc/pL4L5B3H/Whats-App-Image-2025-09-10-at-20-57-04-1.jpg",
-    "categoria": "CABLES",
-    "suspendido": false
-  },
-  {
     "id": 37,
     "nombre": "CABLE AUXILIAR 3M",
     "precio": 1365,
@@ -209,11 +186,12 @@
   },
   {
     "id": 40,
-    "nombre": "CABLE M.ROYALCEL TIPO C 5A",
+    "nombre": "CABLE M. ROYALCEL TIPO C 5A",
     "precio": 1409,
     "foto": "https://i.postimg.cc/43GCFJ2m/Whats-App-Image-2025-09-10-at-23-33-23.jpg",
     "categoria": "CABLES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780771350375
   },
   {
     "id": 41,
@@ -225,11 +203,12 @@
   },
   {
     "id": 42,
-    "nombre": "CABLE USB IPHONE 1M",
+    "nombre": "IPHONE CABLE USB 1M",
     "precio": 2100,
     "foto": "https://i.postimg.cc/2SsWstnq/Captura-de-pantalla-2025-09-11-194526.png",
     "categoria": "CABLES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780771498174
   },
   {
     "id": 43,
@@ -285,7 +264,7 @@
     "precio": 7420,
     "foto": "https://i.postimg.cc/3rqG6Gdx/PARLANTEL-UZ.jpg",
     "categoria": "PARLANTES Y MICROFONOS",
-    "suspendido": true
+    "suspendido": false
   },
   {
     "id": 54,
@@ -337,11 +316,12 @@
   },
   {
     "id": 76,
-    "nombre": "CONTROL REMOTO SMART PARA SANSUMG",
-    "precio": 3540,
-    "foto": "https://i.postimg.cc/bwwKzyNn/63001.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
+    "nombre": "CONTROL REMOTO UNIVERSAL TV",
+    "precio": 3890,
+    "foto": "https://i.postimg.cc/PqFN2mdP/mm.jpg",
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1780695794632
   },
   {
     "id": 77,
@@ -365,14 +345,6 @@
     "precio": 19900,
     "foto": "https://i.postimg.cc/WpBHb8K6/STJC150.jpg",
     "categoria": "COCINA",
-    "suspendido": false
-  },
-  {
-    "id": 83,
-    "nombre": "MATE CLASICO NEO 150ML NEO-",
-    "precio": 7780,
-    "foto": "https://i.postimg.cc/V6hd30Jk/MATE.jpg",
-    "categoria": "TERMOS Y VASOS",
     "suspendido": true
   },
   {
@@ -500,136 +472,135 @@
     "nombre": "ESPEJO METAL AUMENTO 7´",
     "precio": 4970,
     "foto": "https://i.postimg.cc/4yCnJ5PW/MIRROR.png",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989279074
   },
   {
     "id": 107,
     "nombre": "ESPEJO LED LUZ FRIA A PILA Y USB",
     "precio": 10950,
     "foto": "https://i.postimg.cc/qM00tvwj/ESP-91013.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989257275
   },
   {
     "id": 108,
     "nombre": "ESPEJO LED USB REGULABLE LUZ FRIA (ESP-91047)",
     "precio": 7700,
     "foto": "https://i.postimg.cc/CLFTh6M2/ESP-4205.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989268315
   },
   {
     "id": 109,
     "nombre": "CEPILLO ALISADOR DE PELO ONICA",
     "precio": 14150,
     "foto": "https://i.postimg.cc/qMKW8Sn5/OA-CP202.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989058108
   },
   {
     "id": 111,
     "nombre": "PERFILADOR DE CEJAS SET X3",
     "precio": 905,
     "foto": "https://i.postimg.cc/TPvXdjzL/RA001.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989435874
   },
   {
     "id": 112,
     "nombre": "PIEDRA DEPILADORA MAGICA NATURAL",
     "precio": 2380,
     "foto": "https://i.postimg.cc/j5ZV4pLP/ER025.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989241163
   },
   {
     "id": 113,
     "nombre": "PLANCHA DE CABELLO LEGATUS 35W 220°C",
     "precio": 9750,
     "foto": "https://i.postimg.cc/Y2YDkKp3/LPL035A.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989325274
   },
   {
     "id": 115,
     "nombre": "PLANCHA DE PELO REGULABLE OSR 220°C",
     "precio": 14266,
     "foto": "https://i.postimg.cc/PqMf0FCr/OSR198.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989334306
   },
   {
     "id": 116,
     "nombre": "PLANCHITA DE PELO FLEQUILLO CHICA",
     "precio": 3575,
     "foto": "https://i.postimg.cc/sgTscGqv/SN-228.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989343218
   },
   {
     "id": 117,
     "nombre": "SECADOR DE PELO 1000W",
     "precio": 17350,
     "foto": "https://i.postimg.cc/MKF5xDjS/SECADOR.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989369514
   },
   {
     "id": 118,
     "nombre": "SECADOR DE PELO PROFESIONAL 2000W",
     "precio": 14500,
     "foto": "https://i.postimg.cc/NMHBcp9S/secador2000w.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989398138
   },
   {
     "id": 119,
     "nombre": "SECADOR DE PELO HYTOSHY 1000W",
     "precio": 15350,
     "foto": "https://i.postimg.cc/sxShT9NF/HT-9120.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989387194
   },
   {
     "id": 120,
     "nombre": "SECADOR DE PLASTICO CHICO",
     "precio": 8755,
     "foto": "https://i.postimg.cc/TwJ5wR7g/secadorplastico.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989408882
   },
   {
     "id": 121,
-    "nombre": "CORTA PELO PROFESIONAL RECARGABLE X31",
+    "nombre": "CORTA PELO PROFESIONAL RECARGABLE",
     "precio": 27900,
     "foto": "https://i.postimg.cc/T1tRhyV8/CRT-110001.jpg",
-    "categoria": "ACCESORIOS MASCULINOS",
-    "suspendido": false
-  },
-  {
-    "id": 122,
-    "nombre": "CORTA PELO RECARGABLE DORADO J8/J9 ( METAL)",
-    "precio": 5600,
-    "foto": "https://i.postimg.cc/YC5t4BWS/CRT-110008.jpg",
-    "categoria": "ACCESORIOS MASCULINOS",
-    "suspendido": false
-  },
-  {
-    "id": 123,
-    "nombre": "CORTA PELO RECARGABLE+LINTERNA",
-    "precio": 8700,
-    "foto": "https://i.postimg.cc/qR00LcQV/CRT-110017.jpg",
-    "categoria": "ACCESORIOS MASCULINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989151524
   },
   {
     "id": 127,
     "nombre": "SET ALICATES",
     "precio": 2450,
     "foto": "https://i.postimg.cc/Y0J4Kqc1/PEINE.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989453257
   },
   {
     "id": 128,
@@ -657,11 +628,12 @@
   },
   {
     "id": 133,
-    "nombre": "HOLDER PARA BICI",
+    "nombre": "SOPORTE CELU  BICI/AUTO",
     "precio": 2930,
     "foto": "https://i.postimg.cc/W4pxjD2J/TMHD9466.jpg",
     "categoria": "SOPORTES TV/CELU",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780694491705
   },
   {
     "id": 134,
@@ -680,20 +652,13 @@
     "suspendido": false
   },
   {
-    "id": 138,
-    "nombre": "CALENTADOR DE AGUA 220W",
-    "precio": 1680,
-    "foto": "https://i.postimg.cc/kGLMczDf/calentador-agua.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
     "id": 139,
-    "nombre": "CORTA PELO DE MASCOTA $",
+    "nombre": "CORTA PELO DE MASCOTA ",
     "precio": 11370,
     "foto": "https://i.postimg.cc/ZqSGN8JG/CRT-110021.jpg",
     "categoria": "VARIOS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781220112997
   },
   {
     "id": 140,
@@ -733,22 +698,6 @@
     "precio": 17600,
     "foto": "https://i.postimg.cc/W3P0RZmM/Captura-de-pantalla-2025-09-11-175949.png",
     "categoria": "HOGAR",
-    "suspendido": true
-  },
-  {
-    "id": 146,
-    "nombre": "PELOTA N°2 PERSONAJES MARVEL",
-    "precio": 3500,
-    "foto": "https://i.postimg.cc/RV0QbyBH/pelota2.jpg",
-    "categoria": "NIÑOS",
-    "suspendido": false
-  },
-  {
-    "id": 148,
-    "nombre": "PIZARRA LED MARCADORES 15X15CM",
-    "precio": 9790,
-    "foto": "https://i.postimg.cc/2S7fq4WY/TABLETA-LED.jpg",
-    "categoria": "NIÑOS",
     "suspendido": false
   },
   {
@@ -786,10 +735,11 @@
   {
     "id": 159,
     "nombre": "LINTERNA  MINERA",
-    "precio": 5490,
-    "foto": "https://i.postimg.cc/8krPxG5S/LUZ-MINERA.jpg",
+    "precio": 3290,
+    "foto": "https://i.postimg.cc/bNDmz5Mg/aa.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781798847685
   },
   {
     "id": 160,
@@ -801,11 +751,12 @@
   },
   {
     "id": 163,
-    "nombre": "LINTERNA 9LED X 6 UNIDADES",
+    "nombre": "LINTERNA 9 LED X 6 UNIDADES",
     "precio": 7140,
     "foto": "https://i.postimg.cc/bvYxss4g/minilinterna.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780695014934
   },
   {
     "id": 164,
@@ -825,11 +776,12 @@
   },
   {
     "id": 168,
-    "nombre": "LAMPARA ATARDECER",
+    "nombre": "PROYECTOR ATARDECER",
     "precio": 7420,
     "foto": "https://i.postimg.cc/5yczcX01/LED-83068.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781830794271
   },
   {
     "id": 170,
@@ -864,20 +816,13 @@
     "suspendido": false
   },
   {
-    "id": 176,
-    "nombre": "LINTERNA RUILANG RECARGABLE 1000 LUMEN ZOOM",
-    "precio": 17360,
-    "foto": "https://i.postimg.cc/9FXLJ2xJ/l50.jpg",
-    "categoria": "ILUMINACION",
-    "suspendido": false
-  },
-  {
     "id": 177,
-    "nombre": "LUZ DE BICI X2PCS",
+    "nombre": "LUZ P/BICI X 2PCS BLISTER",
     "precio": 2050,
     "foto": "https://i.postimg.cc/ZYfHfLXq/luz-bici.png",
     "categoria": "ILUMINACION",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780695189709
   },
   {
     "id": 179,
@@ -885,7 +830,7 @@
     "precio": 6150,
     "foto": "https://i.postimg.cc/DfGpFWrH/LED-9727.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": true
+    "suspendido": false
   },
   {
     "id": 181,
@@ -945,11 +890,12 @@
   },
   {
     "id": 189,
-    "nombre": "DESTORNILLADOR SET 32 EN 1",
+    "nombre": "SET DESTORNILLADOR 32 EN 1",
     "precio": 2354,
     "foto": "https://i.postimg.cc/wM6Pt02M/TP-6036B.jpg",
     "categoria": "HERRAMIENTAS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781218805480
   },
   {
     "id": 190,
@@ -1002,10 +948,11 @@
   {
     "id": 196,
     "nombre": "TRIPLE PIRAMIDE",
-    "precio": 1990,
+    "precio": 2400,
     "foto": "https://i.postimg.cc/13J5MHL2/Whats-App-Image-2025-09-10-at-20-57-08-3.jpg",
     "categoria": "ENCHUFES/EXTENSIONES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781218102693
   },
   {
     "id": 197,
@@ -1018,74 +965,83 @@
   {
     "id": 198,
     "nombre": "ZAPATILLA 3M",
-    "precio": 3080,
+    "precio": 3360,
     "foto": "https://i.postimg.cc/J4p922zN/Captura-de-pantalla-2025-09-11-161504.png",
     "categoria": "ENCHUFES/EXTENSIONES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1782338746995
   },
   {
     "id": 199,
     "nombre": "ZAPATILLA 5M",
-    "precio": 4200,
+    "precio": 4550,
     "foto": "https://i.postimg.cc/J4p922zN/Captura-de-pantalla-2025-09-11-161504.png",
     "categoria": "ENCHUFES/EXTENSIONES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1782338771851
   },
   {
     "id": 201,
     "nombre": "CONSOLA VIDEO JUEGO 64GB RETRO 2.4G",
     "precio": 45280,
     "foto": "https://i.postimg.cc/Xvy2HTqt/JOY-61017.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931877846
   },
   {
     "id": 202,
     "nombre": "CONSOLA X2 PLUS 64 GB",
     "precio": 57960,
     "foto": "https://i.postimg.cc/NjZDHpDD/X2.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931890406
   },
   {
     "id": 203,
-    "nombre": "JOSTICK PLAY 2",
+    "nombre": "JOYSTICK PS 2",
     "precio": 8375,
     "foto": "https://i.postimg.cc/JhNH1JgQ/Whats-App-Image-2025-09-10-at-20-57-10-3.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931969142
   },
   {
     "id": 204,
     "nombre": "JOYSTICK PS4 COLORES SIN MARCA",
     "precio": 22850,
     "foto": "https://i.postimg.cc/133Wtd9T/12098.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931837341
   },
   {
     "id": 205,
     "nombre": "MOUSE INALAMBRICO TRANSPARENTE",
     "precio": 9055,
     "foto": "https://i.postimg.cc/Pqtx2kS5/MA200.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931934454
   },
   {
     "id": 207,
     "nombre": "TECLADO MINI KEYBOARD",
     "precio": 6999,
     "foto": "https://i.postimg.cc/qvHXBzvD/KY800.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779932023263
   },
   {
     "id": 208,
     "nombre": "TECLADO USB NOGA",
     "precio": 7560,
     "foto": "https://i.postimg.cc/qqyzvf4f/78005USB.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779932033014
   },
   {
     "id": 209,
@@ -1118,14 +1074,6 @@
     "foto": "https://i.postimg.cc/3NXtm9tb/Whats-App-Image-2025-09-10-at-23-33-22.jpg",
     "categoria": "LIBRERIA",
     "suspendido": false
-  },
-  {
-    "id": 213,
-    "nombre": "CALCULADORA CIENTIFICA",
-    "precio": 3860,
-    "foto": "https://i.postimg.cc/Y2gZtSqC/KK-88MS.jpg",
-    "categoria": "LIBRERIA",
-    "suspendido": true
   },
   {
     "id": 214,
@@ -1181,7 +1129,7 @@
     "precio": 8000,
     "foto": "https://i.postimg.cc/Kv69Rtbt/AY-49.jpg",
     "categoria": "TECNOLOGIA",
-    "suspendido": false
+    "suspendido": true
   },
   {
     "id": 224,
@@ -1256,26 +1204,10 @@
     "suspendido": false
   },
   {
-    "id": 239,
-    "nombre": "BOTELLA PLEGABLE DEPORTIVA INFANTIL",
-    "precio": 5800,
-    "foto": "https://i.postimg.cc/3JdJpDwT/BOTELLA-PLEGABLE-DEPORTE.jpg",
-    "categoria": "TERMOS Y VASOS",
-    "suspendido": true
-  },
-  {
     "id": 240,
     "nombre": "BOTELLA  7500ML",
     "precio": 14250,
     "foto": "https://i.postimg.cc/W183nfXL/Whats-App-Image-2025-09-10-at-23-33-21.jpg",
-    "categoria": "TERMOS Y VASOS",
-    "suspendido": false
-  },
-  {
-    "id": 241,
-    "nombre": "BOTELLA DE PLASTICO 700ML",
-    "precio": 7000,
-    "foto": "https://i.postimg.cc/gkM9ZZpQ/vasos.jpg",
     "categoria": "TERMOS Y VASOS",
     "suspendido": false
   },
@@ -1368,14 +1300,6 @@
     "suspendido": false
   },
   {
-    "id": 263,
-    "nombre": "VELADOR DE COLORES RECARGABLE C/SOPORTE CELU",
-    "precio": 6860,
-    "foto": "https://i.postimg.cc/m2Kv0NFk/veladorsopor.jpg",
-    "categoria": "ILUMINACION",
-    "suspendido": false
-  },
-  {
     "id": 265,
     "nombre": "TIRA LED PARA TV  3M RGB",
     "precio": 5880,
@@ -1396,8 +1320,9 @@
     "nombre": "MOUSE GAMING RETROILUMINADO DINAX",
     "precio": 2620,
     "foto": "https://i.postimg.cc/rsHYSMLN/mouse.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": true,
+    "fechaIngreso": 1779931907550
   },
   {
     "id": 269,
@@ -1420,16 +1345,9 @@
     "nombre": "CORTA BARBA 3 EN 1 RECARGABLE",
     "precio": 15922,
     "foto": "https://i.postimg.cc/DfcX2v8N/cortabarba.jpg",
-    "categoria": "ACCESORIOS MASCULINOS",
-    "suspendido": false
-  },
-  {
-    "id": 273,
-    "nombre": "PELOTA NRO. 5",
-    "precio": 7700,
-    "foto": "https://i.postimg.cc/Z5fkZdSN/PELO.jpg",
-    "categoria": "NIÑOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989083588
   },
   {
     "id": 277,
@@ -1452,8 +1370,9 @@
     "nombre": "ESPEJO METAL N8",
     "precio": 4970,
     "foto": "https://i.postimg.cc/s2XBsSmD/espejo.png",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989291171
   },
   {
     "id": 281,
@@ -1516,14 +1435,6 @@
     "nombre": "SOPORTE FIJO TV 26-63 PLG",
     "precio": 5670,
     "foto": "https://i.postimg.cc/dV0dtzQ6/soportetn65pul.jpg",
-    "categoria": "SOPORTES TV/CELU",
-    "suspendido": false
-  },
-  {
-    "id": 290,
-    "nombre": "SOPORTE FIJO TV 14-42 PLG",
-    "precio": 3640,
-    "foto": "https://i.postimg.cc/d0PqSyfD/soportetv24pul.jpg",
     "categoria": "SOPORTES TV/CELU",
     "suspendido": false
   },
@@ -1608,36 +1519,13 @@
     "suspendido": false
   },
   {
-    "id": 305,
-    "nombre": "SET PLACARD X3 A PILA",
-    "precio": 8400,
-    "foto": "https://i.postimg.cc/ydJccg9P/setplacadluz.jpg",
-    "categoria": "ILUMINACION",
-    "suspendido": false
-  },
-  {
-    "id": 306,
-    "nombre": "MOCHILA PARA NOTEBOOK CON USB MOCHNEG",
-    "precio": 10500,
-    "foto": "https://i.postimg.cc/TYx5YHkJ/mochinootbook.jpg",
-    "categoria": "LIBRERIA",
-    "suspendido": false
-  },
-  {
     "id": 308,
     "nombre": "CORTA BARBA ONICA DE 3 CABEZALES RECARGABLE",
     "precio": 16380,
     "foto": "https://i.postimg.cc/qq4B0Wkn/cortabarba.jpg",
-    "categoria": "ACCESORIOS MASCULINOS",
-    "suspendido": false
-  },
-  {
-    "id": 309,
-    "nombre": "ZAPATILLA FLOR 5 BOCAS + 2USB",
-    "precio": 8190,
-    "foto": "https://i.postimg.cc/3NSs6qNP/zapaflor.jpg",
-    "categoria": "ENCHUFES/EXTENSIONES",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989103140
   },
   {
     "id": 310,
@@ -1653,7 +1541,7 @@
     "precio": 9500,
     "foto": "https://i.postimg.cc/fyRnYPwT/vtt.jpg",
     "categoria": "TERMOS Y VASOS",
-    "suspendido": false
+    "suspendido": true
   },
   {
     "id": 313,
@@ -1712,14 +1600,6 @@
     "suspendido": false
   },
   {
-    "id": 323,
-    "nombre": "ZAPATILLA FORMA PELOTA",
-    "precio": 9600,
-    "foto": "https://i.postimg.cc/qvWhpvFG/zapatillaformapelota.jpg",
-    "categoria": "ENCHUFES/EXTENSIONES",
-    "suspendido": false
-  },
-  {
     "id": 324,
     "nombre": "CABLE UNIVERSAL 3 EN 1 IBEK",
     "precio": 2400,
@@ -1733,14 +1613,6 @@
     "precio": 4245,
     "foto": "https://i.postimg.cc/PqX8JR4M/Captura-de-pantalla-2026-01-31-143511.png",
     "categoria": "CARGADORES",
-    "suspendido": false
-  },
-  {
-    "id": 326,
-    "nombre": "SET ABROCHADORA",
-    "precio": 2190,
-    "foto": "https://i.postimg.cc/DzSQMW4k/abrochadora.jpg",
-    "categoria": "LIBRERIA",
     "suspendido": false
   },
   {
@@ -1772,8 +1644,9 @@
     "nombre": "SECADOR DE PELO 2000W 80000 RPM ONICA",
     "precio": 15360,
     "foto": "https://i.postimg.cc/h4mHCKdB/SECCADOR.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1779989377570
   },
   {
     "id": 1772715810223,
@@ -1797,7 +1670,7 @@
     "precio": 7140,
     "foto": "https://i.postimg.cc/Y07RFT2C/TRIPODE.jpg",
     "categoria": "TECNOLOGIA",
-    "suspendido": false
+    "suspendido": true
   },
   {
     "id": 1773350853912,
@@ -1809,35 +1682,21 @@
   },
   {
     "id": 1773351313834,
-    "nombre": "CABLE LIGHTNING 1M ROYALCELL (IPHONE)",
+    "nombre": "IPHONE CABLE LIGHTNING 1M ROYALCELL ",
     "precio": 1396,
     "foto": "https://i.postimg.cc/fTn0wSMm/CAB.png",
     "categoria": "CABLES",
-    "suspendido": false
-  },
-  {
-    "id": 1773420158144,
-    "nombre": "SET PARRILLA 16 PS",
-    "precio": 25150,
-    "foto": "https://i.postimg.cc/RFjcwK48/setparr.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
-    "id": 1773420329836,
-    "nombre": "SET BOLS 3 UNIDADES DE VIDRIO C/TAPAS HERMETICAS",
-    "precio": 18500,
-    "foto": "https://i.postimg.cc/8ztyVGQp/SETBOLS.jpg",
-    "categoria": "COCINA",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780771316279
   },
   {
     "id": 1773690530862,
-    "nombre": "CABLE TIPO C IPHONE 1M",
+    "nombre": "IPHONE CABLE TIPO C 1M",
     "precio": 2250,
     "foto": "https://i.postimg.cc/Z5yPmmZ9/iphn.jpg",
     "categoria": "CABLES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780771464286
   },
   {
     "id": 1774041520872,
@@ -1849,19 +1708,12 @@
   },
   {
     "id": 1774041700222,
-    "nombre": "LUZ LINTERNA PARA BICICLETA",
+    "nombre": "LUZ P/BICI RECARGABLE EN CAJA",
     "precio": 2520,
     "foto": "https://i.postimg.cc/FRKKVkDz/luzlintbici.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": false
-  },
-  {
-    "id": 1774043030766,
-    "nombre": "HUMIDIFICADOR ",
-    "precio": 6440,
-    "foto": "https://i.postimg.cc/4xdtZL8K/humi2.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780695159037
   },
   {
     "id": 1774043145756,
@@ -1869,14 +1721,6 @@
     "precio": 6440,
     "foto": "https://i.postimg.cc/90bxVNCc/humi.jpg",
     "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
-    "id": 1774045583807,
-    "nombre": "PELOTA MUNDIAL NRO.5",
-    "precio": 7900,
-    "foto": "https://i.postimg.cc/k4Fpqw84/PELOTAMUNDIAL.jpg",
-    "categoria": "NIÑOS",
     "suspendido": false
   },
   {
@@ -1905,11 +1749,12 @@
   },
   {
     "id": 1774561237244,
-    "nombre": "ASTRONAUTA PROYECTOR",
+    "nombre": "PROYECTOR ASTRONAUTA",
     "precio": 13990,
     "foto": "https://i.postimg.cc/MKhxKX5B/astro.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781830947558
   },
   {
     "id": 1774561503929,
@@ -1932,14 +1777,6 @@
     "nombre": "AURICULAR SPORT JBL ",
     "precio": 1545,
     "foto": "https://i.postimg.cc/d1pZwy1y/aurijblsp.jpg",
-    "categoria": "AURICULARES C/CABLE",
-    "suspendido": false
-  },
-  {
-    "id": 1774562018610,
-    "nombre": "AURICULAR JB-003 JBL",
-    "precio": 1540,
-    "foto": "https://i.postimg.cc/YqpMjSWy/jbl.jpg",
     "categoria": "AURICULARES C/CABLE",
     "suspendido": false
   },
@@ -1993,11 +1830,12 @@
   },
   {
     "id": 1775139802103,
-    "nombre": "SOPORTE MANITO",
+    "nombre": "SOPORTE CELU MANITO",
     "precio": 784,
     "foto": "https://i.postimg.cc/rs79867y/SOPORTEMAO.jpg",
     "categoria": "SOPORTES TV/CELU",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780694381406
   },
   {
     "id": 1775596208038,
@@ -2024,14 +1862,6 @@
     "suspendido": false
   },
   {
-    "id": 1776197608747,
-    "nombre": "LINTERNA RECARGABLE USB 4 POSISCIONES",
-    "precio": 5380,
-    "foto": "https://i.postimg.cc/Fsdt5ngR/images.jpg",
-    "categoria": "ILUMINACION",
-    "suspendido": false
-  },
-  {
     "id": 1776197680330,
     "nombre": "CARGADOR SAMSUMG 45W",
     "precio": 5870,
@@ -2044,8 +1874,9 @@
     "nombre": "MOUSE INALAMBRICO BLISTER",
     "precio": 4400,
     "foto": "https://i.postimg.cc/tTq1wfm8/MOU-150M07.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931919005
   },
   {
     "id": 1776198453347,
@@ -2053,7 +1884,7 @@
     "precio": 16100,
     "foto": "https://i.postimg.cc/x1mcC5Yk/PAVAORIX.png",
     "categoria": "COCINA",
-    "suspendido": false
+    "suspendido": true
   },
   {
     "id": 1776198939960,
@@ -2085,7 +1916,7 @@
     "precio": 12490,
     "foto": "https://i.postimg.cc/0jxL0cL6/CC.jpg",
     "categoria": "PARLANTES Y MICROFONOS",
-    "suspendido": false
+    "suspendido": true
   },
   {
     "id": 1776455777520,
@@ -2098,18 +1929,20 @@
   {
     "id": 1776455897997,
     "nombre": "SET X2 DISPENSER DE JABON (VIDRIO)",
-    "precio": 8820,
+    "precio": 10900,
     "foto": "https://i.postimg.cc/Z5rqbZpd/hand.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
+    "categoria": "COCINA",
+    "suspendido": false,
+    "fechaIngreso": 1779932361585
   },
   {
     "id": 1776458087708,
-    "nombre": "JUEGO X 3 PELA PAPA/CUCHILLO/DESTAPADOR",
+    "nombre": "SET COCINA X 3 BLISTER",
     "precio": 3290,
     "foto": "https://i.postimg.cc/RFB8B1cD/P517.jpg",
     "categoria": "COCINA",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1779992138763
   },
   {
     "id": 1776725397095,
@@ -2136,20 +1969,13 @@
     "suspendido": false
   },
   {
-    "id": 1776726076866,
-    "nombre": "SET DESTAPADOR BOTELLA DE VINO 5 PCS",
-    "precio": 12320,
-    "foto": "https://i.postimg.cc/fbcnCn4Y/botella.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
     "id": 1776726283207,
-    "nombre": "SOPORTE UNIVERSAL CUELLO FLEXIBLE CON VENTOSA",
+    "nombre": "SOPORTE CELU UNIVERSAL CUELLO FLEXIBLE CON VENTOSA",
     "precio": 2298,
     "foto": "https://i.postimg.cc/pLkNdkpk/SD.jpg",
     "categoria": "SOPORTES TV/CELU",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780694422370
   },
   {
     "id": 1776808829345,
@@ -2161,11 +1987,12 @@
   },
   {
     "id": 1776808892145,
-    "nombre": "PARLANTE MP3 C/LINTERNA",
+    "nombre": "LINTERNA PARLANTE MP3",
     "precio": 7420,
     "foto": "https://i.postimg.cc/43DBwKfg/PARLINT.jpg",
-    "categoria": "PARLANTES Y MICROFONOS",
-    "suspendido": false
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1781829224491
   },
   {
     "id": 1776808978080,
@@ -2184,14 +2011,6 @@
     "suspendido": false
   },
   {
-    "id": 1776809217582,
-    "nombre": "PARLANTE RGB RESISTENTE AL AGUA",
-    "precio": 14980,
-    "foto": "https://i.postimg.cc/hGtfwMGh/KTS-2408.jpg",
-    "categoria": "PARLANTES Y MICROFONOS",
-    "suspendido": true
-  },
-  {
     "id": 1776809294877,
     "nombre": "PARLANTE BT CON LUZ",
     "precio": 7000,
@@ -2201,19 +2020,12 @@
   },
   {
     "id": 1776809398188,
-    "nombre": "JOY-61029 JOYSTICK CELL,PC Y PS3",
+    "nombre": "JOYSTICK CELL,PC Y PS3",
     "precio": 16100,
     "foto": "https://i.postimg.cc/PqCdY7x0/6648-50.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
-  },
-  {
-    "id": 1776809495012,
-    "nombre": "RELOJ DESPERTADOR ALARMA CAMPANA",
-    "precio": 9370,
-    "foto": "https://i.postimg.cc/g0LPn6tz/REJ-4408.jpg",
-    "categoria": "RELOJES",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779931823101
   },
   {
     "id": 1776810445731,
@@ -2256,14 +2068,6 @@
     "suspendido": false
   },
   {
-    "id": 1777121907666,
-    "nombre": "BOTELLA TERMICA ARGENTINA 500 ML",
-    "precio": 12600,
-    "foto": "https://i.postimg.cc/50Zp7xQR/c640f682-713d-4c0b-b5b3-f858a556cae7.jpg",
-    "categoria": "TERMOS Y VASOS",
-    "suspendido": true
-  },
-  {
     "id": 1777122731892,
     "nombre": "CARGADOR CABEZAL I PHONE USB C 35W",
     "precio": 3360,
@@ -2288,14 +2092,6 @@
     "suspendido": false
   },
   {
-    "id": 1777123398031,
-    "nombre": "ANAFE ELECTRICO 2 HORNALLAS 2000W ",
-    "precio": 28000,
-    "foto": "https://i.postimg.cc/250TLF0T/ANAFE2.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
     "id": 1777125280505,
     "nombre": "BALANZA MINI DIGITAL A PILA ",
     "precio": 8080,
@@ -2305,11 +2101,12 @@
   },
   {
     "id": 1777125561395,
-    "nombre": "CABLE IFHONE 3.1 TIME CAB-43003",
+    "nombre": "IPHONE CABLE 3.1 TIME CAB-43003",
     "precio": 1540,
     "foto": "https://i.postimg.cc/PrRNFLNg/CABLEIP.jpg",
     "categoria": "CABLES",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780771267095
   },
   {
     "id": 1777140955471,
@@ -2400,30 +2197,6 @@
     "suspendido": false
   },
   {
-    "id": 1777736406836,
-    "nombre": "CUTTER CON REPUESTO ",
-    "precio": 1360,
-    "foto": "https://i.postimg.cc/9FHmKM2r/CTR.jpg",
-    "categoria": "HERRAMIENTAS",
-    "suspendido": false
-  },
-  {
-    "id": 1777736637967,
-    "nombre": "ESTUFA HALOGENA 2 VELAS 800W",
-    "precio": 24150,
-    "foto": "https://i.postimg.cc/Hs6N5Z6W/ESTUFA.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
-    "id": 1777736715340,
-    "nombre": "CALOVENTOR HYTOSHY 2000W",
-    "precio": 24360,
-    "foto": "https://i.postimg.cc/25R7BnN5/CALOVENTOR.jpg",
-    "categoria": "HOGAR",
-    "suspendido": false
-  },
-  {
     "id": 1777736847927,
     "nombre": "AURICULAR BLUETOOH TIME JS235",
     "precio": 8385,
@@ -2485,7 +2258,7 @@
     "precio": 7420,
     "foto": "https://i.postimg.cc/156YCpCX/bg.jpg",
     "categoria": "BALANZAS",
-    "suspendido": false
+    "suspendido": true
   },
   {
     "id": 1777935070970,
@@ -2537,19 +2310,21 @@
   },
   {
     "id": 1778002467423,
-    "nombre": "DESTORNILLADOR X 2 + BUSCAPOLO",
+    "nombre": "SET DESTORNILLADOR X 2 + BUSCAPOLO",
     "precio": 2457,
     "foto": "https://i.postimg.cc/L88M712Z/SETDES.jpg",
     "categoria": "HERRAMIENTAS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781218827542
   },
   {
     "id": 1778002541230,
-    "nombre": "DESTORNILLADOR DE GOLPE X6 AZUL",
+    "nombre": "SET DESTORNILLADOR DE GOLPE X6 AZUL",
     "precio": 8945,
     "foto": "https://i.postimg.cc/15Wd8YhL/DESB.jpg",
     "categoria": "HERRAMIENTAS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1781218783704
   },
   {
     "id": 1778012838218,
@@ -2557,22 +2332,6 @@
     "precio": 5247,
     "foto": "https://i.postimg.cc/HktGdGQb/TP.jpg",
     "categoria": "HERRAMIENTAS",
-    "suspendido": false
-  },
-  {
-    "id": 1778155831022,
-    "nombre": "SET DE CUCHILLOS DE COLOR 6 PZS",
-    "precio": 5100,
-    "foto": "https://i.postimg.cc/9Q3ghkvr/SETC.jpg",
-    "categoria": "COCINA",
-    "suspendido": false
-  },
-  {
-    "id": 1778163177937,
-    "nombre": "LUZ DE EMERGENCIA 30 LED ",
-    "precio": 4970,
-    "foto": "https://i.postimg.cc/y8N7Ck9t/le.jpg",
-    "categoria": "ILUMINACION",
     "suspendido": false
   },
   {
@@ -2584,36 +2343,12 @@
     "suspendido": false
   },
   {
-    "id": 1778541935505,
-    "nombre": "SET DE PUNTAS DESTORNILLADORES 40PCS MELECH",
-    "precio": 16940,
-    "foto": "https://i.postimg.cc/9MDBRX8f/SET-P.jpg",
-    "categoria": "HERRAMIENTAS",
-    "suspendido": false
-  },
-  {
     "id": 1778542191742,
     "nombre": "BOLSA DE AGUA CALIENTE",
     "precio": 4340,
     "foto": "https://i.postimg.cc/PqPDK3Wd/BA.jpg",
     "categoria": "INVIERNO",
     "suspendido": false
-  },
-  {
-    "id": 1778542721473,
-    "nombre": "GUANTE CON TACTIL TERMICOS PARA BICI/MOTO",
-    "precio": 6230,
-    "foto": "https://i.postimg.cc/3R8PPGxf/GT.jpg",
-    "categoria": "INVIERNO",
-    "suspendido": false
-  },
-  {
-    "id": 1778543000838,
-    "nombre": "KIT DE REPARACION GOMA AUTO ",
-    "precio": 2990,
-    "foto": "https://i.postimg.cc/V6vKqW6c/KA.jpg",
-    "categoria": "HERRAMIENTAS",
-    "suspendido": true
   },
   {
     "id": 1778543221003,
@@ -2625,19 +2360,12 @@
   },
   {
     "id": 1778543340202,
-    "nombre": "TECLADO GAMER OFFICE RETROILUMINADO",
+    "nombre": "TECLADO GAMER RETROILUMINADO",
     "precio": 9380,
     "foto": "https://i.postimg.cc/VkVRq1mp/TG.jpg",
-    "categoria": "COMPUTACION",
-    "suspendido": false
-  },
-  {
-    "id": 1778618207888,
-    "nombre": "KIT DE TAPA X6 UNIDADES DE SILICONA",
-    "precio": 2450,
-    "foto": "https://i.postimg.cc/hvts8GQW/TS.jpg",
-    "categoria": "COCINA",
-    "suspendido": false
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779932007199
   },
   {
     "id": 1778636413553,
@@ -2653,14 +2381,6 @@
     "precio": 1337,
     "foto": "https://i.postimg.cc/VvmY0vWX/a11022.jpg",
     "categoria": "AURICULARES C/CABLE",
-    "suspendido": false
-  },
-  {
-    "id": 1778883793877,
-    "nombre": "LINTERNA LED RECARGABLE MULTIFUNCION",
-    "precio": 4050,
-    "foto": "https://i.postimg.cc/fy8j63HC/LN.jpg",
-    "categoria": "ILUMINACION",
     "suspendido": false
   },
   {
@@ -2706,10 +2426,11 @@
   {
     "id": 1779108794414,
     "nombre": "COMPRESOR DE AIRE DC12V",
-    "precio": 11340,
+    "precio": 12810,
     "foto": "https://i.postimg.cc/zv2sb8fr/CC.jpg",
     "categoria": "HERRAMIENTAS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780697426148
   },
   {
     "id": 1779108886166,
@@ -2721,11 +2442,12 @@
   },
   {
     "id": 1779109106043,
-    "nombre": "CALENTADOR DEAGUA PARA AUTO",
+    "nombre": "CALENTADOR DE AGUA PARA AUTO",
     "precio": 4550,
     "foto": "https://i.postimg.cc/65Njc8k7/CC.jpg",
     "categoria": "HOGAR",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1782337845626
   },
   {
     "id": 1779109219368,
@@ -2762,34 +2484,29 @@
   {
     "id": 1779320042456,
     "nombre": "BANDERA P/ AUTO ARGENTINA 30X40CM",
-    "precio": 840,
+    "precio": 1020,
     "foto": "https://i.postimg.cc/mrfV9txM/aa.jpg",
     "categoria": "VARIOS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780317722315
   },
   {
     "id": 1779320113310,
-    "nombre": "LAMPARA SILICON INFANTIL ",
-    "precio": 5100,
+    "nombre": "LAMPARA SILICONA INFANTIL CAMBIOS DE COLOR TACTIL",
+    "precio": 5900,
     "foto": "https://i.postimg.cc/BZYggh9f/BB.jpg",
     "categoria": "NIÑOS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780170322115
   },
   {
     "id": 1779320202323,
     "nombre": "BANDERA ARGENTINA GRANDE  90X145 ",
-    "precio": 2170,
+    "precio": 2790,
     "foto": "https://i.postimg.cc/VvkJ5QYc/NN.jpg",
     "categoria": "VARIOS",
-    "suspendido": false
-  },
-  {
-    "id": 1779320274617,
-    "nombre": "BANDERA Y CORNETA BOCINA ARGENTINA",
-    "precio": 1650,
-    "foto": "https://i.postimg.cc/WzC0PHTw/aa.jpg",
-    "categoria": "VARIOS",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780317658853
   },
   {
     "id": 1779320348903,
@@ -2820,16 +2537,18 @@
     "nombre": "BOTELLA DE VIDRIO H2O",
     "precio": 9100,
     "foto": "https://i.postimg.cc/V65gtTsW/BB.jpg",
-    "categoria": "TERMOS Y VASOS",
-    "suspendido": false
+    "categoria": "COCINA",
+    "suspendido": false,
+    "fechaIngreso": 1780169754695
   },
   {
     "id": 1779320750332,
-    "nombre": "LUZ P/BICI RECARGABLE X LED",
+    "nombre": "LUZ P/BICI RECARGABLE LED",
     "precio": 1960,
     "foto": "https://i.postimg.cc/B685bKNx/BB.jpg",
     "categoria": "ILUMINACION",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780695224540
   },
   {
     "id": 1779320879976,
@@ -2841,11 +2560,12 @@
   },
   {
     "id": 1779320961966,
-    "nombre": "GORRO CORDERITO + CUELLO UNISEX",
-    "precio": 4340,
+    "nombre": "GORRO + CUELLO C/ CORDERITO ",
+    "precio": 5270,
     "foto": "https://i.postimg.cc/X7WFSmM2/mm.jpg",
     "categoria": "INVIERNO",
-    "suspendido": false
+    "suspendido": false,
+    "fechaIngreso": 1780169651105
   },
   {
     "id": 1779321286197,
@@ -2853,46 +2573,6 @@
     "precio": 14500,
     "foto": "https://i.postimg.cc/7h9LyB7W/mm.jpg",
     "categoria": "INVIERNO",
-    "suspendido": false
-  },
-  {
-    "id": 1779321382940,
-    "nombre": "MASCARA DE NEOPRENO TERMICA",
-    "precio": 1690,
-    "foto": "https://i.postimg.cc/NFdQnKq4/mm.jpg",
-    "categoria": "INVIERNO",
-    "suspendido": false
-  },
-  {
-    "id": 1779321685685,
-    "nombre": "CANDADO LINGA PARA BICI 1.20M",
-    "precio": 4340,
-    "foto": "https://i.postimg.cc/43gjzXjV/MM.jpg",
-    "categoria": "CANDADOS",
-    "suspendido": false
-  },
-  {
-    "id": 1779322223130,
-    "nombre": "TERMO CON PICO CEBADOR Y OPCION MATE LISTO! ACERO 500ML",
-    "precio": 13650,
-    "foto": "https://i.postimg.cc/J4Qp9jFw/MM.jpg",
-    "categoria": "TERMOS Y VASOS",
-    "suspendido": false
-  },
-  {
-    "id": 1779322346055,
-    "nombre": "MOCHILA URBANA LOVE",
-    "precio": 7600,
-    "foto": "https://i.postimg.cc/gc7HFjgm/qq.jpg",
-    "categoria": "ACCESORIOS FEMENINOS",
-    "suspendido": false
-  },
-  {
-    "id": 1779322807134,
-    "nombre": "BANDERA 90X150CM C/ BRAZOS",
-    "precio": 3790,
-    "foto": "https://i.postimg.cc/HsfL178h/NN.jpg",
-    "categoria": "VARIOS",
     "suspendido": false
   },
   {
@@ -2918,5 +2598,518 @@
     "foto": "https://i.postimg.cc/zB3bpYR9/MM.jpg",
     "categoria": "PARLANTES Y MICROFONOS",
     "suspendido": false
+  },
+  {
+    "id": 1779932098854,
+    "nombre": "CABLE AUXILIAR CORDON 3.5",
+    "precio": 760,
+    "foto": "https://i.postimg.cc/43M5Zhz4/CC.jpg",
+    "categoria": "CABLES",
+    "suspendido": false,
+    "fechaIngreso": 1779932098854
+  },
+  {
+    "id": 1779932514553,
+    "nombre": "JOYSTICK PS3 SIN MARCA",
+    "precio": 10850,
+    "foto": "https://i.postimg.cc/ydtrfbfS/JT3.jpg",
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779932514553
+  },
+  {
+    "id": 1779932617442,
+    "nombre": "JOYSTICK PS4 SONY",
+    "precio": 23900,
+    "foto": "https://i.postimg.cc/dVsZftTP/jt.jpg",
+    "categoria": "TECNOLOGIA",
+    "suspendido": false,
+    "fechaIngreso": 1779932617442
+  },
+  {
+    "id": 1779989922607,
+    "nombre": "CUELLO POLAR UNISEX ",
+    "precio": 1500,
+    "foto": "https://i.postimg.cc/1zPJ88Bp/CP.jpg",
+    "categoria": "INVIERNO",
+    "suspendido": false,
+    "fechaIngreso": 1779989922607
+  },
+  {
+    "id": 1779990012092,
+    "nombre": "CUELLO PELUCHE",
+    "precio": 2000,
+    "foto": "https://i.postimg.cc/WzM7pjZ6/cpeu.jpg",
+    "categoria": "INVIERNO",
+    "suspendido": false,
+    "fechaIngreso": 1779990012092
+  },
+  {
+    "id": 1779990936145,
+    "nombre": "AURICULAR NOGA VOICE",
+    "precio": 10360,
+    "foto": "https://i.postimg.cc/TPFSpdyG/CC.webp",
+    "categoria": "AURICULARES VINCHA",
+    "suspendido": false,
+    "fechaIngreso": 1779990936145
+  },
+  {
+    "id": 1779991022033,
+    "nombre": "AURICULAR JBL TUNE 520",
+    "precio": 18800,
+    "foto": "https://i.postimg.cc/fL7KDDmv/CC.webp",
+    "categoria": "AURICULARES VINCHA",
+    "suspendido": false,
+    "fechaIngreso": 1779991022033
+  },
+  {
+    "id": 1779991263589,
+    "nombre": "AURICULAR ROYALCELL ",
+    "precio": 1480,
+    "foto": "https://i.postimg.cc/WbqdkSfj/CC.jpg",
+    "categoria": "AURICULARES C/CABLE",
+    "suspendido": false,
+    "fechaIngreso": 1779991263589
+  },
+  {
+    "id": 1779991370620,
+    "nombre": "AURICULAR SONY 520",
+    "precio": 19990,
+    "foto": "https://i.postimg.cc/5N8Frn5B/CC.webp",
+    "categoria": "AURICULARES VINCHA",
+    "suspendido": false,
+    "fechaIngreso": 1779991370620
+  },
+  {
+    "id": 1779991682258,
+    "nombre": "CABLE LEGATUS ENGOMADO TIPO C",
+    "precio": 1310,
+    "foto": "https://i.postimg.cc/ryQHrNRQ/CC.webp",
+    "categoria": "CABLES",
+    "suspendido": false,
+    "fechaIngreso": 1779991682258
+  },
+  {
+    "id": 1779992028967,
+    "nombre": "SET COCINA X 4 BLISTER",
+    "precio": 4350,
+    "foto": "https://i.postimg.cc/CxmsKSPJ/CC.jpg",
+    "categoria": "COCINA",
+    "suspendido": false,
+    "fechaIngreso": 1779992028967
+  },
+  {
+    "id": 1779992396455,
+    "nombre": "CARGADOR DE AUTO Y TRANSMISOR  FM 3.1A",
+    "precio": 3550,
+    "foto": "https://i.postimg.cc/FH3QtCTt/CC.webp",
+    "categoria": "CARGADORES",
+    "suspendido": false,
+    "fechaIngreso": 1779992396455
+  },
+  {
+    "id": 1780010126159,
+    "nombre": "IPHONE CABLE ENGOMADO  20W AITECH",
+    "precio": 2100,
+    "foto": "https://i.postimg.cc/q7LygfsT/CC.jpg",
+    "categoria": "CABLES",
+    "suspendido": false,
+    "fechaIngreso": 1780010126159
+  },
+  {
+    "id": 1780010282060,
+    "nombre": "IPHONE CABLE ROYALCELL MALLADO",
+    "precio": 1480,
+    "foto": "https://i.postimg.cc/ZRnBRWYx/CC.webp",
+    "categoria": "CABLES",
+    "suspendido": false,
+    "fechaIngreso": 1780010282060
+  },
+  {
+    "id": 1780010533938,
+    "nombre": "CARGADOR DE AUTO ROYALCELL 4.8 TIPO C",
+    "precio": 3450,
+    "foto": "https://i.postimg.cc/fTncHvTP/CC.webp",
+    "categoria": "CARGADORES",
+    "suspendido": false,
+    "fechaIngreso": 1780010533938
+  },
+  {
+    "id": 1780169230083,
+    "nombre": "GORRO LANA INTERIOR CORDERITO ",
+    "precio": 3900,
+    "foto": "https://i.postimg.cc/Znf4qwhs/CC.jpg",
+    "categoria": "INVIERNO",
+    "suspendido": false,
+    "fechaIngreso": 1780169230083
+  },
+  {
+    "id": 1780171277388,
+    "nombre": "GUANTES CHENIL",
+    "precio": 1800,
+    "foto": "https://i.postimg.cc/fRFzQqw5/DD.webp",
+    "categoria": "INVIERNO",
+    "suspendido": false,
+    "fechaIngreso": 1780171277388
+  },
+  {
+    "id": 1780171498266,
+    "nombre": "BUFANDA NUBE BCO/VERDE/GRIS/ESTAMPADOS",
+    "precio": 11500,
+    "foto": "https://i.postimg.cc/tRP23sZ3/aa.jpg",
+    "categoria": "INVIERNO",
+    "suspendido": false,
+    "fechaIngreso": 1780171498266
+  },
+  {
+    "id": 1780694027519,
+    "nombre": "SOPORTE DE CELU P/DIFERENTES SUPERFICIES Y AUTOS",
+    "precio": 2240,
+    "foto": "https://i.postimg.cc/BvH5Rrqr/CC.jpg",
+    "categoria": "SOPORTES TV/CELU",
+    "suspendido": false,
+    "fechaIngreso": 1780694027519
+  },
+  {
+    "id": 1780694252283,
+    "nombre": "SOPORTE BICI ",
+    "precio": 3220,
+    "foto": "https://i.postimg.cc/jSVLBLLC/xx.jpg",
+    "categoria": "SOPORTES TV/CELU",
+    "suspendido": false,
+    "fechaIngreso": 1780694252283
+  },
+  {
+    "id": 1780694837047,
+    "nombre": "LAMPARA  PORTATIL LED, CARGA SOLAR Y USB",
+    "precio": 8680,
+    "foto": "https://i.postimg.cc/sf4z3x6v/zz.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1780694837047
+  },
+  {
+    "id": 1780694927462,
+    "nombre": "LINTERNA LED RECARGABLE C/ENCENDEDOR ",
+    "precio": 3360,
+    "foto": "https://i.postimg.cc/MZPs08XX/zz.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1780694927463
+  },
+  {
+    "id": 1780695520650,
+    "nombre": "BOTELLA TERMICA ACERO Y REVESTIMIENTO DE GOMA 500ML",
+    "precio": 10500,
+    "foto": "https://i.postimg.cc/yNGhG03R/zz.jpg",
+    "categoria": "TERMOS Y VASOS",
+    "suspendido": false,
+    "fechaIngreso": 1780695520650
+  },
+  {
+    "id": 1780695597274,
+    "nombre": "ATORNILLADOR 12V 2 BATERIAS",
+    "precio": 37100,
+    "foto": "https://i.postimg.cc/fWcXcGCd/zz.jpg",
+    "categoria": "HERRAMIENTAS",
+    "suspendido": false,
+    "fechaIngreso": 1780695597274
+  },
+  {
+    "id": 1780695976047,
+    "nombre": "DEPILADORA 6 EN 1 RECARGABLE",
+    "precio": 20610,
+    "foto": "https://i.postimg.cc/wv6zSsK6/zz.jpg",
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1780695976047
+  },
+  {
+    "id": 1780696061070,
+    "nombre": "SET DE UTENSILIOS DE COCINA DE SILICONA",
+    "precio": 10570,
+    "foto": "https://i.postimg.cc/CK0pqfxt/zz.jpg",
+    "categoria": "COCINA",
+    "suspendido": false,
+    "fechaIngreso": 1780696061070
+  },
+  {
+    "id": 1780696186069,
+    "nombre": "DEPILADORA PARA DAMA RECARGABLE",
+    "precio": 7700,
+    "foto": "https://i.postimg.cc/xjBfd8Mt/zz.jpg",
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1780696186069
+  },
+  {
+    "id": 1780696281925,
+    "nombre": "JARRA DE VIDRIO CON MANIJA 1.8L ",
+    "precio": 9940,
+    "foto": "https://i.postimg.cc/fbbnCQYx/zz.jpg",
+    "categoria": "COCINA",
+    "suspendido": false,
+    "fechaIngreso": 1780696281925
+  },
+  {
+    "id": 1780769615099,
+    "nombre": "AURICULAR ROYALCELL IPHONE RE-10018",
+    "precio": 3500,
+    "foto": "https://i.postimg.cc/65qr95Zq/IPH.jpg",
+    "categoria": "AURICULARES C/CABLE",
+    "suspendido": false,
+    "fechaIngreso": 1780769615099
+  },
+  {
+    "id": 1780769876993,
+    "nombre": "BOCINA CORNETA DOBLE MUNDIAL",
+    "precio": 1980,
+    "foto": "https://i.postimg.cc/zXqJWV7B/CORN.jpg",
+    "categoria": "VARIOS",
+    "suspendido": false,
+    "fechaIngreso": 1780769876993
+  },
+  {
+    "id": 1780770308838,
+    "nombre": "ARG. CUELLO POLAR",
+    "precio": 2000,
+    "foto": "https://i.postimg.cc/DZmj4Vps/BB.jpg",
+    "categoria": "VARIOS",
+    "suspendido": false,
+    "fechaIngreso": 1780770308838
+  },
+  {
+    "id": 1781012502391,
+    "nombre": "ARG. PULSERA SILICONA CON LUZ LED",
+    "precio": 2080,
+    "foto": "https://i.postimg.cc/vmH6RqWz/aa.jpg",
+    "categoria": "VARIOS",
+    "suspendido": false,
+    "fechaIngreso": 1781012502391
+  },
+  {
+    "id": 1781216068771,
+    "nombre": "SET DESTORNILLADOR DE GOLPE CARAMELO X 6 ",
+    "precio": 9452,
+    "foto": "https://i.postimg.cc/XJpgqTgs/des.jpg",
+    "categoria": "HERRAMIENTAS",
+    "suspendido": false,
+    "fechaIngreso": 1781216068771
+  },
+  {
+    "id": 1781216168448,
+    "nombre": "SET DESTORNOLLADOR ROJO X 6 ",
+    "precio": 6550,
+    "foto": "https://i.postimg.cc/DyKq3Wtm/des2.jpg",
+    "categoria": "HERRAMIENTAS",
+    "suspendido": false,
+    "fechaIngreso": 1781216168448
+  },
+  {
+    "id": 1781216326568,
+    "nombre": "SACA PELUSA DE ROPA ",
+    "precio": 2500,
+    "foto": "https://i.postimg.cc/bwCV3Hd2/pelusa.jpg",
+    "categoria": "HOGAR",
+    "suspendido": false,
+    "fechaIngreso": 1781216326568
+  },
+  {
+    "id": 1781217890231,
+    "nombre": "ZAPATILLA FLOR 4BOCAS + 4 USB",
+    "precio": 8050,
+    "foto": "https://i.postimg.cc/g0LssCCL/flor.jpg",
+    "categoria": "ENCHUFES/EXTENSIONES",
+    "suspendido": false,
+    "fechaIngreso": 1781217890231
+  },
+  {
+    "id": 1781218245505,
+    "nombre": "LINTERNA LED ZOOM TELESCÓPICO Y LUZ LATERAL TIPO COB ",
+    "precio": 5040,
+    "foto": "https://i.postimg.cc/Qt8nN4BV/LINB.png",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1781218245505
+  },
+  {
+    "id": 1781634471852,
+    "nombre": "CABEZAL ADAPTADOR ENCHUFE ",
+    "precio": 570,
+    "foto": "https://i.postimg.cc/7P98dzDB/zz.jpg",
+    "categoria": "ENCHUFES/EXTENSIONES",
+    "suspendido": false,
+    "fechaIngreso": 1781634471852
+  },
+  {
+    "id": 1781798921356,
+    "nombre": "LUZ DE EMERGENCIA 60 LED CHICO",
+    "precio": 10500,
+    "foto": "https://i.postimg.cc/nLHKQSdN/aa.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": true,
+    "fechaIngreso": 1781798921356
+  },
+  {
+    "id": 1781798988179,
+    "nombre": "LUZ DE EMERGENCIA 60LED C/ENCHUFE ",
+    "precio": 13999,
+    "foto": "https://i.postimg.cc/pXz1f7Z9/aa.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": true,
+    "fechaIngreso": 1781798988179
+  },
+  {
+    "id": 1781799487140,
+    "nombre": "SET DE LUZ LED PLACAR X3PCS C/CONTROL ",
+    "precio": 7980,
+    "foto": "https://i.postimg.cc/cLYZ8XKT/aa.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1781799487140
+  },
+  {
+    "id": 1781799866329,
+    "nombre": "MOPA AUTOMATICA 360° C/ MICROFIBRA",
+    "precio": 10400,
+    "foto": "https://i.postimg.cc/WbvxHTtF/aa.jpg",
+    "categoria": "HOGAR",
+    "suspendido": false,
+    "fechaIngreso": 1781799866329
+  },
+  {
+    "id": 1781829728975,
+    "nombre": "CALCULADORA KARUDIA 12 DIGITOS",
+    "precio": 4550,
+    "foto": "https://i.postimg.cc/pd8LtG0y/aa.jpg",
+    "categoria": "LIBRERIA",
+    "suspendido": false,
+    "fechaIngreso": 1781829728975
+  },
+  {
+    "id": 1781829922077,
+    "nombre": "RECEPTOR BLUETOOTH P/ AUTO Y ENTRADA AUXILIAR",
+    "precio": 2660,
+    "foto": "https://i.postimg.cc/W3TTc2qD/aa.jpg",
+    "categoria": "FUENTES DE CARGA/ADAPTADORES",
+    "suspendido": false,
+    "fechaIngreso": 1781829922077
+  },
+  {
+    "id": 1781830098404,
+    "nombre": "PIZARRA LED 20 X30 ACRILICA COLORES NEON",
+    "precio": 9500,
+    "foto": "https://i.postimg.cc/Vshpjfs8/aa.jpg",
+    "categoria": "NIÑOS",
+    "suspendido": false,
+    "fechaIngreso": 1781830098404
+  },
+  {
+    "id": 1781830176323,
+    "nombre": "JUEGO DE MESA INTERACTIVO BASTA",
+    "precio": 14500,
+    "foto": "https://i.postimg.cc/yN7bVWjL/aa.jpg",
+    "categoria": "NIÑOS",
+    "suspendido": false,
+    "fechaIngreso": 1781830176323
+  },
+  {
+    "id": 1781830248938,
+    "nombre": "JUEGO DE BLOQUES JENGA PLASTICO",
+    "precio": 9100,
+    "foto": "https://i.postimg.cc/bwPhtyLR/BX-16.jpg",
+    "categoria": "NIÑOS",
+    "suspendido": false,
+    "fechaIngreso": 1781830248938
+  },
+  {
+    "id": 1782334414579,
+    "nombre": "LAMPARA MATAMOSQUITO TIPO FAROL",
+    "precio": 9520,
+    "foto": "https://i.postimg.cc/FKs6QjNz/aa.jpg",
+    "categoria": "HOGAR",
+    "suspendido": false,
+    "fechaIngreso": 1782334414579
+  },
+  {
+    "id": 1782334703785,
+    "nombre": "ORGANIZADOR DE ESCOBAS PARA COLGAR",
+    "precio": 10300,
+    "foto": "https://i.postimg.cc/d1GrHxpt/MELECH-595.jpg",
+    "categoria": "HOGAR",
+    "suspendido": false,
+    "fechaIngreso": 1782334703785
+  },
+  {
+    "id": 1782335557634,
+    "nombre": "LÁMPARA MULTIFUNCIONAL CÚPULA GIRATORIA CARGA PILAS/USB/SOLAR",
+    "precio": 11530,
+    "foto": "https://i.postimg.cc/Gm0rrg5T/HW-978W.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1782335557634
+  },
+  {
+    "id": 1782335869536,
+    "nombre": "LUZ LED EMERGENCIA 30 LED",
+    "precio": 4990,
+    "foto": "https://i.postimg.cc/BndCmHt9/30led.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1782335869536
+  },
+  {
+    "id": 1782337011449,
+    "nombre": "LINTERNA 4 LED COB USB RECARGABLE INDICADOR DE BATERIA",
+    "precio": 5200,
+    "foto": "https://i.postimg.cc/XYwgDX57/ll3.jpg",
+    "categoria": "ILUMINACION",
+    "suspendido": false,
+    "fechaIngreso": 1782337011449
+  },
+  {
+    "id": 1782337439797,
+    "nombre": "CALENTADOR DE AGUA  1500W",
+    "precio": 3750,
+    "foto": "https://i.postimg.cc/9M4qyxHh/calentador.jpg",
+    "categoria": "HOGAR",
+    "suspendido": false,
+    "fechaIngreso": 1782337439797
+  },
+  {
+    "id": 1782337547780,
+    "nombre": "RELOJ DESPERTADOR CAMPANA",
+    "precio": 10420,
+    "foto": "https://i.postimg.cc/BZHjsPqK/rr-pg.jpg",
+    "categoria": "RELOJES",
+    "suspendido": false,
+    "fechaIngreso": 1782337547780
+  },
+  {
+    "id": 1782338255575,
+    "nombre": "SOPORTE FIJO TV 14-42PLG",
+    "precio": 3500,
+    "foto": "https://i.postimg.cc/wxCbyZ8X/SP-73005.jpg",
+    "categoria": "SOPORTES TV/CELU",
+    "suspendido": false,
+    "fechaIngreso": 1782338255575
+  },
+  {
+    "id": 1782339017881,
+    "nombre": "CUTTER",
+    "precio": 1300,
+    "foto": "https://i.postimg.cc/d3YHXZBL/cjpg.jpg",
+    "categoria": "HERRAMIENTAS",
+    "suspendido": false,
+    "fechaIngreso": 1782339017881
+  },
+  {
+    "id": 1782478705417,
+    "nombre": "PATILLERA MESSI METAL",
+    "precio": 7100,
+    "foto": "https://i.postimg.cc/BZH0cBXT/pm.jpg",
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1782478705417
   }
 ]

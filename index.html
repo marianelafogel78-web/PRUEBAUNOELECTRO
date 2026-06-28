@@ -873,24 +873,35 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
         const renderizarCarrito = () => {
             const listaCarrito = document.getElementById('lista-carrito');
             const carritoTotal = document.getElementById('carrito-total');
+            const btnWhatsApp = document.getElementById('btn-comprar-whatsapp');
             
             listaCarrito.innerHTML = '';
             let total = 0;
+            let tieneAgotados = false; // Contador para bloquear el envío
 
             if (carrito.length === 0) {
                 listaCarrito.innerHTML = '<p style="text-align:center; padding: 20px;">EL CARRITO ESTÁ VACÍO.</p>';
                 carritoTotal.innerText = '$0.00';
+                btnWhatsApp.disabled = false;
+                btnWhatsApp.innerText = 'LISTO! ENVIAR MI PEDIDO POR WHATSAPP';
                 return;
             }
 
             carrito.forEach(item => {
+                // Buscamos si el producto del carrito sigue existiendo y si está suspendido
+                const productoActual = productos.find(p => p.id === item.id);
+                const esAgotado = productoActual ? productoActual.suspendido : false;
+                
+                if (esAgotado) tieneAgotados = true;
+
                 const subtotal = item.precio * item.cantidad;
                 total += subtotal;
 
                 const divItem = document.createElement('div');
-                divItem.className = 'carrito-item';
+                divItem.className = `carrito-item ${esAgotado ? 'producto-sin-stock' : ''}`;
                 divItem.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px; position: relative;">
+                        ${esAgotado ? '<div class="cartel-agotado">AGOTADO</div>' : ''}
                         <img src="${item.foto}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;" onerror="this.src='https://placehold.co/40x40';">
                         <div>
                             <strong>${item.nombre}</strong><br>
@@ -907,6 +918,17 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
                 `;
                 listaCarrito.appendChild(divItem);
             });
+
+            // Lógica de bloqueo del botón
+            if (tieneAgotados) {
+                btnWhatsApp.disabled = true;
+                btnWhatsApp.innerText = 'ELIMINA LOS PRODUCTOS AGOTADOS';
+                btnWhatsApp.style.opacity = '0.5';
+            } else {
+                btnWhatsApp.disabled = false;
+                btnWhatsApp.innerText = 'LISTO! ENVIAR MI PEDIDO POR WHATSAPP';
+                btnWhatsApp.style.opacity = '1';
+            }
 
             carritoTotal.innerText = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(total);
         };
@@ -954,6 +976,20 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
         };
 
        const generarMensajeWhatsApp = () => {
+            const hayAgotados = carrito.some(item => {
+        const prod = productos.find(p => p.id === item.id);
+        return prod && prod.suspendido;
+    });
+
+    if (hayAgotados) {
+        Swal.fire({
+            title: "¡UPS!",
+            text: "Hay productos agotados en tu carrito. Por favor, elimínalos para continuar.",
+            icon: "warning",
+            confirmButtonColor: "#191970"
+        });
+        return; // Detiene el envío inmediatamente
+    }
             const nombreCliente = document.getElementById('nombre-cliente-whatsapp').value.trim();
             const aclaracionPedido = document.getElementById('aclaracion-pedido').value.trim();
             
