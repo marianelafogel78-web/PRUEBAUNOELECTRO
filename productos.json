@@ -500,7 +500,7 @@
     "precio": 14150,
     "foto": "https://i.postimg.cc/qMKW8Sn5/OA-CP202.jpg",
     "categoria": "ACCESORIOS P/ BELLEZA",
-    "suspendido": false,
+    "suspendido": true,
     "fechaIngreso": 1779989058108
   },
   {
@@ -3082,7 +3082,7 @@
     "precio": 10420,
     "foto": "https://i.postimg.cc/BZHjsPqK/rr-pg.jpg",
     "categoria": "RELOJES",
-    "suspendido": false,
+    "suspendido": true,
     "fechaIngreso": 1782337547780
   },
   {
