@@ -890,7 +890,7 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
             carrito.forEach(item => {
                 // Buscamos si el producto del carrito sigue existiendo y si está suspendido
                 const productoActual = productos.find(p => p.id === item.id);
-                const esAgotado = productoActual ? productoActual.suspendido : false;
+                const esAgotado = !productoActual || productoActual.suspendido;
                 
                 if (esAgotado) tieneAgotados = true;
 
@@ -977,9 +977,9 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
 
        const generarMensajeWhatsApp = () => {
             const hayAgotados = carrito.some(item => {
-        const prod = productos.find(p => p.id === item.id);
-        return prod && prod.suspendido;
-    });
+    const prod = productos.find(p => p.id === item.id);
+    return !prod || prod.suspendido; // Esta línea cubre los dos casos
+});
 
     if (hayAgotados) {
         Swal.fire({
