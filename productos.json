@@ -500,7 +500,7 @@
     "precio": 14150,
     "foto": "https://i.postimg.cc/qMKW8Sn5/OA-CP202.jpg",
     "categoria": "ACCESORIOS P/ BELLEZA",
-    "suspendido": true,
+    "suspendido": false,
     "fechaIngreso": 1779989058108
   },
   {
@@ -3073,7 +3073,7 @@
     "precio": 3750,
     "foto": "https://i.postimg.cc/9M4qyxHh/calentador.jpg",
     "categoria": "HOGAR",
-    "suspendido": true,
+    "suspendido": false,
     "fechaIngreso": 1782337439797
   },
   {
@@ -3082,7 +3082,7 @@
     "precio": 10420,
     "foto": "https://i.postimg.cc/BZHjsPqK/rr-pg.jpg",
     "categoria": "RELOJES",
-    "suspendido": true,
+    "suspendido": false,
     "fechaIngreso": 1782337547780
   },
   {
@@ -3091,7 +3091,7 @@
     "precio": 3500,
     "foto": "https://i.postimg.cc/wxCbyZ8X/SP-73005.jpg",
     "categoria": "SOPORTES TV/CELU",
-    "suspendido": true,
+    "suspendido": false,
     "fechaIngreso": 1782338255575
   },
   {
@@ -3100,7 +3100,16 @@
     "precio": 1300,
     "foto": "https://i.postimg.cc/d3YHXZBL/cjpg.jpg",
     "categoria": "HERRAMIENTAS",
-    "suspendido": true,
+    "suspendido": false,
     "fechaIngreso": 1782339017881
+  },
+  {
+    "id": 1782478705417,
+    "nombre": "PATILLERA MESSI METAL",
+    "precio": 7100,
+    "foto": "https://i.postimg.cc/BZH0cBXT/pm.jpg",
+    "categoria": "ACCESORIOS P/ BELLEZA",
+    "suspendido": false,
+    "fechaIngreso": 1782478705417
   }
 ]
