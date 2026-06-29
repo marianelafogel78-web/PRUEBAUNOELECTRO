@@ -3073,7 +3073,7 @@
     "precio": 3750,
     "foto": "https://i.postimg.cc/9M4qyxHh/calentador.jpg",
     "categoria": "HOGAR",
-    "suspendido": false,
+    "suspendido": true,
     "fechaIngreso": 1782337439797
   },
   {
