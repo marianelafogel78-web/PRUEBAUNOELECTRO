@@ -1219,15 +1219,20 @@ const eliminarCategoria = (cat) => {
         // =================================================================
        // MODIFICAMOS mostrarPestana PARA QUE REFRESHEE SIEMPRE
 const mostrarPestana = async (pestana, event) => {
-    // 1. REFRESCO GLOBAL: Cada vez que tocan un botón de pestaña, bajamos los datos frescos
-    try {
-        const responseProd = await fetch('./productos.json?v=' + Date.now());
-        productos = await responseProd.json();
-    } catch (e) {
-        console.log("Error al refrescar datos en segundo plano");
+    // 1. Refrescar datos respetando los cambios locales del Admin
+    const productosGuardados = localStorage.getItem('productos_local_admin');
+    if (productosGuardados) {
+        productos = JSON.parse(productosGuardados);
+    } else {
+        try {
+            const responseProd = await fetch('./productos.json?v=' + Date.now());
+            if (responseProd.ok) productos = await responseProd.json();
+        } catch (e) {
+            console.log("Error al refrescar datos en segundo plano");
+        }
     }
 
-    // 2. Lógica normal de pestañas
+    // 2. Control de pestañas
     document.querySelectorAll('.tab-content').forEach(p => p.style.display = 'none');
     document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
     
@@ -1239,11 +1244,11 @@ const mostrarPestana = async (pestana, event) => {
         document.getElementById('tab-tienda')?.classList.add('active');
     }
 
-    // 3. Renderizado según la pestaña
+    // 3. Renderizar y actualizar vista de tienda o carrito
     if (pestana === 'tienda') {
         renderizarProductos(productos);
         const selectFiltros = document.getElementById('select-filtros-tienda');
-        if(selectFiltros) selectFiltros.value = 'TODOS';
+        if (selectFiltros) selectFiltros.value = 'TODOS';
         
         const seccionNuevos = document.getElementById('seccion-nuevos-ingresos');
         if (seccionNuevos) seccionNuevos.style.display = 'block';
