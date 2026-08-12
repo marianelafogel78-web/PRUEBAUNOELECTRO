@@ -839,7 +839,7 @@ function guardarCambiosLocales() {
             const producto = productos.find(p => p.id === productoId);
 
             if (!producto || producto.suspendido) {
-                alert("Este producto no tiene stock")
+                alert("Este producto no tiene stock");
                 return;
             }
 
