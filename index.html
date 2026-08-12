@@ -1217,7 +1217,9 @@ const eliminarCategoria = (cat) => {
         // =================================================================
         // 6. NAVEGACIÓN
         // =================================================================
-       // MODIFICAMOS mostrarPestana PARA QUE REFRESHEE SIEMPRE
+     // =================================================================
+// 6. NAVEGACIÓN
+// =================================================================
 async function mostrarPestana(pestana, event) {
     // 1. Refrescar datos desde localStorage o servidor
     const productosGuardados = localStorage.getItem('productos_local_admin');
@@ -1260,8 +1262,7 @@ async function mostrarPestana(pestana, event) {
     }
     
     window.scrollTo(0, 0);
-};
-
+}
         // =================================================================
         // 7. INICIALIZACIÓN Y FUNCIONES COMPLEMENTARIAS
         // =================================================================
