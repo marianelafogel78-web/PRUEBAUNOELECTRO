@@ -620,10 +620,15 @@ box-sizing: border-box;
                 </div>
 
                 <div style="margin-top: 30px;">
-                    <h3>LISTADO DE PRODUCTOS</h3>
-                    <input type="text" id="buscador-admin" placeholder="BUSCAR POR NOMBRE O ID..." style="margin-bottom: 15px;">
-                    <div id="lista-admin-productos"></div>
-                </div>
+    <h3>LISTADO DE PRODUCTOS</h3>
+    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <input type="text" id="buscador-admin" placeholder="BUSCAR POR NOMBRE O ID..." style="flex: 2; margin-bottom: 0;">
+        <select id="filtro-categoria-admin" onchange="filtrarYRenderizarProductos()" style="flex: 1; margin-bottom: 0;">
+            <option value="TODOS">TODAS LAS CATEGORÍAS</option>
+        </select>
+    </div>
+    <div id="lista-admin-productos"></div>
+</div>
             </section>
         </div>
     </main>
@@ -648,31 +653,50 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
         const TELEFONO_WHATSAPP = "5493571536378"; 
 
         // =================================================================
-        // 2. CARGA DE DATOS (FETCH)
-        // =================================================================
-        async function cargarDatosIniciales() {
-            try {
-                const responseProd = await fetch('./productos.json?v=' + Date.now());
-                const responseCat = await fetch('./categorias.json?v=' + Date.now());
-                
-                if (!responseProd.ok || !responseCat.ok) throw new Error("Error al cargar archivos JSON");
+       // =================================================================
+// 2. CARGA DE DATOS (FETCH + LOCALSTORAGE LOCAL)
+// =================================================================
+async function cargarDatosIniciales() {
+    try {
+        // Intentar recuperar primero de localStorage (para cambios inmediatos de admin)
+        const productosGuardados = localStorage.getItem('productos_local_admin');
+        const categoriasGuardadas = localStorage.getItem('categorias_local_admin');
 
-                productos = await responseProd.json();
-                categorias = await responseCat.json();
-
-                renderizarFiltros();
-                filtrarProductos('TODOS');
-                renderizarCarrito();
-                actualizarContadorCarrito();
-
-                inicializarNuevosIngresos();
-                
-                document.getElementById('loading-message').style.display = 'none';
-            } catch (error) {
-                console.error("Error detallado:", error);
-                document.getElementById('loading-message').innerHTML = "ERROR AL CARGAR DATOS. ASEGÚRESE QUE LOS ARCHIVOS .JSON EXISTAN.";
-            }
+        if (productosGuardados) {
+            productos = JSON.parse(productosGuardados);
+        } else {
+            const responseProd = await fetch('./productos.json?v=' + Date.now());
+            if (!responseProd.ok) throw new Error("Error al cargar productos.json");
+            productos = await responseProd.json();
         }
+
+        if (categoriasGuardadas) {
+            categorias = JSON.parse(categoriasGuardadas);
+        } else {
+            const responseCat = await fetch('./categorias.json?v=' + Date.now());
+            if (!responseCat.ok) throw new Error("Error al cargar categorias.json");
+            categorias = await responseCat.json();
+        }
+
+        renderizarFiltros();
+        filtrarProductos('TODOS');
+        renderizarCarrito();
+        actualizarContadorCarrito();
+
+        inicializarNuevosIngresos();
+        
+        document.getElementById('loading-message').style.display = 'none';
+    } catch (error) {
+        console.error("Error detallado:", error);
+        document.getElementById('loading-message').innerHTML = "ERROR AL CARGAR DATOS. ASEGÚRESE QUE LOS ARCHIVOS .JSON EXISTAN.";
+    }
+}
+
+// Función auxiliar para guardar en memoria local
+function guardarCambiosLocales() {
+    localStorage.setItem('productos_local_admin', JSON.stringify(productos));
+    localStorage.setItem('categorias_local_admin', JSON.stringify(categorias));
+}
 
         // =================================================================
         // 3. LÓGICA DE LA TIENDA
@@ -782,23 +806,31 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
             renderizarProductos(filtrados);
         };
 
-        const renderizarFiltros = () => {
-            const selectFiltros = document.getElementById('select-filtros-tienda');
-            const selectForm = document.getElementById('producto-categoria');
-            const listaCatAdmin = document.getElementById('lista-categorias-admin');
+       const renderizarFiltros = () => {
+    const selectFiltros = document.getElementById('select-filtros-tienda');
+    const selectForm = document.getElementById('producto-categoria');
+    const listaCatAdmin = document.getElementById('lista-categorias-admin');
+    const selectCatAdminFilter = document.getElementById('filtro-categoria-admin');
 
-            const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
-            
-            selectFiltros.innerHTML = '<option value="TODOS">CATEGORÍAS</option>' + opciones;
-            selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
-            
-            listaCatAdmin.innerHTML = categorias.map(cat => `
-                <li>
-                    ${cat} 
-                    <button onclick="eliminarCategoria('${cat}')" style="margin-left:10px; color:red; cursor:pointer; background:none; border:none;">[X]</button>
-                </li>
-            `).join('');
-        };
+    const opciones = categorias.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+    
+    if (selectFiltros) selectFiltros.innerHTML = '<option value="TODOS">CATEGORÍAS</option>' + opciones;
+    if (selectForm) selectForm.innerHTML = '<option value="">SELECCIONE CATEGORÍA</option>' + opciones;
+    if (selectCatAdminFilter) {
+        const valorActual = selectCatAdminFilter.value;
+        selectCatAdminFilter.innerHTML = '<option value="TODOS">TODAS LAS CATEGORÍAS</option>' + opciones;
+        selectCatAdminFilter.value = valorActual || 'TODOS';
+    }
+    
+    if (listaCatAdmin) {
+        listaCatAdmin.innerHTML = categorias.map(cat => `
+            <li>
+                ${cat} 
+                <button onclick="eliminarCategoria('${cat}')" style="margin-left:10px; color:red; cursor:pointer; background:none; border:none;">[X]</button>
+            </li>
+        `).join('');
+    }
+};
 
         // =================================================================
         // 4. LÓGICA DEL CARRITO
@@ -807,7 +839,7 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
             const producto = productos.find(p => p.id === productoId);
 
             if (!producto || producto.suspendido) {
-                alert("Este producto no tiene stock");
+                alert("Este producto no tiene stock"
                 return;
             }
 
@@ -1040,129 +1072,137 @@ let esDuenioAutenticado = urlParams.has('appsfogel') && urlParams.get('appsfogel
             }
         };
 
-        const filtrarYRenderizarProductos = () => {
-            const termino = document.getElementById('buscador-admin').value.toLowerCase();
-            const listaAdmin = document.getElementById('lista-admin-productos');
-            listaAdmin.innerHTML = '';
+       const filtrarYRenderizarProductos = () => {
+    const termino = document.getElementById('buscador-admin').value.toLowerCase();
+    const categoriaFiltro = document.getElementById('filtro-categoria-admin') ? document.getElementById('filtro-categoria-admin').value : 'TODOS';
+    const listaAdmin = document.getElementById('lista-admin-productos');
+    listaAdmin.innerHTML = '';
 
-            const filtrados = productos.filter(p => 
-                p.nombre.toLowerCase().includes(termino) || p.id.toString().includes(termino)
-            );
+    const filtrados = productos.filter(p => {
+        const coincideTermino = p.nombre.toLowerCase().includes(termino) || p.id.toString().includes(termino);
+        const coincideCategoria = (categoriaFiltro === 'TODOS') || (p.categoria === categoriaFiltro);
+        return coincideTermino && coincideCategoria;
+    });
 
-            filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    filtrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
 
-            filtrados.forEach(p => {
-                const div = document.createElement('div');
-                div.className = `admin-producto-item ${p.suspendido ? 'admin-producto-suspendido' : ''}`;
-                div.style.display = 'flex';
-                div.style.alignItems = 'center';
-                div.style.gap = '15px';
+    filtrados.forEach(p => {
+        const div = document.createElement('div');
+        div.className = `admin-producto-item ${p.suspendido ? 'admin-producto-suspendido' : ''}`;
+        div.style.display = 'flex';
+        div.style.alignItems = 'center';
+        div.style.gap = '15px';
 
-                div.innerHTML = `
-                    <img src="${p.foto}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;" onerror="this.src='https://placehold.co/50x50';">
-                    
-                    <div class="admin-producto-info" style="flex-grow: 1;">
-                        <strong>[ID: ${p.id}] ${p.nombre}</strong> - $${p.precio.toFixed(2)}<br>
-                        <small>CAT: ${p.categoria} | ${p.suspendido ? '🔴 SIN STOCK' : '🟢 CON STOCK'}</small>
-                    </div>
-                    <div class="admin-acciones">
-                        <button class="btn-suspender" onclick="alternarStock(${p.id})">${p.suspendido ? 'REHABILITAR' : 'SUSPENDER'}</button>
-                        <button class="btn-editar" onclick="cargarProductoParaEditar(${p.id})">EDITAR</button>
-                        <button class="btn-eliminar" onclick="eliminarProducto(${p.id})">BORRAR</button>
-                    </div>
-                `;
-                listaAdmin.appendChild(div);
-            });
-
-            document.getElementById('total-cargados').innerText = productos.length;
-            document.getElementById('total-en-stock').innerText = productos.filter(p => !p.suspendido).length;
-        };
-
-        const gestionarFormularioProducto = (e) => {
-            e.preventDefault();
-            const idEdicion = document.getElementById('producto-id-edicion').value;
-            const productoExistente = idEdicion ? productos.find(p => p.id === parseInt(idEdicion)) : null;
-
-            const nuevoP = {
-                id: idEdicion ? parseInt(idEdicion) : Date.now(),
-                nombre: document.getElementById('producto-nombre').value.toUpperCase(),
-                precio: parseFloat(document.getElementById('producto-precio').value),
-                foto: document.getElementById('producto-foto').value,
-                categoria: document.getElementById('producto-categoria').value,
-                suspendido: productoExistente ? productoExistente.suspendido : false,
-                fechaIngreso: productoExistente && productoExistente.fechaIngreso ? productoExistente.fechaIngreso : Date.now()
-            };
-
-            if (idEdicion) {
-                const index = productos.findIndex(p => p.id === parseInt(idEdicion));
-                productos[index] = nuevoP;
-            } else {
-                productos.push(nuevoP);
-            }
-
-            limpiarFormulario();
-            filtrarYRenderizarProductos();
-            filtrarProductos('TODOS');
-            alert("PRODUCTO GUARDADO EN ESTA SESIÓN.");
-        };
-
-        const cargarProductoParaEditar = (id) => {
-            const p = productos.find(p => p.id === id);
-            document.getElementById('producto-id-edicion').value = p.id;
-            document.getElementById('producto-nombre').value = p.nombre;
-            document.getElementById('producto-precio').value = p.precio;
-            document.getElementById('producto-foto').value = p.foto;
-            document.getElementById('producto-categoria').value = p.categoria;
+        div.innerHTML = `
+            <img src="${p.foto}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;" onerror="this.src='https://placehold.co/50x50';">
             
-            document.getElementById('titulo-form-producto').innerText = "EDITAR PRODUCTO";
-            document.getElementById('btn-guardar-producto').innerText = "ACTUALIZAR CAMBIOS";
-            document.getElementById('btn-cancelar-edicion').style.display = "block";
-            window.scrollTo(0, 0);
-        };
+            <div class="admin-producto-info" style="flex-grow: 1;">
+                <strong>[ID: ${p.id}] ${p.nombre}</strong> - $${p.precio.toFixed(2)}<br>
+                <small>CAT: ${p.categoria} | ${p.suspendido ? '🔴 SIN STOCK' : '🟢 CON STOCK'}</small>
+            </div>
+            <div class="admin-acciones">
+                <button class="btn-suspender" onclick="alternarStock(${p.id})">${p.suspendido ? 'REHABILITAR' : 'SUSPENDER'}</button>
+                <button class="btn-editar" onclick="cargarProductoParaEditar(${p.id})">EDITAR</button>
+                <button class="btn-eliminar" onclick="eliminarProducto(${p.id})">BORRAR</button>
+            </div>
+        `;
+        listaAdmin.appendChild(div);
+    });
 
-        const limpiarFormulario = () => {
-            document.getElementById('form-producto').reset();
-            document.getElementById('producto-id-edicion').value = "";
-            document.getElementById('titulo-form-producto').innerText = "AGREGAR PRODUCTO";
-            document.getElementById('btn-guardar-producto').innerText = "GUARDAR PRODUCTO";
-            document.getElementById('btn-cancelar-edicion').style.display = "none";
-        };
+    document.getElementById('total-cargados').innerText = productos.length;
+    document.getElementById('total-en-stock').innerText = productos.filter(p => !p.suspendido).length;
+};
+       // =================================================================
+// LÓGICA DE ADMINISTRACIÓN (MANTENIENDO SCROLL Y GUARDADO LOCAL)
+// =================================================================
+const gestionarFormularioProducto = (e) => {
+    e.preventDefault();
+    const idEdicion = document.getElementById('producto-id-edicion').value;
+    const productoExistente = idEdicion ? productos.find(p => p.id === parseInt(idEdicion)) : null;
 
-        const eliminarProducto = (id) => {
-            if (confirm("¿BORRAR ESTE PRODUCTO DE LA LISTA?")) {
-                productos = productos.filter(p => p.id !== id);
-                filtrarYRenderizarProductos();
-                filtrarProductos('TODOS');
-            }
-        };
+    const nuevoP = {
+        id: idEdicion ? parseInt(idEdicion) : Date.now(),
+        nombre: document.getElementById('producto-nombre').value.toUpperCase(),
+        precio: parseFloat(document.getElementById('producto-precio').value),
+        foto: document.getElementById('producto-foto').value,
+        categoria: document.getElementById('producto-categoria').value,
+        suspendido: productoExistente ? productoExistente.suspendido : false,
+        fechaIngreso: productoExistente && productoExistente.fechaIngreso ? productoExistente.fechaIngreso : Date.now()
+    };
 
-        const alternarStock = (id) => {
-            const p = productos.find(p => p.id === id);
-            p.suspendido = !p.suspendido;
-            filtrarYRenderizarProductos();
-            filtrarProductos('TODOS');
-            inicializarNuevosIngresos();
-        };
+    if (idEdicion) {
+        const index = productos.findIndex(p => p.id === parseInt(idEdicion));
+        productos[index] = nuevoP;
+    } else {
+        productos.push(nuevoP);
+    }
 
-        const gestionarFormularioCategoria = (e) => {
-            e.preventDefault();
-            const nombre = document.getElementById('nueva-categoria-nombre').value.toUpperCase();
-            if (!categorias.includes(nombre)) {
-                categorias.push(nombre);
-                categorias.sort();
-                renderizarFiltros();
-                document.getElementById('form-categoria').reset();
-            } else {
-                alert("LA CATEGORÍA YA EXISTE");
-            }
-        };
+    guardarCambiosLocales(); // Guardar en tiempo real
+    limpiarFormulario();
+    filtrarYRenderizarProductos();
+    inicializarNuevosIngresos();
+    alert("PRODUCTO GUARDADO EN ESTA SESIÓN.");
+};
 
-        const eliminarCategoria = (cat) => {
-            if (confirm(`¿ELIMINAR CATEGORÍA "${cat}"? LOS PRODUCTOS QUEDARÁN SIN CATEGORÍA.`)) {
-                categorias = categorias.filter(c => c !== cat);
-                renderizarFiltros();
-            }
-        };
+const cargarProductoParaEditar = (id) => {
+    const p = productos.find(p => p.id === id);
+    document.getElementById('producto-id-edicion').value = p.id;
+    document.getElementById('producto-nombre').value = p.nombre;
+    document.getElementById('producto-precio').value = p.precio;
+    document.getElementById('producto-foto').value = p.foto;
+    document.getElementById('producto-categoria').value = p.categoria;
+    
+    document.getElementById('titulo-form-producto').innerText = "EDITAR PRODUCTO";
+    document.getElementById('btn-guardar-producto').innerText = "ACTUALIZAR CAMBIOS";
+    document.getElementById('btn-cancelar-edicion').style.display = "block";
+    
+    // Desplazamiento suave hacia el formulario arriba
+    document.getElementById('form-producto').scrollIntoView({ behavior: 'smooth' });
+};
+
+const eliminarProducto = (id) => {
+    if (confirm("¿BORRAR ESTE PRODUCTO DE LA LISTA?")) {
+        const scrollPos = window.scrollY; // Guardar posición actual
+        productos = productos.filter(p => p.id !== id);
+        guardarCambiosLocales(); // Guardar en tiempo real
+        filtrarYRenderizarProductos();
+        window.scrollTo(0, scrollPos); // Mantener pantalla en su lugar
+    }
+};
+
+const alternarStock = (id) => {
+    const scrollPos = window.scrollY; // Guardar posición actual
+    const p = productos.find(p => p.id === id);
+    if (p) {
+        p.suspendido = !p.suspendido;
+        guardarCambiosLocales(); // Guardar en tiempo real
+        filtrarYRenderizarProductos();
+        window.scrollTo(0, scrollPos); // Mantener pantalla en su lugar
+    }
+};
+
+const gestionarFormularioCategoria = (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById('nueva-categoria-nombre').value.toUpperCase();
+    if (!categorias.includes(nombre)) {
+        categorias.push(nombre);
+        categorias.sort();
+        guardarCambiosLocales(); // Guardar en tiempo real
+        renderizarFiltros();
+        document.getElementById('form-categoria').reset();
+    } else {
+        alert("LA CATEGORÍA YA EXISTE");
+    }
+};
+
+const eliminarCategoria = (cat) => {
+    if (confirm(`¿ELIMINAR CATEGORÍA "${cat}"? LOS PRODUCTOS QUEDARÁN SIN CATEGORÍA.`)) {
+        categorias = categorias.filter(c => c !== cat);
+        guardarCambiosLocales(); // Guardar en tiempo real
+        renderizarFiltros();
+        filtrarYRenderizarProductos();
+    }
+};
 
         const descargarJSON = (tipo) => {
             let data = tipo === 'productos' ? productos : categorias;
