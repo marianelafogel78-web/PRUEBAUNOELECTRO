@@ -1218,8 +1218,8 @@ const eliminarCategoria = (cat) => {
         // 6. NAVEGACIÓN
         // =================================================================
        // MODIFICAMOS mostrarPestana PARA QUE REFRESHEE SIEMPRE
-const mostrarPestana = async (pestana, event) => {
-    // 1. Refrescar datos respetando los cambios locales del Admin
+async function mostrarPestana(pestana, event) {
+    // 1. Refrescar datos desde localStorage o servidor
     const productosGuardados = localStorage.getItem('productos_local_admin');
     if (productosGuardados) {
         productos = JSON.parse(productosGuardados);
@@ -1236,7 +1236,8 @@ const mostrarPestana = async (pestana, event) => {
     document.querySelectorAll('.tab-content').forEach(p => p.style.display = 'none');
     document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
     
-    document.getElementById(`${pestana}-panel`).style.display = 'block';
+    const panelActual = document.getElementById(pestana + '-panel');
+    if (panelActual) panelActual.style.display = 'block';
     
     if (event && event.target && event.target.classList) {
         event.target.classList.add('active');
@@ -1244,7 +1245,7 @@ const mostrarPestana = async (pestana, event) => {
         document.getElementById('tab-tienda')?.classList.add('active');
     }
 
-    // 3. Renderizar y actualizar vista de tienda o carrito
+    // 3. Renderizar vista correspondiente
     if (pestana === 'tienda') {
         renderizarProductos(productos);
         const selectFiltros = document.getElementById('select-filtros-tienda');
